@@ -16,8 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.IntroActivity"
-            android:theme="@style/Theme.Intro">
+        <activity android:name=".Activities.IntroActivity">
 
         </activity>
     </application>

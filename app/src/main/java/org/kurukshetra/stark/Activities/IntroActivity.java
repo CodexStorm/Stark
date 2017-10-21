@@ -1,40 +1,36 @@
 package org.kurukshetra.stark.Activities;
 
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+
+import com.github.paolorotolo.appintro.AppIntro;
+import com.github.paolorotolo.appintro.AppIntro2;
 
 import org.kurukshetra.stark.R;
+import org.kurukshetra.stark.SampleSlide;
 
-import agency.tango.materialintroscreen.MaterialIntroActivity;
-import agency.tango.materialintroscreen.MessageButtonBehaviour;
-import agency.tango.materialintroscreen.SlideFragment;
-import agency.tango.materialintroscreen.SlideFragmentBuilder;
-
-public class IntroActivity extends MaterialIntroActivity {
+public class IntroActivity extends AppIntro {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        addSlide(SampleSlide.newInstance(R.layout.intro_custom_layout1));
+        addSlide(SampleSlide.newInstance(R.layout.intro_custom_layout2));
+        addSlide(SampleSlide.newInstance(R.layout.intro_custom_layout3));
+        addSlide(SampleSlide.newInstance(R.layout.intro_custom_layout4));
+    }
 
-        addSlide(new SlideFragmentBuilder()
-                .backgroundColor(R.color.colorPrimary)
-                .buttonsColor(R.color.colorAccent)
-                .title("Test Slide")
-                .description("Description")
-                .build(),null);
+    @Override
+    public void onSkipPressed(Fragment currentFragment) {
+        super.onSkipPressed(currentFragment);
+    }
 
-        addSlide(new SlideFragmentBuilder()
-                .backgroundColor(R.color.colorPrimary)
-                .buttonsColor(R.color.colorAccent)
-                .title("Test Slide")
-                .description("Description")
-                .build(),null);
-        addSlide(new SlideFragmentBuilder()
-                .backgroundColor(R.color.colorPrimary)
-                .buttonsColor(R.color.colorAccent)
-                .title("Test Slide")
-                .description("Description")
-                .build(),null);
+    @Override
+    public void onDonePressed(Fragment currentFragment) {
+        super.onDonePressed(currentFragment);
     }
 }
