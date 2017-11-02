@@ -1,5 +1,6 @@
 package org.kurukshetra.stark.Activities;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,6 +32,9 @@ public class IntroActivity extends AppIntro {
 
     @Override
     public void onDonePressed(Fragment currentFragment) {
+
         super.onDonePressed(currentFragment);
+        Intent intent = new Intent(IntroActivity.this,BotActivity.class);
+        startActivity(intent);
     }
 }

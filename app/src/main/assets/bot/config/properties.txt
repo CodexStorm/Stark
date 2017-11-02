@@ -1,0 +1,8 @@
+url:http://kurukshetra.org
+name:Kurukshetra
+email:techops@kurukshetra.org
+gender:male
+botmaster:Kurukshetra
+organization:CEG Tech Forum
+version:0.0.1
+
