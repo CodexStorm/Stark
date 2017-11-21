@@ -7,10 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.github.paolorotolo.appintro.AppIntro;
 import com.github.paolorotolo.appintro.AppIntro2;
 
+import org.kurukshetra.stark.Common.UserDetails;
 import org.kurukshetra.stark.R;
 import org.kurukshetra.stark.SampleSlide;
 
@@ -23,6 +25,7 @@ public class IntroActivity extends AppIntro {
         addSlide(SampleSlide.newInstance(R.layout.intro_custom_layout2));
         addSlide(SampleSlide.newInstance(R.layout.intro_custom_layout3));
         addSlide(SampleSlide.newInstance(R.layout.intro_custom_layout4));
+        UserDetails.setIntroOver(IntroActivity.this,true);
     }
 
     @Override
@@ -34,7 +37,11 @@ public class IntroActivity extends AppIntro {
     public void onDonePressed(Fragment currentFragment) {
 
         super.onDonePressed(currentFragment);
-        Intent intent = new Intent(IntroActivity.this,BotActivity.class);
-        startActivity(intent);
+        if(!UserDetails.isUserLoggedIn(IntroActivity.this)) {
+            Intent intent = new Intent(IntroActivity.this, LoginActivity.class);
+            startActivity(intent);
+        }else {
+            Toast.makeText(IntroActivity.this,"Already Logged in",Toast.LENGTH_SHORT).show();
+        }
     }
 }

@@ -6,9 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
 
+import org.kurukshetra.stark.Common.UserDetails;
 import org.kurukshetra.stark.R;
 
 public class SplashActivity extends AppCompatActivity {
@@ -30,8 +32,17 @@ public class SplashActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animator animator) {
-                Intent intent = new Intent(SplashActivity.this,IntroActivity.class);
-                startActivity(intent);
+                if(UserDetails.getIntroOver(SplashActivity.this)) {
+                    if (!UserDetails.isUserLoggedIn(SplashActivity.this)) {
+                        Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(SplashActivity.this, "Already Logged in", Toast.LENGTH_SHORT).show();
+                    }
+                }else {
+                    Intent intent = new Intent(SplashActivity.this, IntroActivity.class);
+                    startActivity(intent);
+                }
             }
 
             @Override
