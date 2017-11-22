@@ -22,7 +22,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
@@ -41,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText etEmail,etPassword;
     private Button bLogin;
     private GoogleSignInClient mGoogleSignInClient;
-    private SignInButton signInButton;
+    private Button googleSignInButton,fbSignInButoon;
     private LoginButton loginButton;
     private CallbackManager callbackManager;
 
@@ -58,10 +57,19 @@ public class LoginActivity extends AppCompatActivity {
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
         bLogin = findViewById(R.id.bLogin);
-        signInButton = findViewById(R.id.sign_in_button);
-        loginButton = findViewById(R.id.fb_login_button);
+        googleSignInButton = findViewById(R.id.google_sign_in_button);
+        fbSignInButoon = findViewById(R.id.fb_sign_in_button);
+        loginButton = findViewById(R.id.fb_default_button);
         loginButton.setReadPermissions("email");
         callbackManager = CallbackManager.Factory.create();
+
+        fbSignInButoon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loginButton.performClick();
+            }
+        });
+
 
 
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
@@ -96,7 +104,7 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
 
-        signInButton.setOnClickListener(new View.OnClickListener() {
+        googleSignInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent signInIntent = mGoogleSignInClient.getSignInIntent();
@@ -124,7 +132,13 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(UserDetails.isUserLoggedIn(LoginActivity.this)){
+            Toast.makeText(LoginActivity.this,"Already Logged in",Toast.LENGTH_SHORT).show();
+        }
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
