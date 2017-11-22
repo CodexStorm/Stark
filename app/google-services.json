@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "459215713586",
+    "project_id": "stark-39a55"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:459215713586:android:2f97cba8a1e14de2",
+        "android_client_info": {
+          "package_name": "org.kurukshetra.stark"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "459215713586-g1sans56ssfocan0ab631hb28lcqnul4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.kurukshetra.stark",
+            "certificate_hash": "ea221d35dc52ddb7f118758932ed3ea331fcda10"
+          }
+        },
+        {
+          "client_id": "459215713586-6ee3rikbqqn46u19nn9f77329k740u87.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSZFnZGG38UDcs7yP_DMcGsZQRSTi2-Ho"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
