@@ -79,6 +79,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 Toast.makeText(LoginActivity.this,loginResult.getAccessToken().toString(),Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
@@ -123,25 +124,10 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        generateHash();
-
 
     }
 
-    private void generateHash() {
-        try {
-            @SuppressLint("PackageManagerGetSignatures") PackageInfo info = getPackageManager().getPackageInfo(
-                    "org.kurukshetra.stark",
-                    PackageManager.GET_SIGNATURES);
-            for (android.content.pm.Signature signature : info.signatures) {
-                MessageDigest md = MessageDigest.getInstance("SHA");
-                md.update(signature.toByteArray());
-                Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
-            }
-        } catch (PackageManager.NameNotFoundException | NoSuchAlgorithmException ignored) {
 
-        }
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

@@ -1,19 +1,19 @@
 {
   "project_info": {
-    "project_number": "459215713586",
-    "project_id": "stark-39a55"
+    "project_number": "206959846356",
+    "project_id": "kauth-2018"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:459215713586:android:2f97cba8a1e14de2",
+        "mobilesdk_app_id": "1:206959846356:android:2f97cba8a1e14de2",
         "android_client_info": {
           "package_name": "org.kurukshetra.stark"
         }
       },
       "oauth_client": [
         {
-          "client_id": "459215713586-g1sans56ssfocan0ab631hb28lcqnul4.apps.googleusercontent.com",
+          "client_id": "206959846356-draj41ed58npsqvuajq951foo2dhumpu.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "org.kurukshetra.stark",
@@ -21,13 +21,13 @@
           }
         },
         {
-          "client_id": "459215713586-6ee3rikbqqn46u19nn9f77329k740u87.apps.googleusercontent.com",
+          "client_id": "206959846356-7al7fl2u51kq7b5pbt957dqrg7ueg70m.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDSZFnZGG38UDcs7yP_DMcGsZQRSTi2-Ho"
+          "current_key": "AIzaSyB1FVWY8IG_gMja515BG7NzQrIvdLYIm1Y"
         }
       ],
       "services": {

@@ -73,7 +73,7 @@ public class RestClientImplementation {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                error.printStackTrace();
             }
         },30000,0);
         queue.add(jsonBaseRequest);
