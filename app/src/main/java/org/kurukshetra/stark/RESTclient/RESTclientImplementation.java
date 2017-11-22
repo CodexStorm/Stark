@@ -3,7 +3,6 @@ package org.kurukshetra.stark.RESTclient;
 import android.content.Context;
 import android.util.Log;
 
-import com.airbnb.lottie.animation.content.Content;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -12,9 +11,8 @@ import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.kurukshetra.stark.Common.UserDetails;
 import org.kurukshetra.stark.Constants.Constants;
-import org.kurukshetra.stark.Entities.GoogleLoginEntity;
+import org.kurukshetra.stark.Entities.SocialLoginInterface;
 import org.kurukshetra.stark.Entities.LoginEntity;
 import org.kurukshetra.stark.Entities.ResponseEntity;
 
@@ -51,7 +49,7 @@ public class RestClientImplementation {
         queue.add(jsonBaseRequest);
     }
 
-    public static void googleLogin(final String token,final GoogleLoginEntity.RestClientInterface restClientInterface,final Context context){
+    public static void googleLogin(final String token, final SocialLoginInterface.RestClientInterface restClientInterface, final Context context){
         queue = VolleySingleton.getInstance(context).getRequestQueue();
         String url = getAbsoluteUrl("/api/v1/participant/signin/google");
         JSONObject postParams = new JSONObject();
@@ -66,6 +64,34 @@ public class RestClientImplementation {
             @Override
             public void onResponse(JSONObject response) {
                 Log.e("Google Login Response",response.toString());
+                Gson gson = new Gson();
+                ResponseEntity responseEntity = gson.fromJson(response.toString(),ResponseEntity.class);
+                restClientInterface.onLogin(responseEntity.getToken(),null);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        },30000,0);
+        queue.add(jsonBaseRequest);
+    }
+
+    public static void facebookLogin(final String token, final SocialLoginInterface.RestClientInterface restClientInterface, final Context context){
+        queue = VolleySingleton.getInstance(context).getRequestQueue();
+        String url = getAbsoluteUrl("/api/v1/participant/signin/facebook");
+        JSONObject postParams = new JSONObject();
+        JSONObject id_token = new JSONObject();
+        try {
+            id_token.put("access_token",token);
+            postParams.put("data",id_token);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        JsonBaseRequest jsonBaseRequest = new JsonBaseRequest(Request.Method.POST, url, postParams, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("Facebook Login Response",response.toString());
                 Gson gson = new Gson();
                 ResponseEntity responseEntity = gson.fromJson(response.toString(),ResponseEntity.class);
                 restClientInterface.onLogin(responseEntity.getToken(),null);

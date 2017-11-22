@@ -1,13 +1,9 @@
 package org.kurukshetra.stark.Activities;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -18,7 +14,6 @@ import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.facebook.CallbackManager;
-import com.facebook.FacebookButtonBase;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.login.LoginResult;
@@ -27,23 +22,17 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.Scopes;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.tasks.Task;
 
 import org.kurukshetra.stark.Common.UserDetails;
-import org.kurukshetra.stark.Entities.GoogleLoginEntity;
+import org.kurukshetra.stark.Entities.SocialLoginInterface;
 import org.kurukshetra.stark.Entities.LoginEntity;
 import org.kurukshetra.stark.R;
 import org.kurukshetra.stark.RESTclient.RestClientImplementation;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
-
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.security.Signature;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -78,8 +67,16 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                Toast.makeText(LoginActivity.this,loginResult.getAccessToken().toString(),Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(LoginActivity.this,loginResult.getAccessToken().getToken(),Toast.LENGTH_SHORT).show();
+                RestClientImplementation.facebookLogin(loginResult.getAccessToken().getToken(), new SocialLoginInterface.RestClientInterface() {
+                    @Override
+                    public void onLogin(String token, VolleyError error) {
+                        Toast.makeText(LoginActivity.this,"Token"+token,Toast.LENGTH_SHORT).show();
+                        UserDetails.setUserLoggedIn(LoginActivity.this,true);
+                        UserDetails.setUserToken(LoginActivity.this,token);
+                        Toast.makeText(LoginActivity.this,"Facebook sign in successful",Toast.LENGTH_SHORT).show();
+                    }
+                },LoginActivity.this);
             }
 
             @Override
@@ -147,7 +144,7 @@ public class LoginActivity extends AppCompatActivity {
             String idToken = account.getIdToken();
             // TODO(developer): send ID Token to server and validate
             Toast.makeText(LoginActivity.this,idToken,Toast.LENGTH_SHORT).show();
-            RestClientImplementation.googleLogin(idToken, new GoogleLoginEntity.RestClientInterface() {
+            RestClientImplementation.googleLogin(idToken, new SocialLoginInterface.RestClientInterface() {
                 @Override
                 public void onLogin(String token, VolleyError error) {
                     Toast.makeText(LoginActivity.this,"Token"+token,Toast.LENGTH_SHORT).show();
