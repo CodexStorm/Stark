@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Stark.iml" filepath="$PROJECT_DIR$/Stark.iml" />
+      <module fileurl="file://C:\Users\ompra\Documents\K18\Stark\.idea\Stark.iml" filepath="C:\Users\ompra\Documents\K18\Stark\.idea\Stark.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

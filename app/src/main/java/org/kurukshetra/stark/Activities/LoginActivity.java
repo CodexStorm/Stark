@@ -29,7 +29,7 @@ import org.kurukshetra.stark.Common.UserDetails;
 import org.kurukshetra.stark.Entities.SocialLoginInterface;
 import org.kurukshetra.stark.Entities.LoginEntity;
 import org.kurukshetra.stark.R;
-import org.kurukshetra.stark.RESTclient.RESTclientImplementation;
+import org.kurukshetra.stark.RESTclient.RESTClientImplementation;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
 
@@ -76,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 Toast.makeText(LoginActivity.this,loginResult.getAccessToken().getToken(),Toast.LENGTH_SHORT).show();
-                RESTclientImplementation.facebookLogin(loginResult.getAccessToken().getToken(), new SocialLoginInterface.RestClientInterface() {
+                RESTClientImplementation.facebookLogin(loginResult.getAccessToken().getToken(), new SocialLoginInterface.RestClientInterface() {
                     @Override
                     public void onLogin(String token, VolleyError error) {
                         Toast.makeText(LoginActivity.this,"Token"+token,Toast.LENGTH_SHORT).show();
@@ -117,7 +117,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 LoginEntity loginEntity = new LoginEntity(etEmail.getText().toString(),etPassword.getText().toString());
-                RESTclientImplementation.normalLogin(loginEntity, new LoginEntity.RestClientInterface() {
+                RESTClientImplementation.normalLogin(loginEntity, new LoginEntity.RestClientInterface() {
+
                     @Override
                     public void onLogin(String token, VolleyError error) {
                         Toast.makeText(LoginActivity.this,"Token"+token,Toast.LENGTH_SHORT).show();
@@ -158,7 +159,7 @@ public class LoginActivity extends AppCompatActivity {
             String idToken = account.getIdToken();
             // TODO(developer): send ID Token to server and validate
             Toast.makeText(LoginActivity.this,idToken,Toast.LENGTH_SHORT).show();
-            RESTclientImplementation.googleLogin(idToken, new SocialLoginInterface.RestClientInterface() {
+            RESTClientImplementation.googleLogin(idToken, new SocialLoginInterface.RestClientInterface() {
                 @Override
                 public void onLogin(String token, VolleyError error) {
                     Toast.makeText(LoginActivity.this,"Token"+token,Toast.LENGTH_SHORT).show();
