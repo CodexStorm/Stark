@@ -16,7 +16,7 @@ import org.kurukshetra.stark.Entities.SocialLoginInterface;
 import org.kurukshetra.stark.Entities.LoginEntity;
 import org.kurukshetra.stark.Entities.ResponseEntity;
 
-public class RestClientImplementation {
+public class RESTclientImplementation {
     static RequestQueue queue;
     private static final String BASE_URL = Constants.BASE_URL;
     private static String getAbsoluteUrl(String relativeUrl) {
