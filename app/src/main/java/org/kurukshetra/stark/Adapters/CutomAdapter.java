@@ -1,4 +1,4 @@
-package org.kurukshetra.stark.Activities.mListView;
+package org.kurukshetra.stark.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import org.kurukshetra.stark.Activities.mData.KShow;
+import org.kurukshetra.stark.Entities.ContactsEntity;
 import org.kurukshetra.stark.R;
 
 import java.util.ArrayList;
@@ -24,22 +24,22 @@ import static android.support.v4.content.ContextCompat.startActivity;
 public class CutomAdapter extends BaseAdapter {
 
     Context c;
-    ArrayList<KShow> kShows;
+    ArrayList<ContactsEntity> contactsEntities;
     LayoutInflater inflater;
 
-    public CutomAdapter(Context c, ArrayList<KShow> kShows) {
+    public CutomAdapter(Context c, ArrayList<ContactsEntity> contactsEntities) {
         this.c = c;
-        this.kShows = kShows;
+        this.contactsEntities = contactsEntities;
     }
 
     @Override
     public int getCount() {
-        return kShows.size();
+        return contactsEntities.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return kShows.get(i);
+        return contactsEntities.get(i);
     }
 
     @Override
@@ -55,7 +55,7 @@ public class CutomAdapter extends BaseAdapter {
         }
         if(view==null)
         {
-        view=inflater.inflate(R.layout.model,viewGroup,false);
+        view=inflater.inflate(R.layout.contact_card,viewGroup,false);
         }
 
 
@@ -64,8 +64,8 @@ public class CutomAdapter extends BaseAdapter {
 TextView desc=(TextView)view.findViewById(R.id.descTxt);
         ImageButton btn=(ImageButton)view.findViewById(R.id.imageButton2);
         String name;
-        name = kShows.get(i).getName();
-    final long ph=kShows.get(i).getPhno();
+        name = contactsEntities.get(i).getName();
+    final long ph= contactsEntities.get(i).getPhno();
        // final int number = Integer.valueOf(ph);
 
 nametxt.setText(name);

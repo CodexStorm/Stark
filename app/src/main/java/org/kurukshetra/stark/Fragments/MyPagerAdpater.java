@@ -1,4 +1,4 @@
-package org.kurukshetra.stark.Activities.mFragment;
+package org.kurukshetra.stark.Fragments;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

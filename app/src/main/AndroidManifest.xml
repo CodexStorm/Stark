@@ -31,11 +31,7 @@
         </activity>
 
         <activity android:name=".Activities.SplashActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".Activities.IntroActivity"
             />
@@ -44,6 +40,13 @@
              />
         <activity android:name=".Activities.BotActivity"
             />
+        <activity android:name=".Activities.ContactsActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 

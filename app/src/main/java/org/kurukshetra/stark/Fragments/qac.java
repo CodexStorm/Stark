@@ -1,4 +1,4 @@
-package org.kurukshetra.stark.Activities.mFragment;
+package org.kurukshetra.stark.Fragments;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -11,8 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import org.kurukshetra.stark.Activities.mData.KShow;
-import org.kurukshetra.stark.Activities.mListView.CutomAdapter;
+import org.kurukshetra.stark.Entities.ContactsEntity;
+import org.kurukshetra.stark.Adapters.CutomAdapter;
 import org.kurukshetra.stark.R;
 
 import java.util.ArrayList;
@@ -21,23 +21,23 @@ import java.util.ArrayList;
  * Created by sre on 11/24/17.
  */
 
-public class hospitality extends Fragment {
+public class qac extends Fragment {
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View rootView=inflater.inflate(R.layout.hospitality_frag,container,false);
-        ListView lv= (ListView)rootView.findViewById(R.id.hospitalityListView);
+        View rootView=inflater.inflate(R.layout.qac_frag,container,false);
+        ListView lv= (ListView)rootView.findViewById(R.id.qacListView);
 
         FloatingActionButton fab;
-        fab = (FloatingActionButton)rootView.findViewById(R.id.fab12);
+        fab = (FloatingActionButton)rootView.findViewById(R.id.fab17);
         CutomAdapter adapter=new CutomAdapter(this.getActivity(),getContent());
         lv.setAdapter(adapter);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String rec="hospitality@kurukshetra.org.in";
+                String rec="qac@kurukshetra.org.in";
                 Intent intent = new Intent(Intent.ACTION_SENDTO);
                 intent.setData(Uri.parse("mailto:" + rec));
                 startActivity(intent);
@@ -48,23 +48,22 @@ public class hospitality extends Fragment {
     }
 
 
-    private ArrayList<KShow> getContent() {
-        ArrayList<KShow> arr=new ArrayList<>();
-        KShow kShow=new KShow("Kowselya.M",9489223951L);
-        arr.add(kShow);
-        kShow=new KShow("Monisha.M",9597795364L);
-        arr.add(kShow);
+    private ArrayList<ContactsEntity> getContent() {
+        ArrayList<ContactsEntity> arr=new ArrayList<>();
+        ContactsEntity contactsEntity =new ContactsEntity("Aakkash.M",9940567816L);
+        arr.add(contactsEntity);
+        contactsEntity =new ContactsEntity("Shakthi Gnanavel.CR",8754468977L);
+        arr.add(contactsEntity);
 
-        kShow=new KShow("Sridhar.K.S",9443802106L);
-        arr.add(kShow);
+        contactsEntity =new ContactsEntity("Sowmya Sreenidhi.R",9940223204L);
+        arr.add(contactsEntity);
 
-        kShow=new KShow("Thiru Thamizh Selvan",9941147740L);
-        arr.add(kShow);
+
         return arr;
     }
     @Override
     public String toString() {
-        String title="hospitality";
+        String title="qac";
         return title;
     }
 

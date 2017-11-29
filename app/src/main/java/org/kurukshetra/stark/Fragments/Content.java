@@ -1,4 +1,4 @@
-package org.kurukshetra.stark.Activities.mFragment;
+package org.kurukshetra.stark.Fragments;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -11,8 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import org.kurukshetra.stark.Activities.mData.KShow;
-import org.kurukshetra.stark.Activities.mListView.CutomAdapter;
+import org.kurukshetra.stark.Entities.ContactsEntity;
+import org.kurukshetra.stark.Adapters.CutomAdapter;
 import org.kurukshetra.stark.R;
 
 import java.util.ArrayList;
@@ -48,12 +48,12 @@ String rec="contents@kurukshetra.org.in";
     }
 
 
-    private ArrayList<KShow> getContent() {
-        ArrayList<KShow> arr=new ArrayList<>();
-        KShow kShow=new KShow("Anubama.C",9003013681L);
-        arr.add(kShow);
-        kShow=new KShow("Jayasree.V",9884028569L);
-        arr.add(kShow);
+    private ArrayList<ContactsEntity> getContent() {
+        ArrayList<ContactsEntity> arr=new ArrayList<>();
+        ContactsEntity contactsEntity =new ContactsEntity("Anubama.C",9003013681L);
+        arr.add(contactsEntity);
+        contactsEntity =new ContactsEntity("Jayasree.V",9884028569L);
+        arr.add(contactsEntity);
         return arr;
     }
     @Override

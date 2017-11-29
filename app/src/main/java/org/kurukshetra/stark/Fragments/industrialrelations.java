@@ -1,4 +1,4 @@
-package org.kurukshetra.stark.Activities.mFragment;
+package org.kurukshetra.stark.Fragments;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -11,8 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import org.kurukshetra.stark.Activities.mData.KShow;
-import org.kurukshetra.stark.Activities.mListView.CutomAdapter;
+import org.kurukshetra.stark.Entities.ContactsEntity;
+import org.kurukshetra.stark.Adapters.CutomAdapter;
 import org.kurukshetra.stark.R;
 
 import java.util.ArrayList;
@@ -21,23 +21,23 @@ import java.util.ArrayList;
  * Created by sre on 11/24/17.
  */
 
-public class finance extends Fragment {
+public class industrialrelations extends Fragment {
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View rootView=inflater.inflate(R.layout.finance_frag,container,false);
-        ListView lv= (ListView)rootView.findViewById(R.id.financeListView);
+        View rootView=inflater.inflate(R.layout.industrialrelations_frag,container,false);
+        ListView lv= (ListView)rootView.findViewById(R.id.industrialListView);
 
         FloatingActionButton fab;
-        fab = (FloatingActionButton)rootView.findViewById(R.id.fab11);
+        fab = (FloatingActionButton)rootView.findViewById(R.id.fab10);
         CutomAdapter adapter=new CutomAdapter(this.getActivity(),getContent());
         lv.setAdapter(adapter);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String rec="finance@kurukshetra.org.in";
+                String rec="industryrelations@kurukshetra.org.in";
                 Intent intent = new Intent(Intent.ACTION_SENDTO);
                 intent.setData(Uri.parse("mailto:" + rec));
                 startActivity(intent);
@@ -48,17 +48,20 @@ public class finance extends Fragment {
     }
 
 
-    private ArrayList<KShow> getContent() {
-        ArrayList<KShow> arr=new ArrayList<>();
-        KShow kShow=new KShow("Jaya Surya.S",9600103528L);
-        arr.add(kShow);
-        kShow=new KShow("Pradeev.N",9688941542L);
-        arr.add(kShow);
+    private ArrayList<ContactsEntity> getContent() {
+        ArrayList<ContactsEntity> arr=new ArrayList<>();
+        ContactsEntity contactsEntity =new ContactsEntity("Peshma Priya.R",9566066277L);
+        arr.add(contactsEntity);
+        contactsEntity =new ContactsEntity("Surya Deepan.E",9524565616L);
+        arr.add(contactsEntity);
+
+        contactsEntity =new ContactsEntity("Vishwanath.S",9500011210L);
+        arr.add(contactsEntity);
         return arr;
     }
     @Override
     public String toString() {
-        String title="finance";
+        String title="industrial relations";
         return title;
     }
 

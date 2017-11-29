@@ -1,4 +1,4 @@
-package org.kurukshetra.stark.Activities.mFragment;
+package org.kurukshetra.stark.Fragments;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -11,8 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import org.kurukshetra.stark.Activities.mData.KShow;
-import org.kurukshetra.stark.Activities.mListView.CutomAdapter;
+import org.kurukshetra.stark.Entities.ContactsEntity;
+import org.kurukshetra.stark.Adapters.CutomAdapter;
 import org.kurukshetra.stark.R;
 
 import java.util.ArrayList;
@@ -48,15 +48,15 @@ public class projects extends Fragment {
     }
 
 
-    private ArrayList<KShow> getContent() {
-        ArrayList<KShow> arr=new ArrayList<>();
-        KShow kShow=new KShow("Balaji.R",8807270640L);
-        arr.add(kShow);
-        kShow=new KShow("Harini.D",8056365205L);
-        arr.add(kShow);
+    private ArrayList<ContactsEntity> getContent() {
+        ArrayList<ContactsEntity> arr=new ArrayList<>();
+        ContactsEntity contactsEntity =new ContactsEntity("Balaji.R",8807270640L);
+        arr.add(contactsEntity);
+        contactsEntity =new ContactsEntity("Harini.D",8056365205L);
+        arr.add(contactsEntity);
 
-        kShow=new KShow("Thirunavukarasu.D",9884662051L);
-        arr.add(kShow);
+        contactsEntity =new ContactsEntity("Thirunavukarasu.D",9884662051L);
+        arr.add(contactsEntity);
 
 
         return arr;

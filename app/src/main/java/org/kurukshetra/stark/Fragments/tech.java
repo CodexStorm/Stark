@@ -1,4 +1,4 @@
-package org.kurukshetra.stark.Activities.mFragment;
+package org.kurukshetra.stark.Fragments;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -11,8 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import org.kurukshetra.stark.Activities.mData.KShow;
-import org.kurukshetra.stark.Activities.mListView.CutomAdapter;
+import org.kurukshetra.stark.Entities.ContactsEntity;
+import org.kurukshetra.stark.Adapters.CutomAdapter;
 import org.kurukshetra.stark.R;
 
 import java.util.ArrayList;
@@ -21,23 +21,23 @@ import java.util.ArrayList;
  * Created by sre on 11/24/17.
  */
 
-public class workshops extends Fragment {
+public class tech extends Fragment {
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View rootView=inflater.inflate(R.layout.workshops_frag,container,false);
-        ListView lv= (ListView)rootView.findViewById(R.id.workshopsListView);
+        View rootView=inflater.inflate(R.layout.tech_frag,container,false);
+        ListView lv= (ListView)rootView.findViewById(R.id.techListView);
 
         FloatingActionButton fab;
-        fab = (FloatingActionButton)rootView.findViewById(R.id.fab6);
+        fab = (FloatingActionButton)rootView.findViewById(R.id.fab19);
         CutomAdapter adapter=new CutomAdapter(this.getActivity(),getContent());
         lv.setAdapter(adapter);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String rec="workshops@kurukshetra.org.in";
+                String rec="tech@kurukshetra.org.in";
                 Intent intent = new Intent(Intent.ACTION_SENDTO);
                 intent.setData(Uri.parse("mailto:" + rec));
                 startActivity(intent);
@@ -48,17 +48,25 @@ public class workshops extends Fragment {
     }
 
 
-    private ArrayList<KShow> getContent() {
-        ArrayList<KShow> arr=new ArrayList<>();
-        KShow kShow=new KShow("Adharsh Srivats.R",9003822580L);
-        arr.add(kShow);
-        kShow=new KShow("Karthick Nathan.G",8939130044L);
-        arr.add(kShow);
+    private ArrayList<ContactsEntity> getContent() {
+        ArrayList<ContactsEntity> arr=new ArrayList<>();
+        ContactsEntity contactsEntity =new ContactsEntity("Durai Sreenevasan.R",9894543958L);
+        arr.add(contactsEntity);
+        contactsEntity =new ContactsEntity("Omprakash.S",9043103547L);
+        arr.add(contactsEntity);
+
+        contactsEntity =new ContactsEntity("Prabhakaran.S",7200210789L);
+        arr.add(contactsEntity);
+
+        contactsEntity =new ContactsEntity("Vagul.M.M",9789117799L);
+        arr.add(contactsEntity);
+
+
         return arr;
     }
     @Override
     public String toString() {
-        String title="workshops";
+        String title="Tech";
         return title;
     }
 

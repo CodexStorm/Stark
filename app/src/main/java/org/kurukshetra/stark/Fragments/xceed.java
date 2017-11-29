@@ -1,4 +1,4 @@
-package org.kurukshetra.stark.Activities.mFragment;
+package org.kurukshetra.stark.Fragments;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -11,8 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import org.kurukshetra.stark.Activities.mData.KShow;
-import org.kurukshetra.stark.Activities.mListView.CutomAdapter;
+import org.kurukshetra.stark.Entities.ContactsEntity;
+import org.kurukshetra.stark.Adapters.CutomAdapter;
 import org.kurukshetra.stark.R;
 
 import java.util.ArrayList;
@@ -21,23 +21,23 @@ import java.util.ArrayList;
  * Created by sre on 11/24/17.
  */
 
-public class media extends Fragment {
+public class xceed extends Fragment {
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View rootView=inflater.inflate(R.layout.media_frag,container,false);
-        ListView lv= (ListView)rootView.findViewById(R.id.mediaListView);
+        View rootView=inflater.inflate(R.layout.xceed_frag,container,false);
+        ListView lv= (ListView)rootView.findViewById(R.id.xceedListView);
 
         FloatingActionButton fab;
-        fab = (FloatingActionButton)rootView.findViewById(R.id.fab15);
+        fab = (FloatingActionButton)rootView.findViewById(R.id.fab7);
         CutomAdapter adapter=new CutomAdapter(this.getActivity(),getContent());
         lv.setAdapter(adapter);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String rec="media@kurukshetra.org.in";
+                String rec="xceed@kurukshetra.org.in";
                 Intent intent = new Intent(Intent.ACTION_SENDTO);
                 intent.setData(Uri.parse("mailto:" + rec));
                 startActivity(intent);
@@ -48,19 +48,20 @@ public class media extends Fragment {
     }
 
 
-    private ArrayList<KShow> getContent() {
-        ArrayList<KShow> arr=new ArrayList<>();
-        KShow kShow=new KShow("Gurukoushik.R",9047155006L);
-        arr.add(kShow);
-        kShow=new KShow("Sareeka.A.G",9488741487L);
-        arr.add(kShow);
-
+    private ArrayList<ContactsEntity> getContent() {
+        ArrayList<ContactsEntity> arr=new ArrayList<>();
+        ContactsEntity contactsEntity =new ContactsEntity("Ashwin Karthik.A",9677241086L);
+        arr.add(contactsEntity);
+        contactsEntity =new ContactsEntity("Kiran Pranesh.J",9543815552L);
+        arr.add(contactsEntity);
+        contactsEntity =new ContactsEntity("Sandhya A.K",9486960291L);
+        arr.add(contactsEntity);
 
         return arr;
     }
     @Override
     public String toString() {
-        String title="media";
+        String title="xceed & karnival";
         return title;
     }
 

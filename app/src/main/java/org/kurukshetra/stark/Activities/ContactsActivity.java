@@ -6,38 +6,38 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
-import org.kurukshetra.stark.Activities.mFragment.Content;
-import org.kurukshetra.stark.Activities.mFragment.Creative;
-import org.kurukshetra.stark.Activities.mFragment.Design;
-import org.kurukshetra.stark.Activities.mFragment.Marketing;
-import org.kurukshetra.stark.Activities.mFragment.MyPagerAdpater;
-import org.kurukshetra.stark.Activities.mFragment.brandrelations;
-import org.kurukshetra.stark.Activities.mFragment.events;
-import org.kurukshetra.stark.Activities.mFragment.finance;
-import org.kurukshetra.stark.Activities.mFragment.guestlectures;
-import org.kurukshetra.stark.Activities.mFragment.hospitality;
-import org.kurukshetra.stark.Activities.mFragment.hr;
-import org.kurukshetra.stark.Activities.mFragment.industrialrelations;
-import org.kurukshetra.stark.Activities.mFragment.logistics;
-import org.kurukshetra.stark.Activities.mFragment.media;
-import org.kurukshetra.stark.Activities.mFragment.projects;
-import org.kurukshetra.stark.Activities.mFragment.promo;
-import org.kurukshetra.stark.Activities.mFragment.qac;
-import org.kurukshetra.stark.Activities.mFragment.tech;
-import org.kurukshetra.stark.Activities.mFragment.workshops;
-import org.kurukshetra.stark.Activities.mFragment.xceed;
+import org.kurukshetra.stark.Fragments.Content;
+import org.kurukshetra.stark.Fragments.Creative;
+import org.kurukshetra.stark.Fragments.Design;
+import org.kurukshetra.stark.Fragments.Marketing;
+import org.kurukshetra.stark.Fragments.MyPagerAdpater;
+import org.kurukshetra.stark.Fragments.brandrelations;
+import org.kurukshetra.stark.Fragments.events;
+import org.kurukshetra.stark.Fragments.finance;
+import org.kurukshetra.stark.Fragments.guestlectures;
+import org.kurukshetra.stark.Fragments.hospitality;
+import org.kurukshetra.stark.Fragments.hr;
+import org.kurukshetra.stark.Fragments.industrialrelations;
+import org.kurukshetra.stark.Fragments.logistics;
+import org.kurukshetra.stark.Fragments.media;
+import org.kurukshetra.stark.Fragments.projects;
+import org.kurukshetra.stark.Fragments.promo;
+import org.kurukshetra.stark.Fragments.qac;
+import org.kurukshetra.stark.Fragments.tech;
+import org.kurukshetra.stark.Fragments.workshops;
+import org.kurukshetra.stark.Fragments.xceed;
 import org.kurukshetra.stark.R;
 
-public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener,ViewPager.OnPageChangeListener  {
+public class ContactsActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener,ViewPager.OnPageChangeListener  {
     ViewPager vp;
     TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setContentView(R.layout.activity_contacts);
+     //   Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
         vp=(ViewPager)findViewById(R.id.mViewpager_ID);
         this.addPages();
         tabLayout= (TabLayout) findViewById(R.id.mTab_ID);
