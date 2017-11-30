@@ -14,6 +14,7 @@ import org.kurukshetra.stark.Common.UserDetails;
 import org.kurukshetra.stark.R;
 
 public class SplashActivity extends AppCompatActivity {
+    LottieAnimationView animationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +24,7 @@ public class SplashActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
 
-        LottieAnimationView animationView = (LottieAnimationView) findViewById(R.id.animation_view);
+        animationView = (LottieAnimationView) findViewById(R.id.animation_view);
         animationView.addAnimatorListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animator) {
@@ -37,7 +38,9 @@ public class SplashActivity extends AppCompatActivity {
                         Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
                         startActivity(intent);
                     } else {
-                        Toast.makeText(SplashActivity.this, "Already Logged in", Toast.LENGTH_SHORT).show();
+                      //  Toast.makeText(SplashActivity.this, "Already Logged in", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                        startActivity(intent);
                     }
                 }else {
                     Intent intent = new Intent(SplashActivity.this, IntroActivity.class);
@@ -55,5 +58,44 @@ public class SplashActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        animationView.addAnimatorListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animator) {
+                if(UserDetails.getIntroOver(SplashActivity.this)) {
+                    if (!UserDetails.isUserLoggedIn(SplashActivity.this)) {
+                        Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                    } else {
+                        //  Toast.makeText(SplashActivity.this, "Already Logged in", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                        startActivity(intent);
+                    }
+                }else {
+                    Intent intent = new Intent(SplashActivity.this, IntroActivity.class);
+                    startActivity(intent);
+                }
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animator) {
+
+            }
+        });
+
     }
 }

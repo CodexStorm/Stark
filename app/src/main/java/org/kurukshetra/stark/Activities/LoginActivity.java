@@ -49,9 +49,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
 
         etEmail = findViewById(R.id.etEmail);
@@ -83,6 +80,7 @@ public class LoginActivity extends AppCompatActivity {
                         UserDetails.setUserLoggedIn(LoginActivity.this,true);
                         UserDetails.setUserToken(LoginActivity.this,token);
                         Toast.makeText(LoginActivity.this,"Facebook sign in successful",Toast.LENGTH_SHORT).show();
+                        goToMainActivity();
                     }
                 },LoginActivity.this);
             }
@@ -124,6 +122,7 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(LoginActivity.this,"Token"+token,Toast.LENGTH_SHORT).show();
                         UserDetails.setUserLoggedIn(LoginActivity.this,true);
                         UserDetails.setUserToken(LoginActivity.this,token);
+                        goToMainActivity();
                     }
 
                 },LoginActivity.this);
@@ -133,11 +132,17 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    private void goToMainActivity() {
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
         if(UserDetails.isUserLoggedIn(LoginActivity.this)){
-            Toast.makeText(LoginActivity.this,"Already Logged in",Toast.LENGTH_SHORT).show();
+           // Toast.makeText(LoginActivity.this,"Already Logged in",Toast.LENGTH_SHORT).show();
+            goToMainActivity();
         }
     }
 
@@ -145,7 +150,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == RC_SIGN_IN && resultCode == Activity.RESULT_OK){
-            Toast.makeText(LoginActivity.this,"came here",Toast.LENGTH_SHORT).show();
+           // Toast.makeText(LoginActivity.this,"came here",Toast.LENGTH_SHORT).show();
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             handleSignInResult(task);
         }
@@ -162,10 +167,11 @@ public class LoginActivity extends AppCompatActivity {
             RESTClientImplementation.googleLogin(idToken, new SocialLoginInterface.RestClientInterface() {
                 @Override
                 public void onLogin(String token, VolleyError error) {
-                    Toast.makeText(LoginActivity.this,"Token"+token,Toast.LENGTH_SHORT).show();
+                 //   Toast.makeText(LoginActivity.this,"Token"+token,Toast.LENGTH_SHORT).show();
                     UserDetails.setUserLoggedIn(LoginActivity.this,true);
                     UserDetails.setUserToken(LoginActivity.this,token);
-                    Toast.makeText(LoginActivity.this,"Google sign in successful",Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(LoginActivity.this,"Google sign in successful",Toast.LENGTH_SHORT).show();
+                    goToMainActivity();
                 }
             },LoginActivity.this);
 
