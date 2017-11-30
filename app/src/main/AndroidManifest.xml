@@ -47,13 +47,14 @@
         <activity android:name=".Activities.LoginActivity"
             android:theme="@style/LoginActivity"/>
         <activity android:name=".Activities.BotActivity" />
-        <activity android:name=".Activities.ContactsActivity">
+        <activity android:name=".Activities.ContactsActivity"
+            android:theme="@style/ContactsActivity">
 
         </activity>
         <activity
             android:name=".Activities.MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/MainActivity"/>
     </application>
 
 </manifest>

@@ -9,8 +9,7 @@
     </style>
 
     <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
     </style>
 
@@ -29,6 +28,24 @@
 
     <style name="IntroActivity" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+    <style name="MainActivity" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">#764ba2</item>
+        <item name="colorPrimaryDark">#764ba2</item>
+        <item name="colorAccent">#eeeeee</item>
+    </style>
+
+    <style name="ContactsActivity" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">#1976D2</item>
+        <item name="colorPrimaryDark">#1976D2</item>
+        <item name="colorAccent">#1976D2</item>
     </style>
 
 </resources>

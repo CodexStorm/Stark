@@ -11,9 +11,10 @@
         android:id="@+id/animation_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        app:lottie_fileName="ripple.json"
+        app:lottie_imageAssetsFolder="image"
+        app:lottie_fileName="test2.json"
         app:lottie_loop="false"
+        app:lottie_scale="0.5"
         android:background="#000"
         app:lottie_autoPlay="true" />
 

@@ -36,8 +36,11 @@ public class ContactsActivity extends AppCompatActivity implements TabLayout.OnT
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacts);
-     //   Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Contact Us");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         vp=(ViewPager)findViewById(R.id.mViewpager_ID);
         this.addPages();
         tabLayout= (TabLayout) findViewById(R.id.mTab_ID);
@@ -48,6 +51,13 @@ public class ContactsActivity extends AppCompatActivity implements TabLayout.OnT
 
 
     }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
     private void addPages()
     {
         MyPagerAdpater pagerAdapter=new MyPagerAdpater(this.getSupportFragmentManager());
