@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="org.kurukshetra.stark.Activities.LoginActivity"
-    android:background="@drawable/login_background">
+    android:background="#fff">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
