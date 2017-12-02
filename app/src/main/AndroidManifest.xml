@@ -33,7 +33,8 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.SplashActivity"
+        <activity
+            android:name=".Activities.SplashActivity"
             android:theme="@style/AppTheme.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,20 +42,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.IntroActivity"
-            android:theme="@style/IntroActivity"
-            />
-        <activity android:name=".Activities.LoginActivity"
-            android:theme="@style/LoginActivity"/>
+        <activity
+            android:name=".Activities.IntroActivity"
+            android:theme="@style/IntroActivity" />
+        <activity
+            android:name=".Activities.LoginActivity"
+            android:theme="@style/LoginActivity" />
         <activity android:name=".Activities.BotActivity" />
-        <activity android:name=".Activities.ContactsActivity"
-            android:theme="@style/ContactsActivity">
-
-        </activity>
+        <activity
+            android:name=".Activities.ContactsActivity"
+            android:theme="@style/ContactsActivity"></activity>
         <activity
             android:name=".Activities.MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/MainActivity"/>
+            android:theme="@style/MainActivity" />
+        <activity android:name=".Activities.HomeActivity"
+            android:theme="@style/HomeActivity"></activity>
     </application>
 
 </manifest>

@@ -39,7 +39,7 @@ public class SplashActivity extends AppCompatActivity {
                         startActivity(intent);
                     } else {
                       //  Toast.makeText(SplashActivity.this, "Already Logged in", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                        Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
                         startActivity(intent);
                     }
                 }else {
@@ -77,7 +77,7 @@ public class SplashActivity extends AppCompatActivity {
                         startActivity(intent);
                     } else {
                         //  Toast.makeText(SplashActivity.this, "Already Logged in", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                        Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
                         startActivity(intent);
                     }
                 }else {
