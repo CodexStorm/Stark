@@ -18,8 +18,9 @@ import org.kurukshetra.stark.Entities.LoginEntity;
 import org.kurukshetra.stark.Entities.ResponseEntity;
 
 public class RestClientImplementation {
-    static RequestQueue queue;
     private static final String BASE_URL = Constants.BASE_URL;
+    static RequestQueue queue;
+
     private static String getAbsoluteUrl(String relativeUrl) {
         return BASE_URL + relativeUrl;
     }

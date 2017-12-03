@@ -5,7 +5,7 @@ import android.content.Context;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
-class VolleySingleton {
+class VolleySingleton           {
     private static VolleySingleton mInstance = null;
     private RequestQueue mRequestQueue;
 

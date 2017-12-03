@@ -9,15 +9,15 @@ import org.json.JSONArray;
 
 class JsonArrayBaseRequest extends JsonArrayRequest {
 
-    public JsonArrayBaseRequest(String url, Response.Listener<JSONArray> listener, Response.ErrorListener errorListener) {
-        super(url, listener, errorListener);
+    public JsonArrayBaseRequest(int method,String url,JSONArray jsonArray ,Response.Listener<JSONArray> listener, Response.ErrorListener errorListener) {
+        super(method,url,jsonArray,listener, errorListener);
         setRetryPolicy(new DefaultRetryPolicy(
                 10000, 3,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
     }
 
-    public JsonArrayBaseRequest(String url, Response.Listener<JSONArray> listener, Response.ErrorListener errorListener, int timeOut, int retries) {
-        super(url, listener, errorListener);
+    public JsonArrayBaseRequest(int method,String url,JSONArray jsonArray, Response.Listener<JSONArray> listener, Response.ErrorListener errorListener, int timeOut, int retries) {
+        super(method,url,jsonArray, listener,errorListener);
         setRetryPolicy(new DefaultRetryPolicy(
                 timeOut, retries,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
