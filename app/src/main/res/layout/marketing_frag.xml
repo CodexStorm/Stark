@@ -25,17 +25,5 @@
         android:clickable="true"
         android:src="@android:drawable/ic_dialog_email"
         app:elevation="4dp" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="62dp"
-        android:layout_marginLeft="50dp"
-        android:textStyle="bold|italic"
-        android:textColor="#000000"
-        android:text="marketing@kurukshetra.org.in"
-        android:textSize="17dp"
-
-        android:layout_alignParentLeft="true"/>
 
 </RelativeLayout>

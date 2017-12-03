@@ -10,6 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import org.kurukshetra.stark.Common.UserDetails;
 import org.kurukshetra.stark.Entities.ContactsEntity;
 import org.kurukshetra.stark.R;
 
@@ -21,13 +22,13 @@ import static android.support.v4.content.ContextCompat.startActivity;
  * Created by sre on 11/24/17.
  */
 
-public class CutomAdapter extends BaseAdapter {
+public class ContactsListAdapter extends BaseAdapter {
 
     Context c;
     ArrayList<ContactsEntity> contactsEntities;
     LayoutInflater inflater;
 
-    public CutomAdapter(Context c, ArrayList<ContactsEntity> contactsEntities) {
+    public ContactsListAdapter(Context c, ArrayList<ContactsEntity> contactsEntities) {
         this.c = c;
         this.contactsEntities = contactsEntities;
     }
@@ -61,15 +62,17 @@ public class CutomAdapter extends BaseAdapter {
 
 
         TextView nametxt=(TextView)view.findViewById(R.id.nameTxt);
-TextView desc=(TextView)view.findViewById(R.id.descTxt);
+        TextView desc=(TextView)view.findViewById(R.id.descTxt);
+        nametxt.setTypeface(UserDetails.getRightiousFont(c));
+        desc.setTypeface(UserDetails.getRightiousFont(c));
         ImageButton btn=(ImageButton)view.findViewById(R.id.imageButton2);
         String name;
         name = contactsEntities.get(i).getName();
     final long ph= contactsEntities.get(i).getPhno();
        // final int number = Integer.valueOf(ph);
 
-nametxt.setText(name);
-desc.setText(String.valueOf(ph));
+    nametxt.setText(name);
+    desc.setText(String.valueOf(ph));
 
 btn.setOnClickListener(new View.OnClickListener(){
     @Override

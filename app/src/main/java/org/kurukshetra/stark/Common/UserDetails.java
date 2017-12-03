@@ -2,6 +2,7 @@ package org.kurukshetra.stark.Common;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 
 import org.kurukshetra.stark.Constants.Constants;
 
@@ -46,5 +47,9 @@ public class UserDetails {
     public static Boolean getIntroOver(Context context){
         SharedPreferences settings = context.getSharedPreferences(Constants.USER_PREFERENCE,0);
         return (settings.getBoolean("intro_over", false));
+    }
+
+    public static Typeface getRightiousFont(Context context){
+        return Typeface.createFromAsset(context.getAssets(),"fonts/righteous.ttf");
     }
 }

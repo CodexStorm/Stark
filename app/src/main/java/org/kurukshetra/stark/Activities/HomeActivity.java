@@ -1,8 +1,12 @@
 package org.kurukshetra.stark.Activities;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,10 +17,12 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import org.kurukshetra.stark.Adapters.HomeScreenPagerAdapter;
+import org.kurukshetra.stark.Common.UserDetails;
 import org.kurukshetra.stark.R;
 
 public class HomeActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener{
     TextView title;
+    FloatingActionButton contactFAB;
     ViewPager viewPager;
     int[][] mResources = {
             {R.drawable.events,R.drawable.gradient_blue_red,R.string.events},
@@ -32,27 +38,31 @@ public class HomeActivity extends AppCompatActivity implements ViewPager.OnPageC
         w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
         setContentView(R.layout.activity_home);
-       // title = findViewById(R.id.title);
-        //title.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/righteous.ttf"));
+
+        contactFAB = findViewById(R.id.contactFAB);
+
+        contactFAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(HomeActivity.this,view,"transition");
+                int revealX = (int) (view.getX() + view.getWidth() /2);
+                int revealY = (int) (view.getY() + view.getHeight() /2);
+                Intent intent = new Intent(HomeActivity.this,ContactsActivity.class);
+                intent.putExtra(ContactsActivity.EXTRA_CIRCULAR_REVEAL_X, revealX);
+                intent.putExtra(ContactsActivity.EXTRA_CIRCULAR_REVEAL_Y, revealY);
+                ActivityCompat.startActivity(HomeActivity.this,intent,activityOptionsCompat.toBundle());
+            }
+        });
+        title = findViewById(R.id.title);
+        title.setTypeface(UserDetails.getRightiousFont(this));
         viewPager = findViewById(R.id.view_pager);
         viewPager.setOffscreenPageLimit(3);
         homeScreenPagerAdapter = new HomeScreenPagerAdapter(this,mResources);
         viewPager.setOnPageChangeListener(this);
-        viewPager.setPageTransformer(false, new ViewPager.PageTransformer() {
-            @Override
-            public void transformPage(View view, float position) {
-                if (view.getTag() == null || !(view.getTag() instanceof ViewHolder)) { return; }
-                View parallaxView = ((ViewHolder) view.getTag()).getParallaxView();
-
-                if (parallaxView == null) { return; }
-                if (position <= -1 || position >= 1) { return; }
-                parallaxView.setTranslationX(-position * 0.3f * view.getWidth());
-
-            }
-        });
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabDots);
         tabLayout.setupWithViewPager(viewPager, true);
         viewPager.setAdapter(homeScreenPagerAdapter);
+
     }
 
     @Override

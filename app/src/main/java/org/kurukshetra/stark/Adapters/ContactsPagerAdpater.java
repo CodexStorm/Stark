@@ -1,4 +1,4 @@
-package org.kurukshetra.stark.Fragments;
+package org.kurukshetra.stark.Adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,10 +10,10 @@ import java.util.ArrayList;
  * Created by sre on 11/24/17.
  */
 
-public class MyPagerAdpater extends FragmentPagerAdapter {
+public class ContactsPagerAdpater extends FragmentPagerAdapter {
     ArrayList<Fragment> fragments=new ArrayList<>();
 
-    public MyPagerAdpater(FragmentManager fm) {
+    public ContactsPagerAdpater(FragmentManager fm) {
         super(fm);
     }
 

@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import org.kurukshetra.stark.Entities.ContactsEntity;
-import org.kurukshetra.stark.Adapters.CutomAdapter;
+import org.kurukshetra.stark.Adapters.ContactsListAdapter;
 import org.kurukshetra.stark.R;
 
 import java.util.ArrayList;
@@ -36,7 +36,7 @@ public class brandrelations extends Fragment {
 
         FloatingActionButton fab;
         fab = (FloatingActionButton)rootView.findViewById(R.id.fab8);
-        CutomAdapter adapter=new CutomAdapter(this.getActivity(),getContent());
+        ContactsListAdapter adapter=new ContactsListAdapter(this.getActivity(),getContent());
         lv.setAdapter(adapter);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,7 +56,6 @@ public class brandrelations extends Fragment {
         ArrayList<ContactsEntity> arr=new ArrayList<>();
         ContactsEntity contactsEntity =new ContactsEntity("Justin Xavier.I",9080239125L);
         arr.add(contactsEntity);
-
         return arr;
     }
     @Override
