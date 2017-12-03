@@ -2,9 +2,12 @@ package org.kurukshetra.stark.Activities;
 
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
@@ -35,13 +38,27 @@ public class HomeActivity extends AppCompatActivity implements ViewPager.OnPageC
         viewPager.setOffscreenPageLimit(3);
         homeScreenPagerAdapter = new HomeScreenPagerAdapter(this,mResources);
         viewPager.setOnPageChangeListener(this);
+        viewPager.setPageTransformer(false, new ViewPager.PageTransformer() {
+            @Override
+            public void transformPage(View view, float position) {
+                if (view.getTag() == null || !(view.getTag() instanceof ViewHolder)) { return; }
+                View parallaxView = ((ViewHolder) view.getTag()).getParallaxView();
+
+                if (parallaxView == null) { return; }
+                if (position <= -1 || position >= 1) { return; }
+                parallaxView.setTranslationX(-position * 0.3f * view.getWidth());
+
+            }
+        });
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabDots);
+        tabLayout.setupWithViewPager(viewPager, true);
         viewPager.setAdapter(homeScreenPagerAdapter);
     }
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-            viewPager.setBackground(getDrawable(mResources[position][1]));
+           // viewPager.setBackground(getDrawable(mResources[position][1]));
     }
     @Override
     public void onPageSelected(int position) {
@@ -51,5 +68,13 @@ public class HomeActivity extends AppCompatActivity implements ViewPager.OnPageC
     @Override
     public void onPageScrollStateChanged(int state) {
 
+    }
+    public class ViewHolder {
+        private View parallaxView;
+
+        private ViewHolder() { this.parallaxView = null; }
+        public ViewHolder(View parallaxView) { this.parallaxView = parallaxView; }
+        public View getParallaxView() { return parallaxView; }
+        public void setParallaxView(View parallaxView) { this.parallaxView = parallaxView; }
     }
 }
