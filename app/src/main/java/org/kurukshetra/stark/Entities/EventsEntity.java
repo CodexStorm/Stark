@@ -34,6 +34,14 @@ public class EventsEntity {
         this.sponsor=sponsor;
         this.tabs=tabs;
     }
+    public EventsEntity(){}
+    public  EventsEntity(EventsEntity eventsEntity){
+        this.eventName=eventsEntity.getEventName();
+        this.sponsor=eventsEntity.getSponsor();
+        this.slug=eventsEntity.getSlug();
+        this.id=eventsEntity.getId();
+        this.tabs=eventsEntity.getTabs();
+    }
 
     public int getId() {
         return id;
@@ -87,11 +95,19 @@ public class EventsEntity {
      private String avatar_one;
      @SerializedName("avatar_two")
      @Expose
-     private String avator_two;
+     private String avatar_two;
      @SerializedName("tabbable_type")
      @Expose
      private String tabbable_type;
-
+    public Tab(){}
+     public Tab(Tab tab){
+         this.tabbable_type=tab.getTabbable_type();
+         this.avatar_one=tab.getAvatar_one();
+         this.avatar_two=tab.getAvatar_two();
+         this.content=tab.getContent();
+         this.title=tab.getTitle();
+         this.id=tab.getId();
+     }
      public int getId() {
          return id;
      }
@@ -136,11 +152,11 @@ public class EventsEntity {
          this.value = value;
      }
 
-     public String getAvator_two() {
-         return avator_two;
+     public String getAvatar_two() {
+         return avatar_two;
      }
 
-     public void setAvator_two(String avator_two) {
-         this.avator_two = avator_two;
+     public void setAvatar_two(String avatar_two) {
+         this.avatar_two = avatar_two;
      }
  }

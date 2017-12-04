@@ -18,6 +18,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.kurukshetra.stark.Adapters.EventsAdapter;
 import org.kurukshetra.stark.Constants.Constants;
 import org.kurukshetra.stark.Entities.CategoriesEntity;
 import org.kurukshetra.stark.Entities.CategoriesList;
@@ -44,7 +45,7 @@ public class EventsList {
     private static String getAbsoluteUrl(String relativeUrl) {
         return BASE_URL + relativeUrl;
     }
-    public static void listEvents( final Context context){
+    public static CategoriesList listEvents(final  CategoriesList categoriesList, final Context context, final EventsAdapter eventsAdapter){
         queue = VolleySingleton.getInstance(context).getRequestQueue();
         String url = getAbsoluteUrl("categories.json");
 
@@ -58,15 +59,16 @@ public class EventsList {
                     for (int i=0;i<jsonArray.length();i++){
                         Gson gson = new Gson();
                         JSONObject jsonObject= jsonArray.getJSONObject(i);
-                        CategoriesEntity categoriesEntity =gson.fromJson(jsonObject.toString(),CategoriesEntity.class);
-                        CategoriesList.setCategoriesEntityList(categoriesEntity);
-                        Log.e("Response "+Integer.toString(i),categoriesEntity.toString());
+                        CategoriesEntity categoriesEntity =new CategoriesEntity(gson.fromJson(jsonObject.toString(),CategoriesEntity.class));
+                        categoriesList.setCategoriesEntityList(categoriesEntity);
+                        eventsAdapter.setCategoriesEntityList(categoriesList.getCategoriesEntityList());
+                        Log.e("Response "+Integer.toString(i),categoriesEntity.getEventCategory());
                     }
                     Log.e("Login Response", jsonArray.toString());
 
                     //   List<CategoriesEntity> categoriesEntityList=new ArrayList<CategoriesEntity>();
                    // categoriesEntityList.add(gson.fromJson(jsonArray.toString(), CategoriesEntity.class));
-                    Log.e("Categories in main", CategoriesList.getCategoriesEntityList().toString());
+                    Log.e("Categories in main", categoriesList.getCategoriesEntityList().toString());
 
                 }
 
@@ -82,7 +84,8 @@ public class EventsList {
                 Log.d("Error in response here",error.toString());
                 error.printStackTrace();
             }
-        },40000,0);
+        },30000,0);
         queue.add(jsonBaseRequest);
+        return categoriesList;
     }
 }

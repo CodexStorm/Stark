@@ -16,10 +16,14 @@ public class CategoriesEntity {
     @SerializedName("name")
     @Expose
     private String  eventCategory;
-    @SerializedName("events")
+    @SerializedName("cardview_events")
     @Expose
     private List<EventsEntity> eventsList;
     public CategoriesEntity(){}
+    public CategoriesEntity(CategoriesEntity categoriesEntity){
+        this.eventCategory= categoriesEntity.getEventCategory();
+        this.eventsList=categoriesEntity.getEventsList();
+    }
     public CategoriesEntity(String eventCategory,List<EventsEntity> eventsList){
         this.eventCategory=eventCategory;
         this.eventsList=eventsList;
