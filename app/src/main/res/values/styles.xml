@@ -38,7 +38,11 @@
     </style>
 
     <style name="IntroActivity" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:fitsSystemWindows">true</item>
+        <item name="colorPrimary">#000</item>
+        <item name="colorPrimaryDark">#764ba2</item>
+        <item name="colorAccent">#000</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">#000</item>
     </style>
 
     <style name="MainActivity" parent="Theme.AppCompat.DayNight.DarkActionBar">

@@ -15,6 +15,7 @@ import org.kurukshetra.stark.R;
 
 public class SplashActivity extends AppCompatActivity {
     LottieAnimationView animationView;
+    int count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +24,7 @@ public class SplashActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
-
+        count = 0;
         animationView = (LottieAnimationView) findViewById(R.id.animation_view);
         animationView.addAnimatorListener(new Animator.AnimatorListener() {
             @Override
@@ -33,18 +34,23 @@ public class SplashActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animator animator) {
-                if(UserDetails.getIntroOver(SplashActivity.this)) {
-                    if (!UserDetails.isUserLoggedIn(SplashActivity.this)) {
-                        Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
-                        startActivity(intent);
+                if(count == 1) {
+                    count=0;
+                    if (UserDetails.getIntroOver(SplashActivity.this)) {
+                        if (!UserDetails.isUserLoggedIn(SplashActivity.this)) {
+                            Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                            startActivity(intent);
+                        } else {
+                            //  Toast.makeText(SplashActivity.this, "Already Logged in", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
+                            startActivity(intent);
+                        }
                     } else {
-                      //  Toast.makeText(SplashActivity.this, "Already Logged in", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
+                        Intent intent = new Intent(SplashActivity.this, IntroActivity.class);
                         startActivity(intent);
                     }
                 }else {
-                    Intent intent = new Intent(SplashActivity.this, IntroActivity.class);
-                    startActivity(intent);
+                    count++;
                 }
             }
 

@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.kurukshetra.stark.Activities.SplashActivity">
+    tools:context="org.kurukshetra.stark.Activities.SplashActivity"
+    android:background="#fff">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animation_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content"
         app:lottie_imageAssetsFolder="image"
-        app:lottie_fileName="test2.json"
+        app:lottie_fileName="gears.json"
         app:lottie_loop="false"
-        app:lottie_scale="0.5"
-        android:background="#000"
         app:lottie_autoPlay="true" />
 
-</FrameLayout>
+</RelativeLayout>

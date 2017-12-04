@@ -163,7 +163,7 @@ public class LoginActivity extends AppCompatActivity {
             GoogleSignInAccount account = task.getResult(ApiException.class);
             String idToken = account.getIdToken();
             // TODO(developer): send ID Token to server and validate
-            Toast.makeText(LoginActivity.this,idToken,Toast.LENGTH_SHORT).show();
+         //   Toast.makeText(LoginActivity.this,idToken,Toast.LENGTH_SHORT).show();
             RESTClientImplementation.googleLogin(idToken, new SocialLoginInterface.RestClientInterface() {
                 @Override
                 public void onLogin(String token, VolleyError error) {
@@ -178,5 +178,10 @@ public class LoginActivity extends AppCompatActivity {
         } catch (ApiException e) {
             Log.w("Login Activity", "handleSignInResult:error", e);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+
     }
 }

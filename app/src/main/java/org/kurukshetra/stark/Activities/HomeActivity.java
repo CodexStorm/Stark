@@ -16,13 +16,17 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import com.android.volley.VolleyError;
+
 import org.kurukshetra.stark.Adapters.HomeScreenPagerAdapter;
 import org.kurukshetra.stark.Common.UserDetails;
+import org.kurukshetra.stark.Entities.LogoutEntity;
 import org.kurukshetra.stark.R;
+import org.kurukshetra.stark.RESTclient.RESTClientImplementation;
 
 public class HomeActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener{
     TextView title;
-    FloatingActionButton contactFAB;
+    FloatingActionButton contactFAB,logoutFAB;
     ViewPager viewPager;
     int[][] mResources = {
             {R.drawable.events,R.drawable.gradient_blue_red,R.string.events},
@@ -40,6 +44,25 @@ public class HomeActivity extends AppCompatActivity implements ViewPager.OnPageC
         setContentView(R.layout.activity_home);
 
         contactFAB = findViewById(R.id.contactFAB);
+        logoutFAB = findViewById(R.id.logoutFAB);
+
+        logoutFAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                RESTClientImplementation.logout(new LogoutEntity.RestClientInterface() {
+                    @Override
+                    public void onLogin(Boolean success, VolleyError error) {
+                        if(success){
+                            UserDetails.setUserLoggedIn(HomeActivity.this,false);
+                            UserDetails.setUserToken(HomeActivity.this,"");
+                            Intent intent = new Intent(HomeActivity.this,LoginActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    }
+                },HomeActivity.this);
+            }
+        });
 
         contactFAB.setOnClickListener(new View.OnClickListener() {
             @Override

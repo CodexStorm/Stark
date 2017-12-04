@@ -11,7 +11,9 @@ import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.kurukshetra.stark.Common.UserDetails;
 import org.kurukshetra.stark.Constants.Constants;
+import org.kurukshetra.stark.Entities.LogoutEntity;
 import org.kurukshetra.stark.Entities.SocialLoginInterface;
 import org.kurukshetra.stark.Entities.LoginEntity;
 import org.kurukshetra.stark.Entities.ResponseEntity;
@@ -45,6 +47,34 @@ public class RESTClientImplementation {
             @Override
             public void onErrorResponse(VolleyError error) {
 
+            }
+        },30000,0);
+        queue.add(jsonBaseRequest);
+    }
+
+    public static void logout(final LogoutEntity.RestClientInterface restClientInterface, final Context context){
+        queue = VolleySingleton.getInstance(context).getRequestQueue();
+        String url = getAbsoluteUrl("/api/v1/participant/signout");
+        JSONObject postParams = new JSONObject();
+        try {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("token", UserDetails.getUserToken(context));
+            postParams.put("data",jsonObject);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        JsonBaseRequest jsonBaseRequest = new JsonBaseRequest(Request.Method.POST, url, postParams, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("Login Response",response.toString());
+                Gson gson = new Gson();
+                ResponseEntity responseEntity = gson.fromJson(response.toString(),ResponseEntity.class);
+                restClientInterface.onLogin(responseEntity.getStatus().getCode(),null);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("s","s");
             }
         },30000,0);
         queue.add(jsonBaseRequest);
