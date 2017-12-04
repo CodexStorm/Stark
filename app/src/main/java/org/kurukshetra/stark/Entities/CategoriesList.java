@@ -8,18 +8,16 @@ import java.util.List;
  */
 
 public class CategoriesList {
-    private  List<CategoriesEntity> categoriesEntityList;
+    private static List<CategoriesEntity> categoriesEntityList=new ArrayList<CategoriesEntity>();
     public CategoriesList(){
 
     }
-    public CategoriesList(CategoriesEntity categoriesEntity){
-        categoriesEntityList.add(categoriesEntity);
-    }
-    public List<CategoriesEntity> getCategoriesEntityList() {
+
+    public static List<CategoriesEntity> getCategoriesEntityList() {
         return categoriesEntityList;
     }
 
-    public  void setCategoriesEntityList(List<CategoriesEntity> categoriesEntityList) {
-        this.categoriesEntityList = categoriesEntityList;
+    public static   void setCategoriesEntityList(CategoriesEntity categoriesEntity) {
+        categoriesEntityList.add(categoriesEntity);
     }
 }

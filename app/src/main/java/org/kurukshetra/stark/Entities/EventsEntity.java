@@ -81,7 +81,7 @@ public class EventsEntity {
      private String content;
      @SerializedName("value")
      @Expose
-     private String value;
+     private int value;
      @SerializedName("avatar_one")
      @Expose
      private String avatar_one;
@@ -128,11 +128,11 @@ public class EventsEntity {
          this.title = title;
      }
 
-     public String getValue() {
+     public int getValue() {
          return value;
      }
 
-     public void setValue(String value) {
+     public void setValue(int value) {
          this.value = value;
      }
 
