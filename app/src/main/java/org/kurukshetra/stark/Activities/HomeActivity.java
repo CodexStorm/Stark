@@ -1,5 +1,8 @@
 package org.kurukshetra.stark.Activities;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
@@ -14,9 +17,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.volley.VolleyError;
+import com.eftimoff.viewpagertransformers.CubeOutTransformer;
+import com.eftimoff.viewpagertransformers.RotateUpTransformer;
 
 import org.kurukshetra.stark.Adapters.HomeScreenPagerAdapter;
 import org.kurukshetra.stark.Common.UserDetails;
@@ -28,6 +34,7 @@ public class HomeActivity extends AppCompatActivity implements ViewPager.OnPageC
     TextView title;
     FloatingActionButton contactFAB,logoutFAB;
     ViewPager viewPager;
+    RelativeLayout rlRoot;
     int[][] mResources = {
             {R.drawable.events,R.drawable.gradient_blue_red,R.string.events},
             {R.drawable.workshop,R.drawable.gradient_ocean,R.string.workshops},
@@ -38,29 +45,19 @@ public class HomeActivity extends AppCompatActivity implements ViewPager.OnPageC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Window w = getWindow(); // in Activity's onCreate() for instance
+        Window w = getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-
         setContentView(R.layout.activity_home);
 
         contactFAB = findViewById(R.id.contactFAB);
         logoutFAB = findViewById(R.id.logoutFAB);
+        rlRoot = findViewById(R.id.rlRoot);
 
         logoutFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                RESTClientImplementation.logout(new LogoutEntity.RestClientInterface() {
-                    @Override
-                    public void onLogin(Boolean success, VolleyError error) {
-                        if(success){
-                            UserDetails.setUserLoggedIn(HomeActivity.this,false);
-                            UserDetails.setUserToken(HomeActivity.this,"");
-                            Intent intent = new Intent(HomeActivity.this,LoginActivity.class);
-                            startActivity(intent);
-                            finish();
-                        }
-                    }
-                },HomeActivity.this);
+                showDialog();
+
             }
         });
 
@@ -76,22 +73,43 @@ public class HomeActivity extends AppCompatActivity implements ViewPager.OnPageC
                 ActivityCompat.startActivity(HomeActivity.this,intent,activityOptionsCompat.toBundle());
             }
         });
-        title = findViewById(R.id.title);
-        title.setTypeface(UserDetails.getRightiousFont(this));
+
         viewPager = findViewById(R.id.view_pager);
         viewPager.setOffscreenPageLimit(3);
         homeScreenPagerAdapter = new HomeScreenPagerAdapter(this,mResources);
         viewPager.setOnPageChangeListener(this);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabDots);
         tabLayout.setupWithViewPager(viewPager, true);
+        viewPager.setPageTransformer(true, new CubeOutTransformer());
         viewPager.setAdapter(homeScreenPagerAdapter);
+
+    }
+
+    private void showDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                RESTClientImplementation.logout(new LogoutEntity.RestClientInterface() {
+                    @Override
+                    public void onLogin(Boolean success, VolleyError error) {
+                        if(success){
+                            UserDetails.setUserLoggedIn(HomeActivity.this,false);
+                            UserDetails.setUserToken(HomeActivity.this,"");
+                            Intent intent = new Intent(HomeActivity.this,LoginActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    }
+                },HomeActivity.this);
+            }
+        });
 
     }
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-           // viewPager.setBackground(getDrawable(mResources[position][1]));
+        rlRoot.setBackground(getDrawable(mResources[position][1]));
     }
     @Override
     public void onPageSelected(int position) {
