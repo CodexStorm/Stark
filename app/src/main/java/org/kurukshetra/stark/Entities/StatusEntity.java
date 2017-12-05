@@ -15,7 +15,7 @@ public class StatusEntity {
         this.other_message = other_message;
     }
 
-    public boolean isCode() {
+    public boolean getCode() {
         return code;
     }
 

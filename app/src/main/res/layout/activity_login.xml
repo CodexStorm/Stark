@@ -5,7 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="org.kurukshetra.stark.Activities.LoginActivity"
-    android:background="@drawable/gradient_purple">
+    android:background="#fff">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_purple">
+
+
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Welcome"
+    android:textColor="#ffffff"
+    android:textAlignment="center"
+    android:textSize="40sp"
+    android:textStyle="bold"
+    android:padding="10dp"
+    android:layout_above="@+id/etEmail"/>
 
     <EditText android:layout_height="wrap_content"
         android:layout_width="match_parent"
@@ -18,7 +34,7 @@
         android:inputType="textEmailAddress"
         android:textAlignment="center"
         android:background="@drawable/edit_text"
-        android:layout_marginTop="150dp"/>
+        android:layout_marginTop="50dp"/>
     <EditText android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:padding="15dp"
@@ -36,8 +52,51 @@
         android:layout_height="wrap_content"
         android:id="@+id/bLogin"
         android:text="Login"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
         android:background="@drawable/button"
         android:layout_below="@+id/etPassword"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/llSocial"
+        android:layout_alignParentBottom="true"
+        android:padding="10dp"
+        android:layout_below="@+id/bLogin"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/google_sign_in_button"
+            android:layout_width="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="Google"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:background="@drawable/button"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"/>
+
+        <com.facebook.login.widget.LoginButton
+            android:visibility="gone"
+            android:id="@+id/fb_default_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            />
+        <Button
+            android:id="@+id/fb_sign_in_button"
+            android:layout_width="0dp"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:text="Facebook"
+            android:layout_margin="5dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/button"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    </RelativeLayout>
+
 </RelativeLayout>
