@@ -81,11 +81,12 @@ public class EventsList {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("Error in response here",error.toString());
+                Toast.makeText(context,"Error in response here"+error.toString(),Toast.LENGTH_LONG).show();
                 error.printStackTrace();
             }
         },30000,0);
         queue.add(jsonBaseRequest);
+        //Toast.makeText(context,categoriesList.getCategoriesEntityList().get(3).toString(),Toast.LENGTH_LONG).show();
         return categoriesList;
     }
 }
