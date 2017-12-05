@@ -14,7 +14,7 @@ import com.android.volley.VolleyError;
 import org.kurukshetra.stark.Common.UserDetails;
 import org.kurukshetra.stark.Entities.LoginEntity;
 import org.kurukshetra.stark.R;
-import org.kurukshetra.stark.RESTclient.RestClientImplementation;
+import org.kurukshetra.stark.RESTclient.RESTClientImplementation;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 LoginEntity loginEntity = new LoginEntity(etEmail.getText().toString(),etPassword.getText().toString());
-                RestClientImplementation.normalLogin(loginEntity, new LoginEntity.RestClientInterface() {
+                RESTClientImplementation.normalLogin(loginEntity, new LoginEntity.RestClientInterface() {
                     @Override
                     public void onLogin(String token, VolleyError error) {
                         Toast.makeText(LoginActivity.this,"Token"+token,Toast.LENGTH_SHORT).show();
