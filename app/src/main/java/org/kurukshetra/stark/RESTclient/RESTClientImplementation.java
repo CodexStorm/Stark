@@ -11,10 +11,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.google.gson.Gson;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.kurukshetra.stark.Adapters.EventsAdapter;
 import org.kurukshetra.stark.Constants.Constants;
 import org.kurukshetra.stark.Entities.CategoriesResponseEntity;
 import org.kurukshetra.stark.Common.UserDetails;

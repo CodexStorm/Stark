@@ -5,18 +5,19 @@ import android.animation.Animator;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.transition.Fade;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.cleveroad.fanlayoutmanager.FanLayoutManager;
 import com.cleveroad.fanlayoutmanager.FanLayoutManagerSettings;
+import com.google.gson.Gson;
 
-import org.kurukshetra.stark.Adapters.EventsAdapter;
+import org.kurukshetra.stark.Adapters.EventCategoryAdapter;
+import org.kurukshetra.stark.Common.UserDetails;
 import org.kurukshetra.stark.Entities.CategoriesResponseEntity;
 import org.kurukshetra.stark.R;
 import org.kurukshetra.stark.RESTclient.RESTClientImplementation;
@@ -28,7 +29,8 @@ public class EventCategoryFragment extends Fragment {
 
     RecyclerView eventsCategoryRecyclerView;
     FanLayoutManager fanLayoutManager;
-    EventsAdapter eventsAdapter=null;
+    CategoriesResponseEntity backup;
+    EventCategoryAdapter eventCategoryAdapter =null;
     public EventCategoryFragment() {
         // Required empty public constructor
     }
@@ -48,61 +50,77 @@ public class EventCategoryFragment extends Fragment {
         fanLayoutManager = new FanLayoutManager(getContext(),fanLayoutManagerSettings);
         eventsCategoryRecyclerView.setItemAnimator(new DefaultItemAnimator());
         eventsCategoryRecyclerView.setLayoutManager(fanLayoutManager);
-        RESTClientImplementation.listEvents(new CategoriesResponseEntity.eventCategoryListInterface() {
-            @Override
-            public void onListLoaded(CategoriesResponseEntity categoriesResponseEntity, VolleyError error) {
-                eventsAdapter = new EventsAdapter(categoriesResponseEntity,getContext());
-                eventsCategoryRecyclerView.setAdapter(eventsAdapter);
-                eventsAdapter.notifyDataSetChanged();
-                eventsAdapter.setOnItemClickListener(new EventsAdapter.OnItemClickListener() {
-                    @Override
-                    public void onItemClicked(int pos, final View view) {
-                        if (fanLayoutManager.getSelectedItemPosition() != pos) {
-                            fanLayoutManager.switchItem(eventsCategoryRecyclerView, pos);
-                        }else {
-                            fanLayoutManager.straightenSelectedItem(new Animator.AnimatorListener() {
-                                @Override
-                                public void onAnimationStart(Animator animator) {
-
-                                }
-
-                                @Override
-                                public void onAnimationEnd(Animator animator) {
-                                    onClick(view, fanLayoutManager.getSelectedItemPosition());
-                                }
-
-                                @Override
-                                public void onAnimationCancel(Animator animator) {
-
-                                }
-
-                                @Override
-                                public void onAnimationRepeat(Animator animator) {
-
-                                }
-                            });
-                        }
-                    }
-                });
-            }
-        },getActivity());
+        if(!UserDetails.getEventList(getActivity()).equals("")) {
+            backup = new Gson().fromJson(UserDetails.getEventList(getActivity()),CategoriesResponseEntity.class);
+            populateRecyclerView(backup);
+        }else {
+            RESTClientImplementation.listEvents(new CategoriesResponseEntity.eventCategoryListInterface() {
+                @Override
+                public void onListLoaded(CategoriesResponseEntity categoriesResponseEntity, VolleyError error) {
+                    UserDetails.setEventList(getActivity(),new Gson().toJson(categoriesResponseEntity));
+                    backup = categoriesResponseEntity;
+                    populateRecyclerView(categoriesResponseEntity);
+                }
+            }, getActivity());
+        }
 
        return view;
     }
 
-    public void onClick(View view, int pos) {
-        /*FullInfoTabFragment fragment = FullInfoTabFragment.newInstance(mAdapter.getModelByPos(pos));
-        fragment.setSharedElementEnterTransition(new SharedTransitionSet());
-        fragment.setEnterTransition(new Fade());
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
+
+    void populateRecyclerView(CategoriesResponseEntity categoriesResponseEntity){
+        eventCategoryAdapter = new EventCategoryAdapter(categoriesResponseEntity,getContext());
+        eventsCategoryRecyclerView.setAdapter(eventCategoryAdapter);
+        eventCategoryAdapter.notifyDataSetChanged();
+        eventCategoryAdapter.setOnItemClickListener(new EventCategoryAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClicked(int pos, final View view, final int color) {
+                if (fanLayoutManager.getSelectedItemPosition() != pos) {
+                    fanLayoutManager.switchItem(eventsCategoryRecyclerView, pos);
+                }else {
+                    fanLayoutManager.straightenSelectedItem(new Animator.AnimatorListener() {
+                        @Override
+                        public void onAnimationStart(Animator animator) {
+
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animator animator) {
+                            onClick(view, fanLayoutManager.getSelectedItemPosition(),color);
+                        }
+
+                        @Override
+                        public void onAnimationCancel(Animator animator) {
+
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animator animator) {
+
+                        }
+                    });
+                }
+            }
+        });
+    }
+
+    public void onClick(View view, int pos, int color) {
+
+        EventListFragment eventListFragment = new EventListFragment();
+        eventListFragment.setEnterTransition(new Fade());
         setExitTransition(new Fade());
-        fragment.setSharedElementReturnTransition(new SharedTransitionSet());
-        getActivity().getSupportFragmentManager()
-                .beginTransaction()
-                .addSharedElement(view, "shared")
-                .replace(R.id.root, fragment)
+        Bundle bundle = new Bundle();
+        bundle.putString("event_list",new Gson().toJson(backup.getCategories().get(pos).getEvents()));
+        bundle.putInt("bg",color);
+        eventListFragment.setArguments(bundle);
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container,eventListFragment)
                 .addToBackStack(null)
-                .commit();*/
-        Toast.makeText(getActivity(),pos+"",Toast.LENGTH_SHORT).show();
+                .commit();
     }
 
 }

@@ -2,8 +2,6 @@ package org.kurukshetra.stark.Entities;
 
 import com.android.volley.VolleyError;
 
-import org.kurukshetra.stark.Adapters.EventsAdapter;
-
 import java.util.ArrayList;
 import java.util.List;
 

@@ -52,4 +52,15 @@ public class UserDetails {
     public static Typeface getRightiousFont(Context context){
         return Typeface.createFromAsset(context.getAssets(),"fonts/righteous.ttf");
     }
+
+    public static void setEventList(Context context,String eventList){
+        SharedPreferences settings = context.getSharedPreferences(Constants.USER_PREFERENCE,0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putString("event_list",eventList);
+        editor.apply();
+    }
+    public static String getEventList(Context context){
+        SharedPreferences settings = context.getSharedPreferences(Constants.USER_PREFERENCE,0);
+        return  (settings.getString("event_list",""));
+    }
 }

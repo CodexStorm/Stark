@@ -22,15 +22,15 @@ import java.util.Random;
  * Created by Balaji on 12/3/2017.
  */
 
-public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder> {
+public class EventCategoryAdapter extends RecyclerView.Adapter<EventCategoryAdapter.ViewHolder> {
     Context context;
     private OnItemClickListener mOnItemClickListener;
     private List<CategoriesEntity> categoriesEntityList;
-    public EventsAdapter(CategoriesResponseEntity categoriesResponseEntity,Context context){
+    public EventCategoryAdapter(CategoriesResponseEntity categoriesResponseEntity, Context context){
         this.categoriesEntityList= categoriesResponseEntity.getCategories();
         this.context = context;
     }
-    public EventsAdapter(){
+    public EventCategoryAdapter(){
         categoriesEntityList=new ArrayList<CategoriesEntity>();
     }
     public void setCategoriesEntityList(List<CategoriesEntity> categoriesEntityList) {
@@ -39,7 +39,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
     }
 
     @Override
-    public EventsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public EventCategoryAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.event_category_item,parent,false);
         ViewHolder myViewHolder=new ViewHolder(view);
@@ -49,7 +49,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position){
         Random rnd = new Random();
-        int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
+        final int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
         holder.eventCategory.setText(categoriesEntityList.get(position).getName());
         holder.eventCard.setBackgroundColor(color);
         if(color > 128){
@@ -62,7 +62,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
             @Override
             public void onClick(View view) {
                 if (mOnItemClickListener != null) {
-                    mOnItemClickListener.onItemClicked(holder.getAdapterPosition(), holder.eventCategory);
+                    mOnItemClickListener.onItemClicked(holder.getAdapterPosition(), holder.eventCategory,color);
                 }
             }
         });
@@ -92,6 +92,6 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
     }
 
     public interface OnItemClickListener {
-        void onItemClicked(int pos, View view);
+        void onItemClicked(int pos, View view,int color);
     }
 }

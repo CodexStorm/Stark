@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Window;
 import android.view.WindowManager;
 
-import org.kurukshetra.stark.Adapters.EventsAdapter;
+import org.kurukshetra.stark.Adapters.EventCategoryAdapter;
 import org.kurukshetra.stark.Entities.CategoriesResponseEntity;
 import org.kurukshetra.stark.Fragments.EventCategoryFragment;
 import org.kurukshetra.stark.R;
@@ -18,7 +18,7 @@ import org.kurukshetra.stark.R;
 public class EventsActivity extends AppCompatActivity{
 
     private RecyclerView recyclerView;
-    private EventsAdapter eventsAdapter;
+    private EventCategoryAdapter eventCategoryAdapter;
     private CategoriesResponseEntity categoriesResponseEntity;
     //List<String> countries =new ArrayList<String>();
     @Override

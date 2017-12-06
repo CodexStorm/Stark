@@ -2,15 +2,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.kurukshetra.stark.Fragments.EventCategoryFragment"
-    android:padding="10dp"
+    tools:context="org.kurukshetra.stark.Fragments.EventListFragment"
+    android:paddingTop="20dp"
+    android:paddingStart="5dp"
+    android:paddingEnd="5dp"
+    android:id="@+id/frame"
     >
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/eventsCategoryRecyclerView"
-        />
-
+        android:id="@+id/eventListRecyclerView"/>
 
 </FrameLayout>
