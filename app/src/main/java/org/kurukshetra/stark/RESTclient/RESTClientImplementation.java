@@ -16,12 +16,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.kurukshetra.stark.Adapters.EventsAdapter;
 import org.kurukshetra.stark.Constants.Constants;
-import org.kurukshetra.stark.Entities.CategoriesEntity;
-import org.kurukshetra.stark.Entities.CategoriesList;
-import org.json.JSONException;
-import org.json.JSONObject;
+import org.kurukshetra.stark.Entities.CategoriesResponseEntity;
 import org.kurukshetra.stark.Common.UserDetails;
-import org.kurukshetra.stark.Constants.Constants;
 import org.kurukshetra.stark.Entities.LogoutEntity;
 import org.kurukshetra.stark.Entities.SocialLoginInterface;
 import org.kurukshetra.stark.Entities.LoginEntity;
@@ -64,37 +60,24 @@ public class RESTClientImplementation {
         queue.add(jsonBaseRequest);
     }
 
-    public static CategoriesList listEvents(final  CategoriesList categoriesList, final Context context, final EventsAdapter eventsAdapter){
+    public static void listEvents(final CategoriesResponseEntity.eventCategoryListInterface eventCategoryListInterface, final Context context){
         queue = VolleySingleton.getInstance(context).getRequestQueue();
         String url = getAbsoluteCMSUrl("categories.json");
-
         JsonBaseRequest jsonBaseRequest = new JsonBaseRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.e("Login Response", response.toString());
-                try {
-
-                    JSONArray jsonArray = response.getJSONArray("categories");
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        Gson gson = new Gson();
-                        JSONObject jsonObject = jsonArray.getJSONObject(i);
-                        CategoriesEntity categoriesEntity = new CategoriesEntity(gson.fromJson(jsonObject.toString(), CategoriesEntity.class));
-                        categoriesList.setCategoriesEntityList(categoriesEntity);
-                        eventsAdapter.setCategoriesEntityList(categoriesList.getCategoriesEntityList());
-                        Log.e("Response " + Integer.toString(i), categoriesEntity.getEventCategory());
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                CategoriesResponseEntity categoriesResponseEntity;
+                categoriesResponseEntity = new Gson().fromJson(response.toString(),CategoriesResponseEntity.class);
+                eventCategoryListInterface.onListLoaded(categoriesResponseEntity,null);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                Log.e("error","error");
             }
-        });
+        },30000,0);
         queue.add(jsonBaseRequest);
-        return null;
     }
     public static void logout(final LogoutEntity.RestClientInterface restClientInterface, final Context context){
         queue = VolleySingleton.getInstance(context).getRequestQueue();

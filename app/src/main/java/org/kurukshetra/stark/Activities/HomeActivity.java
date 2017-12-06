@@ -113,7 +113,14 @@ public class HomeActivity extends AppCompatActivity implements ViewPager.OnPageC
     }
     @Override
     public void onPageSelected(int position) {
+        if(position == 0){
+            goToActivity(EventsActivity.class);
+        }
+    }
 
+    private void goToActivity(Class TargetClass) {
+        Intent intent = new Intent(HomeActivity.this,TargetClass);
+        startActivity(intent);
     }
 
     @Override

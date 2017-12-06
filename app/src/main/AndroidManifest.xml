@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.EventsActivity"/>
+        <activity android:name=".Activities.EventsActivity"
+            android:theme="@style/EventsActivity"/>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

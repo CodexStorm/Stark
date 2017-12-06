@@ -1,8 +1,5 @@
 package org.kurukshetra.stark.Entities;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
 import java.util.List;
 
 /**
@@ -10,23 +7,17 @@ import java.util.List;
  */
 
 public class CategoriesEntity {
-    @SerializedName("id")
-    @Expose
+
     private int id;
-    @SerializedName("name")
-    @Expose
-    private String  eventCategory;
-    @SerializedName("cardview_events")
-    @Expose
-    private List<EventsEntity> eventsList;
-    public CategoriesEntity(){}
+    private String name;
+    private List<EventsEntity> events;
     public CategoriesEntity(CategoriesEntity categoriesEntity){
-        this.eventCategory= categoriesEntity.getEventCategory();
-        this.eventsList=categoriesEntity.getEventsList();
+        this.name = categoriesEntity.getName();
+        this.events =categoriesEntity.getEvents();
     }
     public CategoriesEntity(String eventCategory,List<EventsEntity> eventsList){
-        this.eventCategory=eventCategory;
-        this.eventsList=eventsList;
+        this.name =eventCategory;
+        this.events =eventsList;
     }
 
     public int getId() {
@@ -37,19 +28,19 @@ public class CategoriesEntity {
         this.id = id;
     }
 
-    public List<EventsEntity> getEventsList() {
-        return eventsList;
+    public List<EventsEntity> getEvents() {
+        return events;
     }
 
-    public void setEventsList(List<EventsEntity> eventsList) {
-        this.eventsList = eventsList;
+    public void setEvents(List<EventsEntity> events) {
+        this.events = events;
     }
 
-    public String getEventCategory() {
-        return eventCategory;
+    public String getName() {
+        return name;
     }
 
-    public void setEventCategory(String eventCategory) {
-        this.eventCategory = eventCategory;
+    public void setName(String name) {
+        this.name = name;
     }
 }
