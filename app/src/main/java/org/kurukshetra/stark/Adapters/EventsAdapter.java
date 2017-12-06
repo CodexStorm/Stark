@@ -62,7 +62,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
             @Override
             public void onClick(View view) {
                 if (mOnItemClickListener != null) {
-                    mOnItemClickListener.onItemClicked(holder.getAdapterPosition(), holder.eventCard);
+                    mOnItemClickListener.onItemClicked(holder.getAdapterPosition(), holder.eventCategory);
                 }
             }
         });
