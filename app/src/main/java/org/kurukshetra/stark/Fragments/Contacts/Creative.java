@@ -1,4 +1,4 @@
-package org.kurukshetra.stark.Fragments;
+package org.kurukshetra.stark.Fragments.Contacts;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -21,23 +21,23 @@ import java.util.ArrayList;
  * Created by sre on 11/24/17.
  */
 
-public class promo extends Fragment {
+public class Creative extends Fragment {
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View rootView=inflater.inflate(R.layout.promo_frag,container,false);
-        ListView lv= (ListView)rootView.findViewById(R.id.promoListView);
+        View rootView=inflater.inflate(R.layout.creativity_frag,container,false);
+        ListView lv= (ListView)rootView.findViewById(R.id.creativeListView);
 
         FloatingActionButton fab;
-        fab = (FloatingActionButton)rootView.findViewById(R.id.fab4);
+        fab = (FloatingActionButton)rootView.findViewById(R.id.fab2);
         ContactsListAdapter adapter=new ContactsListAdapter(this.getActivity(),getContent());
         lv.setAdapter(adapter);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String rec="promo@kurukshetra.org.in";
+                String rec="creativity@kurukshetra.org.in";
                 Intent intent = new Intent(Intent.ACTION_SENDTO);
                 intent.setData(Uri.parse("mailto:" + rec));
                 startActivity(intent);
@@ -50,13 +50,15 @@ public class promo extends Fragment {
 
     private ArrayList<ContactsEntity> getContent() {
         ArrayList<ContactsEntity> arr=new ArrayList<>();
-        ContactsEntity contactsEntity =new ContactsEntity("Vijay Krishnan.K",9176187247L);
+        ContactsEntity contactsEntity =new ContactsEntity("Gurukoushik.R",9047155006L);
+        arr.add(contactsEntity);
+        contactsEntity =new ContactsEntity("Jayasree.V",9884028569L);
         arr.add(contactsEntity);
         return arr;
     }
     @Override
     public String toString() {
-        String title="promo";
+        String title="creativity";
         return title;
     }
 

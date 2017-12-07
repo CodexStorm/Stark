@@ -1,4 +1,4 @@
-package org.kurukshetra.stark.Fragments;
+package org.kurukshetra.stark.Fragments.Contacts;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -21,23 +21,23 @@ import java.util.ArrayList;
  * Created by sre on 11/24/17.
  */
 
-public class guestlectures extends Fragment {
+public class promo extends Fragment {
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View rootView=inflater.inflate(R.layout.guestlectures_frag,container,false);
-        ListView lv= (ListView)rootView.findViewById(R.id.guestListView);
+        View rootView=inflater.inflate(R.layout.promo_frag,container,false);
+        ListView lv= (ListView)rootView.findViewById(R.id.promoListView);
 
         FloatingActionButton fab;
-        fab = (FloatingActionButton)rootView.findViewById(R.id.fab9);
+        fab = (FloatingActionButton)rootView.findViewById(R.id.fab4);
         ContactsListAdapter adapter=new ContactsListAdapter(this.getActivity(),getContent());
         lv.setAdapter(adapter);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String rec="guestlectures@kurukshetra.org.in";
+                String rec="promo@kurukshetra.org.in";
                 Intent intent = new Intent(Intent.ACTION_SENDTO);
                 intent.setData(Uri.parse("mailto:" + rec));
                 startActivity(intent);
@@ -50,15 +50,13 @@ public class guestlectures extends Fragment {
 
     private ArrayList<ContactsEntity> getContent() {
         ArrayList<ContactsEntity> arr=new ArrayList<>();
-        ContactsEntity contactsEntity =new ContactsEntity("Nandita Kumari",8973033820L);
-        arr.add(contactsEntity);
-        contactsEntity =new ContactsEntity("Rachael Martina.M",9790792959L);
+        ContactsEntity contactsEntity =new ContactsEntity("Vijay Krishnan.K",9176187247L);
         arr.add(contactsEntity);
         return arr;
     }
     @Override
     public String toString() {
-        String title="guest lectures";
+        String title="promo";
         return title;
     }
 

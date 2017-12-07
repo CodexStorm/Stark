@@ -1,4 +1,4 @@
-package org.kurukshetra.stark.Fragments;
+package org.kurukshetra.stark.Fragments.Contacts;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -21,23 +21,23 @@ import java.util.ArrayList;
  * Created by sre on 11/24/17.
  */
 
-public class events extends Fragment {
+public class hr extends Fragment {
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View rootView=inflater.inflate(R.layout.events_frag,container,false);
-        ListView lv= (ListView)rootView.findViewById(R.id.eventsListView);
+        View rootView=inflater.inflate(R.layout.hr_frag,container,false);
+        ListView lv= (ListView)rootView.findViewById(R.id.hrListView);
 
         FloatingActionButton fab;
-        fab = (FloatingActionButton)rootView.findViewById(R.id.fab5);
+        fab = (FloatingActionButton)rootView.findViewById(R.id.fab16);
         ContactsListAdapter adapter=new ContactsListAdapter(this.getActivity(),getContent());
         lv.setAdapter(adapter);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String rec="events@kurukshetra.org.in";
+                String rec="hr@kurukshetra.org.in";
                 Intent intent = new Intent(Intent.ACTION_SENDTO);
                 intent.setData(Uri.parse("mailto:" + rec));
                 startActivity(intent);
@@ -50,19 +50,17 @@ public class events extends Fragment {
 
     private ArrayList<ContactsEntity> getContent() {
         ArrayList<ContactsEntity> arr=new ArrayList<>();
-        ContactsEntity contactsEntity =new ContactsEntity("Azmil Mohamed.R",9994855133L);
+        ContactsEntity contactsEntity =new ContactsEntity("Mythili.S",8056450006L);
+        arr.add(contactsEntity);
+        contactsEntity =new ContactsEntity("Tamilarasan.K",9659536153L);
         arr.add(contactsEntity);
 
-        contactsEntity =new ContactsEntity("Lokesh Prabhuraj.B",8189883183L);
-        arr.add(contactsEntity);
 
-        contactsEntity =new ContactsEntity("Prince Melvin.A",8122492422L);
-        arr.add(contactsEntity);
         return arr;
     }
     @Override
     public String toString() {
-        String title="events";
+        String title="hr";
         return title;
     }
 

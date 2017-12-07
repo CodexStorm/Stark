@@ -2,11 +2,18 @@ package org.kurukshetra.stark.Adapters;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.kurukshetra.stark.Common.UserDetails;
@@ -16,6 +23,7 @@ import org.kurukshetra.stark.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 
 /**
@@ -26,6 +34,7 @@ public class EventCategoryAdapter extends RecyclerView.Adapter<EventCategoryAdap
     Context context;
     private OnItemClickListener mOnItemClickListener;
     private List<CategoriesEntity> categoriesEntityList;
+    int[] myImageList = new int[]{R.drawable.engineering, R.drawable.robotics,R.drawable.management,R.drawable.extravaganza,R.drawable.coding,R.drawable.quiz,R.drawable.online};
     public EventCategoryAdapter(CategoriesResponseEntity categoriesResponseEntity, Context context){
         this.categoriesEntityList= categoriesResponseEntity.getCategories();
         this.context = context;
@@ -46,18 +55,24 @@ public class EventCategoryAdapter extends RecyclerView.Adapter<EventCategoryAdap
         return myViewHolder;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position){
-        Random rnd = new Random();
-        final int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
+
+        //text
         holder.eventCategory.setText(categoriesEntityList.get(position).getName());
-        holder.eventCard.setCardBackgroundColor(color);
-        if(color > 128){
-            holder.eventCategory.setTextColor(Color.parseColor("#000000"));
-        }else {
-            holder.eventCategory.setTextColor(Color.parseColor("#ffffff"));
-        }
+        holder.count.setText(String.format(Locale.US,"%d", categoriesEntityList.get(position).getEvents().size()));
+
+        //colors
+       final int color = UserDetails.getRandomColor(context);
+        holder.event_image.setImageDrawable(context.getResources().getDrawable(myImageList[position]));
+        holder.event_image.setForeground(new ColorDrawable(color));
+        holder.event_image.setAlpha(0.7f);
+
+        //typeface
         holder.eventCategory.setTypeface(UserDetails.getRightiousFont(context));
+        holder.count.setTypeface(UserDetails.getRightiousFont(context));
+
         holder.eventCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,12 +89,16 @@ public class EventCategoryAdapter extends RecyclerView.Adapter<EventCategoryAdap
     }
 
     public  class ViewHolder extends RecyclerView.ViewHolder{
-        TextView eventCategory;
+        TextView eventCategory,count;
         CardView eventCard;
+        ImageView event_image;
+
         public  ViewHolder(View itemView){
             super(itemView);
             eventCategory=(TextView)itemView.findViewById(R.id.events_category);
             eventCard = itemView.findViewById(R.id.eventCard);
+            count = itemView.findViewById(R.id.count);
+            event_image = itemView.findViewById(R.id.event_image);
         }
     }
 

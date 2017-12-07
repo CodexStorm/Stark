@@ -1,4 +1,4 @@
-package org.kurukshetra.stark.Fragments;
+package org.kurukshetra.stark.Fragments.Contacts;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -21,23 +21,23 @@ import java.util.ArrayList;
  * Created by sre on 11/24/17.
  */
 
-public class hr extends Fragment {
+public class projects extends Fragment {
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View rootView=inflater.inflate(R.layout.hr_frag,container,false);
-        ListView lv= (ListView)rootView.findViewById(R.id.hrListView);
+        View rootView=inflater.inflate(R.layout.projects_frag,container,false);
+        ListView lv= (ListView)rootView.findViewById(R.id.projectsListView);
 
         FloatingActionButton fab;
-        fab = (FloatingActionButton)rootView.findViewById(R.id.fab16);
+        fab = (FloatingActionButton)rootView.findViewById(R.id.fab18);
         ContactsListAdapter adapter=new ContactsListAdapter(this.getActivity(),getContent());
         lv.setAdapter(adapter);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String rec="hr@kurukshetra.org.in";
+                String rec="projects@kurukshetra.org.in";
                 Intent intent = new Intent(Intent.ACTION_SENDTO);
                 intent.setData(Uri.parse("mailto:" + rec));
                 startActivity(intent);
@@ -50,9 +50,12 @@ public class hr extends Fragment {
 
     private ArrayList<ContactsEntity> getContent() {
         ArrayList<ContactsEntity> arr=new ArrayList<>();
-        ContactsEntity contactsEntity =new ContactsEntity("Mythili.S",8056450006L);
+        ContactsEntity contactsEntity =new ContactsEntity("Balaji.R",8807270640L);
         arr.add(contactsEntity);
-        contactsEntity =new ContactsEntity("Tamilarasan.K",9659536153L);
+        contactsEntity =new ContactsEntity("Harini.D",8056365205L);
+        arr.add(contactsEntity);
+
+        contactsEntity =new ContactsEntity("Thirunavukarasu.D",9884662051L);
         arr.add(contactsEntity);
 
 
@@ -60,7 +63,7 @@ public class hr extends Fragment {
     }
     @Override
     public String toString() {
-        String title="hr";
+        String title="projects";
         return title;
     }
 

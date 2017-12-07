@@ -1,4 +1,4 @@
-package org.kurukshetra.stark.Fragments;
+package org.kurukshetra.stark.Fragments.Contacts;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -21,23 +21,23 @@ import java.util.ArrayList;
  * Created by sre on 11/24/17.
  */
 
-public class workshops extends Fragment {
+public class finance extends Fragment {
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View rootView=inflater.inflate(R.layout.workshops_frag,container,false);
-        ListView lv= (ListView)rootView.findViewById(R.id.workshopsListView);
+        View rootView=inflater.inflate(R.layout.finance_frag,container,false);
+        ListView lv= (ListView)rootView.findViewById(R.id.financeListView);
 
         FloatingActionButton fab;
-        fab = (FloatingActionButton)rootView.findViewById(R.id.fab6);
+        fab = (FloatingActionButton)rootView.findViewById(R.id.fab11);
         ContactsListAdapter adapter=new ContactsListAdapter(this.getActivity(),getContent());
         lv.setAdapter(adapter);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String rec="workshops@kurukshetra.org.in";
+                String rec="finance@kurukshetra.org.in";
                 Intent intent = new Intent(Intent.ACTION_SENDTO);
                 intent.setData(Uri.parse("mailto:" + rec));
                 startActivity(intent);
@@ -50,15 +50,15 @@ public class workshops extends Fragment {
 
     private ArrayList<ContactsEntity> getContent() {
         ArrayList<ContactsEntity> arr=new ArrayList<>();
-        ContactsEntity contactsEntity =new ContactsEntity("Adharsh Srivats.R",9003822580L);
+        ContactsEntity contactsEntity =new ContactsEntity("Jaya Surya.S",9600103528L);
         arr.add(contactsEntity);
-        contactsEntity =new ContactsEntity("Karthick Nathan.G",8939130044L);
+        contactsEntity =new ContactsEntity("Pradeev.N",9688941542L);
         arr.add(contactsEntity);
         return arr;
     }
     @Override
     public String toString() {
-        String title="workshops";
+        String title="finance";
         return title;
     }
 

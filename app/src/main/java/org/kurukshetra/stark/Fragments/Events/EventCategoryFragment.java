@@ -1,31 +1,29 @@
-package org.kurukshetra.stark.Fragments;
+package org.kurukshetra.stark.Fragments.Events;
 
 
-import android.animation.Animator;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.transition.Fade;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.ImageView;
 
 import com.android.volley.VolleyError;
-import com.cleveroad.fanlayoutmanager.FanLayoutManager;
-import com.cleveroad.fanlayoutmanager.FanLayoutManagerSettings;
 import com.google.gson.Gson;
 
 import org.kurukshetra.stark.Adapters.EventCategoryAdapter;
 import org.kurukshetra.stark.Common.UserDetails;
 import org.kurukshetra.stark.Entities.CategoriesResponseEntity;
+import org.kurukshetra.stark.Fragments.Events.EventListFragment;
 import org.kurukshetra.stark.R;
 import org.kurukshetra.stark.RESTclient.RESTClientImplementation;
 
@@ -35,10 +33,10 @@ import org.kurukshetra.stark.RESTclient.RESTClientImplementation;
 public class EventCategoryFragment extends Fragment {
 
     RecyclerView eventsCategoryRecyclerView;
-    FanLayoutManager fanLayoutManager;
     CategoriesResponseEntity backup;
     EventCategoryAdapter eventCategoryAdapter = null;
     ImageView categoryFrame;
+    GridLayoutManager linearLayoutManager;
     public EventCategoryFragment() {
         // Required empty public constructor
     }
@@ -49,16 +47,13 @@ public class EventCategoryFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_event_category, container, false);
         eventsCategoryRecyclerView = view.findViewById(R.id.eventsCategoryRecyclerView);
-        categoryFrame = view.findViewById(R.id.categoryFrame);
-        FanLayoutManagerSettings fanLayoutManagerSettings = FanLayoutManagerSettings
-                .newBuilder(getContext())
-                .withFanRadius(true)
-                .withViewHeightDp(200)
-                .withViewWidthDp(200)
-                .build();
-        fanLayoutManager = new FanLayoutManager(getContext(),fanLayoutManagerSettings);
+        linearLayoutManager = new GridLayoutManager(getContext(),2);
         eventsCategoryRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        eventsCategoryRecyclerView.setLayoutManager(fanLayoutManager);
+        eventsCategoryRecyclerView.setLayoutManager(linearLayoutManager);
+        final LayoutAnimationController controller =
+                AnimationUtils.loadLayoutAnimation(eventsCategoryRecyclerView.getContext(), R.anim.layout_fall_down);
+        eventsCategoryRecyclerView.setLayoutAnimation(controller);
+
         if(!UserDetails.getEventList(getActivity()).equals("")) {
             backup = new Gson().fromJson(UserDetails.getEventList(getActivity()),CategoriesResponseEntity.class);
             populateRecyclerView(backup);
@@ -85,37 +80,12 @@ public class EventCategoryFragment extends Fragment {
         eventCategoryAdapter = new EventCategoryAdapter(categoriesResponseEntity,getContext());
         eventsCategoryRecyclerView.setAdapter(eventCategoryAdapter);
         eventCategoryAdapter.notifyDataSetChanged();
+        eventsCategoryRecyclerView.scheduleLayoutAnimation();
         eventCategoryAdapter.setOnItemClickListener(new EventCategoryAdapter.OnItemClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onItemClicked(int pos, final View view, final int color) {
-                if (fanLayoutManager.getSelectedItemPosition() != pos) {
-                    fanLayoutManager.switchItem(eventsCategoryRecyclerView, pos);
-                    categoryFrame.setForeground(new ColorDrawable(color));
-                    categoryFrame.setAlpha(0.5f);
-                }else {
-                    fanLayoutManager.straightenSelectedItem(new Animator.AnimatorListener() {
-                        @Override
-                        public void onAnimationStart(Animator animator) {
-
-                        }
-
-                        @Override
-                        public void onAnimationEnd(Animator animator) {
-                            onClick(view, fanLayoutManager.getSelectedItemPosition(),color);
-                        }
-
-                        @Override
-                        public void onAnimationCancel(Animator animator) {
-
-                        }
-
-                        @Override
-                        public void onAnimationRepeat(Animator animator) {
-
-                        }
-                    });
-                }
+                    onClick(view,pos,color);
             }
         });
     }

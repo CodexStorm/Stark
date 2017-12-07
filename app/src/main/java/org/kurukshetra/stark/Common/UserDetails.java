@@ -2,9 +2,15 @@ package org.kurukshetra.stark.Common;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 
 import org.kurukshetra.stark.Constants.Constants;
+import org.kurukshetra.stark.R;
+
+import java.util.Random;
 
 /**
  * Created by ompra on 11/21/2017.
@@ -62,5 +68,19 @@ public class UserDetails {
     public static String getEventList(Context context){
         SharedPreferences settings = context.getSharedPreferences(Constants.USER_PREFERENCE,0);
         return  (settings.getString("event_list",""));
+    }
+
+    public static Drawable getRandomGradient(){
+        Random rnd = new Random();
+        final int color1 = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
+        final int color2 = Color.argb(255, rnd.nextInt(128), rnd.nextInt(128), rnd.nextInt(128));
+        GradientDrawable gd = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[] {color1,color2});
+        gd.setCornerRadius(0f);
+        return gd;
+    }
+
+    public static int getRandomColor(Context context){
+        int[] androidColors = context.getResources().getIntArray(R.array.androidcolors);
+        return androidColors[new Random().nextInt(androidColors.length)];
     }
 }

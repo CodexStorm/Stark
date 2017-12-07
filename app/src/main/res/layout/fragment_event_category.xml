@@ -2,21 +2,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.kurukshetra.stark.Fragments.EventCategoryFragment"
+    tools:context="org.kurukshetra.stark.Fragments.Events.EventCategoryFragment"
     >
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/notebook"
-        android:id="@+id/categoryFrame"
-        android:scaleType="centerCrop"
-        android:foreground="@drawable/gradient_red_purple"/>
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/eventsCategoryRecyclerView"
-        android:padding="10dp"
+        android:paddingTop="20dp"
         />
 
 
