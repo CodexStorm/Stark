@@ -12,9 +12,6 @@ import org.kurukshetra.stark.Entities.CategoriesResponseEntity;
 import org.kurukshetra.stark.Fragments.Events.EventCategoryFragment;
 import org.kurukshetra.stark.R;
 
-/**
- * Created by Balaji on 11/25/2017.
- */
 
 public class EventsActivity extends AppCompatActivity{
 

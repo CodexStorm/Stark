@@ -64,9 +64,11 @@ public class EventCategoryAdapter extends RecyclerView.Adapter<EventCategoryAdap
         holder.count.setText(String.format(Locale.US,"%d", categoriesEntityList.get(position).getEvents().size()));
 
         //colors
-       final int color = UserDetails.getRandomColor(context);
+       final int[] colors = UserDetails.getRandomGradient();
+        GradientDrawable gd = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, colors);
+        gd.setCornerRadius(0f);
         holder.event_image.setImageDrawable(context.getResources().getDrawable(myImageList[position]));
-        holder.event_image.setForeground(new ColorDrawable(color));
+        holder.event_image.setForeground(gd);
         holder.event_image.setAlpha(0.7f);
 
         //typeface
@@ -77,7 +79,7 @@ public class EventCategoryAdapter extends RecyclerView.Adapter<EventCategoryAdap
             @Override
             public void onClick(View view) {
                 if (mOnItemClickListener != null) {
-                    mOnItemClickListener.onItemClicked(holder.getAdapterPosition(), holder.eventCategory,color);
+                    mOnItemClickListener.onItemClicked(holder.getAdapterPosition(), holder.eventCategory,colors[0],colors[1],myImageList[position]);
                 }
             }
         });
@@ -111,6 +113,6 @@ public class EventCategoryAdapter extends RecyclerView.Adapter<EventCategoryAdap
     }
 
     public interface OnItemClickListener {
-        void onItemClicked(int pos, View view,int color);
+        void onItemClicked(int pos, View view,int color1,int color2,int bgimage);
     }
 }

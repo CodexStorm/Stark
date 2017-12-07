@@ -1,8 +1,10 @@
 package org.kurukshetra.stark.Fragments.Events;
 
 
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -26,6 +28,8 @@ import org.kurukshetra.stark.Entities.CategoriesResponseEntity;
 import org.kurukshetra.stark.Fragments.Events.EventListFragment;
 import org.kurukshetra.stark.R;
 import org.kurukshetra.stark.RESTclient.RESTClientImplementation;
+
+import java.io.Serializable;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -84,20 +88,22 @@ public class EventCategoryFragment extends Fragment {
         eventCategoryAdapter.setOnItemClickListener(new EventCategoryAdapter.OnItemClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
-            public void onItemClicked(int pos, final View view, final int color) {
-                    onClick(view,pos,color);
+            public void onItemClicked(int pos, final View view, final int color1,final int color2, int bgimage) {
+                    onClick(view,pos,color1,color2,bgimage);
             }
         });
     }
 
-    public void onClick(View view, int pos, int color) {
+    public void onClick(View view, int pos, int color1,int color2,int bgimage) {
 
         EventListFragment eventListFragment = new EventListFragment();
         eventListFragment.setEnterTransition(new Fade());
         setExitTransition(new Fade());
         Bundle bundle = new Bundle();
         bundle.putString("event_list",new Gson().toJson(backup.getCategories().get(pos).getEvents()));
-        bundle.putInt("bg",color);
+        bundle.putInt("color1",color1);
+        bundle.putInt("color2",color2);
+        bundle.putInt("bgimage",bgimage);
         eventListFragment.setArguments(bundle);
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container,eventListFragment)

@@ -70,13 +70,14 @@ public class UserDetails {
         return  (settings.getString("event_list",""));
     }
 
-    public static Drawable getRandomGradient(){
+    public static int[] getRandomGradient(){
         Random rnd = new Random();
         final int color1 = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
         final int color2 = Color.argb(255, rnd.nextInt(128), rnd.nextInt(128), rnd.nextInt(128));
-        GradientDrawable gd = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[] {color1,color2});
+        /*GradientDrawable gd = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[] {color1,color2});
         gd.setCornerRadius(0f);
-        return gd;
+        return gd;*/
+        return new int[]{color1,color2};
     }
 
     public static int getRandomColor(Context context){
