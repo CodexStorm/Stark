@@ -51,7 +51,7 @@ public class EventCategoryAdapter extends RecyclerView.Adapter<EventCategoryAdap
         Random rnd = new Random();
         final int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
         holder.eventCategory.setText(categoriesEntityList.get(position).getName());
-        holder.eventCard.setBackgroundColor(color);
+        holder.eventCard.setCardBackgroundColor(color);
         if(color > 128){
             holder.eventCategory.setTextColor(Color.parseColor("#000000"));
         }else {

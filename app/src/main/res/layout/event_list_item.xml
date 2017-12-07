@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Engineering"
-        android:background="#66ffffff"
+        android:background="#aaffffff"
         android:textSize="20sp"
         android:layout_gravity="center"
         android:padding="15dp"

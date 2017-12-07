@@ -3,13 +3,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="org.kurukshetra.stark.Fragments.EventCategoryFragment"
-    android:padding="10dp"
     >
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/notebook"
+        android:id="@+id/categoryFrame"
+        android:scaleType="centerCrop"
+        android:foreground="@drawable/gradient_red_purple"/>
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/eventsCategoryRecyclerView"
+        android:padding="10dp"
         />
 
 

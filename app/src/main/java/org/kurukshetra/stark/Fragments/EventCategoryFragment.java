@@ -2,7 +2,12 @@ package org.kurukshetra.stark.Fragments;
 
 
 import android.animation.Animator;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +15,8 @@ import android.transition.Fade;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 
 import com.android.volley.VolleyError;
 import com.cleveroad.fanlayoutmanager.FanLayoutManager;
@@ -30,7 +37,8 @@ public class EventCategoryFragment extends Fragment {
     RecyclerView eventsCategoryRecyclerView;
     FanLayoutManager fanLayoutManager;
     CategoriesResponseEntity backup;
-    EventCategoryAdapter eventCategoryAdapter =null;
+    EventCategoryAdapter eventCategoryAdapter = null;
+    ImageView categoryFrame;
     public EventCategoryFragment() {
         // Required empty public constructor
     }
@@ -41,11 +49,12 @@ public class EventCategoryFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_event_category, container, false);
         eventsCategoryRecyclerView = view.findViewById(R.id.eventsCategoryRecyclerView);
+        categoryFrame = view.findViewById(R.id.categoryFrame);
         FanLayoutManagerSettings fanLayoutManagerSettings = FanLayoutManagerSettings
                 .newBuilder(getContext())
                 .withFanRadius(true)
                 .withViewHeightDp(200)
-                .withViewWidthDp(180)
+                .withViewWidthDp(200)
                 .build();
         fanLayoutManager = new FanLayoutManager(getContext(),fanLayoutManagerSettings);
         eventsCategoryRecyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -77,10 +86,13 @@ public class EventCategoryFragment extends Fragment {
         eventsCategoryRecyclerView.setAdapter(eventCategoryAdapter);
         eventCategoryAdapter.notifyDataSetChanged();
         eventCategoryAdapter.setOnItemClickListener(new EventCategoryAdapter.OnItemClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onItemClicked(int pos, final View view, final int color) {
                 if (fanLayoutManager.getSelectedItemPosition() != pos) {
                     fanLayoutManager.switchItem(eventsCategoryRecyclerView, pos);
+                    categoryFrame.setForeground(new ColorDrawable(color));
+                    categoryFrame.setAlpha(0.5f);
                 }else {
                     fanLayoutManager.straightenSelectedItem(new Animator.AnimatorListener() {
                         @Override
