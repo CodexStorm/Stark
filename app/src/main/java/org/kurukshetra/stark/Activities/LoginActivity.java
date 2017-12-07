@@ -148,7 +148,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == RC_SIGN_IN && resultCode == Activity.RESULT_OK){
-           // Toast.makeText(LoginActivity.this,"came here",Toast.LENGTH_SHORT).show();
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             handleSignInResult(task);
         }

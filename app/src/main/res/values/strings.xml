@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Stark</string>
     <string name="server_token">206959846356-7al7fl2u51kq7b5pbt957dqrg7ueg70m.apps.googleusercontent.com</string>
+    <string name="stark_server_token">206959846356-draj41ed58npsqvuajq951foo2dhumpu.apps.googleusercontent.com</string>
+    <string name="stark2">206959846356-1m4imt1tngj9ali4amqdvr6f8gh1jjet.apps.googleusercontent.com</string>
     <string name="facebook_app_id">355491078226665</string>
     <string name="fb_login_protocol_scheme">fb355491078226665</string>
     <string name="title_activity_main">Kurukshetra</string>

@@ -13,6 +13,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "206959846356-1m4imt1tngj9ali4amqdvr6f8gh1jjet.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.kurukshetra.stark",
+            "certificate_hash": "fc585a764717921c643e1a9745b5044a3aa088f0"
+          }
+        },
+        {
           "client_id": "206959846356-draj41ed58npsqvuajq951foo2dhumpu.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
