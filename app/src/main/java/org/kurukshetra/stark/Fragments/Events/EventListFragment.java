@@ -1,21 +1,22 @@
 package org.kurukshetra.stark.Fragments.Events;
 
 
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.transition.Explode;
+import android.transition.Fade;
+import android.transition.Transition;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -25,7 +26,6 @@ import org.kurukshetra.stark.Entities.EventsEntity;
 import org.kurukshetra.stark.R;
 
 import java.lang.reflect.Type;
-import java.lang.reflect.TypeVariable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,8 +66,26 @@ public class EventListFragment extends Fragment {
         eventListAdapter = new EventListAdapter(eventsList,getActivity());
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),2);
         eventListRecyclerView.setLayoutManager(gridLayoutManager);
+        final LayoutAnimationController controller =
+                AnimationUtils.loadLayoutAnimation(eventListRecyclerView.getContext(), R.anim.layout_fall_down);
+        eventListRecyclerView.setLayoutAnimation(controller);
         eventListRecyclerView.setAdapter(eventListAdapter);
         eventListAdapter.notifyDataSetChanged();
+        eventListAdapter.setOnItemClickListener(new EventListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClicked(int pos, View view) {
+                EventDetailFragment eventDetailFragment = new EventDetailFragment();
+                eventDetailFragment.setEnterTransition(new Explode());
+                setExitTransition(new Fade());
+                Bundle bundle = new Bundle();
+                bundle.putString("event",new Gson().toJson(eventsList.get(pos)));
+                eventDetailFragment.setArguments(bundle);
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container,eventDetailFragment)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
 
         return view;
     }

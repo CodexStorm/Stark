@@ -10,4 +10,5 @@
     <string name="karnival">Karnival</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="contact_us">Contact Us</string>
 </resources>
