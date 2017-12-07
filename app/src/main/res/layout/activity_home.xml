@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="org.kurukshetra.stark.Activities.HomeActivity"
-    android:background="@drawable/gradient_shroom_haze"
     android:id="@+id/rlRoot"
     >
 
@@ -39,6 +38,7 @@
             android:layout_height="wrap_content"
             app:elevation="8dp"
             app:fabSize="normal"
+            app:backgroundTint="#eee"
             app:rippleColor="@color/purple"
             app:pressedTranslationZ="12dp"
             app:useCompatPadding="true"
@@ -51,6 +51,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/logoutFAB"
             app:elevation="8dp"
+            app:backgroundTint="@color/Tomato"
             app:fabSize="normal"
             app:rippleColor="@color/purple"
             app:pressedTranslationZ="12dp"
@@ -64,6 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:elevation="8dp"
+            app:backgroundTint="@color/Green"
             app:fabSize="normal"
             app:rippleColor="@color/purple"
             app:pressedTranslationZ="12dp"

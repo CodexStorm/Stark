@@ -82,11 +82,26 @@ public class HomeActivity extends AppCompatActivity implements ViewPager.OnPageC
         tabLayout.setupWithViewPager(viewPager, true);
         viewPager.setPageTransformer(true, new CubeOutTransformer());
         viewPager.setAdapter(homeScreenPagerAdapter);
-
+        homeScreenPagerAdapter.setOnPageClickListener(new HomeScreenPagerAdapter.OnPageClick() {
+            @Override
+            public void onItemClick(int pos) {
+                if(pos == 0){
+                    goToActivity(EventsActivity.class);
+                }
+            }
+        });
     }
 
     private void showDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        /*builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });*/
+        builder.setTitle("Logout");
+        builder.setMessage("You sure ? :/");
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -104,7 +119,15 @@ public class HomeActivity extends AppCompatActivity implements ViewPager.OnPageC
                 },HomeActivity.this);
             }
         });
-
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.setCancelable(true);
+        alertDialog.show();
     }
 
     @Override
@@ -113,9 +136,7 @@ public class HomeActivity extends AppCompatActivity implements ViewPager.OnPageC
     }
     @Override
     public void onPageSelected(int position) {
-        if(position == 0){
-            goToActivity(EventsActivity.class);
-        }
+
     }
 
     private void goToActivity(Class TargetClass) {
@@ -127,12 +148,5 @@ public class HomeActivity extends AppCompatActivity implements ViewPager.OnPageC
     public void onPageScrollStateChanged(int state) {
 
     }
-    public class ViewHolder {
-        private View parallaxView;
 
-        private ViewHolder() { this.parallaxView = null; }
-        public ViewHolder(View parallaxView) { this.parallaxView = parallaxView; }
-        public View getParallaxView() { return parallaxView; }
-        public void setParallaxView(View parallaxView) { this.parallaxView = parallaxView; }
-    }
 }

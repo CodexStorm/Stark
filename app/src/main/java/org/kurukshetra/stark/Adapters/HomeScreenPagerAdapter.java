@@ -23,6 +23,7 @@ public class HomeScreenPagerAdapter extends PagerAdapter {
     private Context mContext;
     LayoutInflater mLayoutInflater;
     int[][] mResources;
+    public OnPageClick onPageClick;
 
     public HomeScreenPagerAdapter(Context context,int[][] resources) {
         mContext = context;
@@ -42,7 +43,7 @@ public class HomeScreenPagerAdapter extends PagerAdapter {
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
-    public Object instantiateItem(ViewGroup container, int position) {
+    public Object instantiateItem(ViewGroup container, final int position) {
         View itemView = mLayoutInflater.inflate(R.layout.pager_item,container,false);
         ImageView imageView = itemView.findViewById(R.id.imageView);
         imageView.setImageResource(mResources[position][0]);
@@ -50,8 +51,24 @@ public class HomeScreenPagerAdapter extends PagerAdapter {
         textView.setTypeface(Typeface.createFromAsset(mContext.getAssets(),"fonts/righteous.ttf"));
         textView.setText(mResources[position][2]);
         imageView.setForeground(mContext.getDrawable(mResources[position][1]));
+
+        LinearLayout llvp = itemView.findViewById(R.id.llvp);
+        llvp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onPageClick.onItemClick(position);
+            }
+        });
         container.addView(itemView);
         return itemView;
+    }
+
+    public interface OnPageClick{
+        public void onItemClick(int pos);
+    }
+
+    public void setOnPageClickListener(OnPageClick onPageClickListener){
+        this.onPageClick = onPageClickListener;
     }
 
 
