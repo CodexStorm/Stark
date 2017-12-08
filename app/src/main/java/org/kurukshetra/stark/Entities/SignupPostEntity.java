@@ -11,8 +11,8 @@ import org.json.JSONObject;
  */
 
 public class SignupPostEntity {
-    String cid,name,password,mobile,organization,field,year,gender,dob;
-    boolean student,sa;
+    String cid,name,password,mobile,organization,field,year,gender,dob,refcode;
+    boolean student,sa,online;
 
     public SignupPostEntity() {
     }
@@ -29,6 +29,22 @@ public class SignupPostEntity {
         this.dob = dob;
         this.student = student;
         this.sa = sa;
+    }
+
+    public String getRefcode() {
+        return refcode;
+    }
+
+    public void setRefcode(String refcode) {
+        this.refcode = refcode;
+    }
+
+    public boolean isOnline() {
+        return online;
+    }
+
+    public void setOnline(boolean online) {
+        this.online = online;
     }
 
     public String getCid() {
@@ -129,6 +145,8 @@ public class SignupPostEntity {
             e.printStackTrace();
         }
         sigupPostEntity.remove("dob");
+        sigupPostEntity.remove("online");
+        sigupPostEntity.remove("refcode");
         return sigupPostEntity;
     }
     public interface ProfileUpdateInterface{

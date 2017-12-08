@@ -215,6 +215,102 @@ public class RESTClientImplementation {
         queue.add(jsonBaseRequest);
     }
 
+    public static void signUp(final SignupPostEntity signupPostEntity,final String email ,final SignupPostEntity.ProfileUpdateInterface profileUpdateInterface, final Context context){
+        queue = VolleySingleton.getInstance(context).getRequestQueue();
+        String url = getAbsoluteUrl("/api/v1/participant/signup");
+        JSONObject postParams = new JSONObject();
+        JSONObject data = signupPostEntity.getParams();
+        try {
+            data.put("email",email);
+            postParams.put("data",data);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        JsonBaseRequest jsonBaseRequest = new JsonBaseRequest(Request.Method.POST, url, postParams, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("Google Login Response",response.toString());
+                try {
+                    profileUpdateInterface.onUpdate( response.getJSONObject("code").getInt("statusCode"),null);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+                profileUpdateInterface.onUpdate(0,null);
+            }
+        },30000,0);
+        queue.add(jsonBaseRequest);
+    }
+
+    public static void emailGenerate(final String email, final SignupPostEntity.ProfileUpdateInterface profileUpdateInterface, final Context context){
+        queue = VolleySingleton.getInstance(context).getRequestQueue();
+        String url = getAbsoluteUrl("/api/v1/participant/email/generate");
+        JSONObject postParams = new JSONObject();
+        JSONObject data =new JSONObject();
+        try {
+            data.put("email",email);
+            data.put("mode",1);
+            postParams.put("data",data);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        JsonBaseRequest jsonBaseRequest = new JsonBaseRequest(Request.Method.POST, url, postParams, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("Google Login Response",response.toString());
+                try {
+                    profileUpdateInterface.onUpdate( response.getJSONObject("code").getInt("statusCode"),null);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+                profileUpdateInterface.onUpdate(0,null);
+            }
+        },30000,0);
+        queue.add(jsonBaseRequest);
+    }
+
+    public static void verifyotp(final String email,final String otp ,final SignupPostEntity.ProfileUpdateInterface profileUpdateInterface, final Context context){
+        queue = VolleySingleton.getInstance(context).getRequestQueue();
+        String url = getAbsoluteUrl("/api/v1/participant/email/confirm");
+        JSONObject postParams = new JSONObject();
+        JSONObject data =new JSONObject();
+        try {
+            data.put("email",email);
+            data.put("mode",1);
+            data.put("otp",otp);
+            postParams.put("data",data);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        JsonBaseRequest jsonBaseRequest = new JsonBaseRequest(Request.Method.POST, url, postParams, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("Google Login Response",response.toString());
+                try {
+                    profileUpdateInterface.onUpdate( response.getJSONObject("code").getInt("statusCode"),null);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+                profileUpdateInterface.onUpdate(0,null);
+            }
+        },30000,0);
+        queue.add(jsonBaseRequest);
+    }
+
     public static void facebookLogin(final String token, final SocialLoginInterface.RestClientInterface restClientInterface, final Context context){
         queue = VolleySingleton.getInstance(context).getRequestQueue();
         String url = getAbsoluteUrl("/api/v1/participant/signin/facebook");

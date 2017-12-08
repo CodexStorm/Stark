@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
@@ -37,15 +38,17 @@ import org.kurukshetra.stark.RESTclient.RESTClientImplementation;
 
 public class RegisterActivity extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
-    private Button googleSignInButton,fbSignInButoon,signup;
+    private Button googleSignInButton,fbSignInButoon,signup,sendotp,verifyotp;
+    private LinearLayout llsocial;
     private LoginButton loginButton;
     private CallbackManager callbackManager;
     private static final int RC_SIGN_IN = 200;
-    private RelativeLayout rlButton,rlProfile;
-    private EditText email,name,regno,password,cpassword,phone,refcode;
+    private RelativeLayout rlButton,rlProfile,rlemail,rlverify;
+    private EditText email,name,regno,password,cpassword,phone,refcode,regemail,regpassword,otp;
     private RadioGroup sexgroup,studentgroup;
     private RadioButton sexbutton,studentButton;
     private Spinner department,college,year;
+    private String enteredemail;
     GoogleSignInAccount googleSignInAccount;
     private boolean social = false;
 
@@ -57,8 +60,6 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         googleSignInButton = findViewById(R.id.google_sign_in);
         assignId();
-        rlButton = findViewById(R.id.rlButton);
-        rlProfile = findViewById(R.id.rlProfile);
         fbSignInButoon = findViewById(R.id.fb_sign_in);
         loginButton = findViewById(R.id.fb_button);
         loginButton.setReadPermissions("email");
@@ -79,9 +80,8 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onLogin(String token,int code,VolleyError error) {
                         if(code == 200){
-                            UserDetails.setUserToken(RegisterActivity.this,token);
-                            UserDetails.setUserLoggedIn(RegisterActivity.this,true);
-                            goToActivity(HomeActivity.class);
+
+                            goToActivity(LoginActivity.class);
                         }
                         else if(code == 203) {
                             UserDetails.setUserToken(RegisterActivity.this,token);
@@ -127,6 +127,52 @@ public class RegisterActivity extends AppCompatActivity {
                 validate();
             }
         });
+
+        sendotp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                social = false;
+                if (!regemail.getText().toString().trim().equals("")) {
+                    enteredemail = regemail.getText().toString();
+                    RESTClientImplementation.emailGenerate(regemail.getText().toString(), new SignupPostEntity.ProfileUpdateInterface() {
+                        @Override
+                        public void onUpdate(int code, VolleyError error) {
+                            if (error == null && code == 200) {
+                                rlemail.setVisibility(View.GONE);
+                                llsocial.setVisibility(View.GONE);
+                                rlverify.setVisibility(View.VISIBLE);
+                            } else if(error == null && code == 201){
+                                Toast.makeText(RegisterActivity.this,"Already Verified",Toast.LENGTH_SHORT).show();
+                                goToActivity(LoginActivity.class);
+                            }else {
+                                Toast.makeText(RegisterActivity.this, "Please Try Again", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }, RegisterActivity.this);
+                }else {
+                    regemail.setError("Empty");
+                }
+            }
+        });
+
+        verifyotp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!otp.getText().toString().trim().equals("")){
+                    RESTClientImplementation.verifyotp(enteredemail, otp.getText().toString(), new SignupPostEntity.ProfileUpdateInterface() {
+                        @Override
+                        public void onUpdate(int code, VolleyError error) {
+                            if (code == 200){
+                                Toast.makeText(RegisterActivity.this,"Verified Successfully",Toast.LENGTH_SHORT).show();
+                                showProfileView();
+                            }
+                        }
+                    },RegisterActivity.this);
+                }
+            }
+        });
+
+
     }
 
     private void validate() {
@@ -138,7 +184,7 @@ public class RegisterActivity extends AppCompatActivity {
                             if(password.getText().toString().equals(cpassword.getText().toString())) {
                                 if(!phone.getText().toString().trim().equals("")) {
                                     SignupPostEntity signupPostEntity = new SignupPostEntity();
-                                    signupPostEntity.setName(email.getText().toString());
+                                    signupPostEntity.setName(name.getText().toString());
                                     signupPostEntity.setCid(regno.getText().toString());
                                     signupPostEntity.setPassword(password.getText().toString());
                                     signupPostEntity.setMobile(phone.getText().toString());
@@ -190,8 +236,8 @@ public class RegisterActivity extends AppCompatActivity {
                 @Override
                 public void onUpdate(int code, VolleyError error) {
                     if(error == null && code == 200){
-                        UserDetails.setUserLoggedIn(RegisterActivity.this,true);
-                        goToActivity(HomeActivity.class);
+                       Toast.makeText(RegisterActivity.this,"Profile Updated",Toast.LENGTH_LONG).show();
+                        goToActivity(LoginActivity.class);
                     }else {
                         Toast.makeText(RegisterActivity.this,"Unauthorized",Toast.LENGTH_SHORT).show();
                     }
@@ -199,10 +245,27 @@ public class RegisterActivity extends AppCompatActivity {
             },RegisterActivity.this);
         }else {
             //normal signup api update
+            RESTClientImplementation.signUp(signupPostEntity, enteredemail,new SignupPostEntity.ProfileUpdateInterface() {
+                @Override
+                public void onUpdate(int code, VolleyError error) {
+                    if(error == null && code == 200){
+                        UserDetails.setUserLoggedIn(RegisterActivity.this,true);
+                    }else {
+                        Toast.makeText(RegisterActivity.this,"Unauthorized",Toast.LENGTH_SHORT).show();
+                    }
+                }
+            },RegisterActivity.this);
         }
     }
 
     private void assignId() {
+        llsocial = findViewById(R.id.llSocial);
+        rlButton = findViewById(R.id.rlButton);
+        rlProfile = findViewById(R.id.rlProfile);
+        rlemail = findViewById(R.id.rlemailgenerate);
+        rlverify = findViewById(R.id.rlverify);
+
+
         email = findViewById(R.id.email);
         name = findViewById(R.id.name);
         regno = findViewById(R.id.regno);
@@ -210,6 +273,9 @@ public class RegisterActivity extends AppCompatActivity {
         cpassword = findViewById(R.id.cpassword);
         phone = findViewById(R.id.phone);
         refcode = findViewById(R.id.refcode);
+        otp = findViewById(R.id.otp);
+        regemail = findViewById(R.id.regemail);
+       // regpassword = findViewById(R.id.regpassword);
 
         sexgroup = findViewById(R.id.sexgroup);
         studentgroup = findViewById(R.id.studentgroup);
@@ -219,6 +285,8 @@ public class RegisterActivity extends AppCompatActivity {
         year = findViewById(R.id.year);
 
         signup = findViewById(R.id.signup);
+        sendotp = findViewById(R.id.sendotp);
+        verifyotp = findViewById(R.id.verifyotp);
     }
 
     private void showProfileView() {
@@ -271,6 +339,7 @@ public class RegisterActivity extends AppCompatActivity {
         email.setText(account.getEmail());
         name.setText(account.getDisplayName());
     }
+
 
     private void goToActivity(Class activity) {
         Intent intent;

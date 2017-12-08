@@ -56,14 +56,9 @@
         <activity
             android:name=".Activities.LoginActivity"
             android:theme="@style/LoginActivity" />
-        <activity android:name=".Activities.BotActivity" />
         <activity
             android:name=".Activities.ContactsActivity"
             android:theme="@style/ContactsActivity.Transparent" />
-        <activity
-            android:name=".Activities.MainActivity"
-            android:label="@string/title_activity_main"
-            android:theme="@style/MainActivity" />
         <activity
             android:name=".Activities.HomeActivity"
             android:theme="@style/HomeActivity" />

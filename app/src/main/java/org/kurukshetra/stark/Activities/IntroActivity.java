@@ -61,7 +61,7 @@ public class IntroActivity extends AppIntro {
             Intent intent = new Intent(IntroActivity.this, LoginActivity.class);
             startActivity(intent);
         }else {
-            Intent intent = new Intent(IntroActivity.this, MainActivity.class);
+            Intent intent = new Intent(IntroActivity.this, HomeActivity.class);
             startActivity(intent);
         }
     }

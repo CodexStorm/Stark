@@ -202,7 +202,7 @@
                    android:layout_marginStart="15dp"
                    android:layout_marginEnd="15dp"
                    android:id="@+id/refcode"
-                   android:hint="Ref code"
+                   android:hint="Ref code( otional )"
                    android:layout_below="@+id/studentgroup"
                    android:inputType="text"
                    android:textAlignment="center"
@@ -228,6 +228,67 @@
         android:layout_height="match_parent"
         android:id="@+id/rlButton"
         android:visibility="visible">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/rlemailgenerate">
+
+        <EditText android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:padding="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:id="@+id/regemail"
+            android:hint="Email ID"
+            android:layout_centerInParent="true"
+            android:inputType="text"
+            android:textAlignment="center"
+            android:background="@drawable/edit_text"
+            android:layout_marginTop="20dp"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Send Email verification"
+                android:background="@drawable/button"
+                android:textColor="#fff"
+                android:id="@+id/sendotp"
+                android:textSize="15sp"
+                android:padding="10dp"
+                android:layout_below="@+id/regemail"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/rlverify"
+            android:visibility="gone">
+
+            <EditText android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:padding="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:id="@+id/otp"
+                android:hint="OTP"
+                android:layout_centerInParent="true"
+                android:inputType="text"
+                android:textAlignment="center"
+                android:background="@drawable/edit_text"
+                android:layout_marginTop="20dp"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Verify"
+                android:background="@drawable/button"
+                android:textColor="#fff"
+                android:id="@+id/verifyotp"
+                android:textSize="15sp"
+                android:padding="10dp"
+                android:layout_below="@+id/otp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"/>
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

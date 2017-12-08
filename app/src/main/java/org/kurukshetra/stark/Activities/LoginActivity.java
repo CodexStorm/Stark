@@ -88,7 +88,7 @@ public class LoginActivity extends AppCompatActivity {
                             // Toast.makeText(LoginActivity.this,"Token"+token,Toast.LENGTH_SHORT).show();
                             UserDetails.setUserLoggedIn(LoginActivity.this, true);
                             UserDetails.setUserToken(LoginActivity.this, token);
-                            goToActivity(MainActivity.class);
+                            goToActivity(HomeActivity.class);
                         }else if(code == 203){
                            // Toast.makeText(LoginActivity.this, "Please Register", Toast.LENGTH_SHORT).show();
                             UserDetails.setUserToken(LoginActivity.this, token);
@@ -134,7 +134,7 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(LoginActivity.this,"Token"+token,Toast.LENGTH_SHORT).show();
                         UserDetails.setUserLoggedIn(LoginActivity.this,true);
                         UserDetails.setUserToken(LoginActivity.this,token);
-                        goToActivity(MainActivity.class);
+                        goToActivity(HomeActivity.class);
                     }
 
                 },LoginActivity.this);
@@ -155,7 +155,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onResume();
         if(UserDetails.isUserLoggedIn(LoginActivity.this)){
            // Toast.makeText(LoginActivity.this,"Already Logged in",Toast.LENGTH_SHORT).show();
-            goToActivity(MainActivity.class);
+            goToActivity(HomeActivity.class);
         }
     }
 
@@ -182,8 +182,7 @@ public class LoginActivity extends AppCompatActivity {
                     if(code == 200) {
                         UserDetails.setUserLoggedIn(LoginActivity.this, true);
                         UserDetails.setUserToken(LoginActivity.this, token);
-
-                        goToActivity(MainActivity.class);
+                        goToActivity(HomeActivity.class);
                     }else if(code == 203){
                         // Toast.makeText(LoginActivity.this,"Please Register",Toast.LENGTH_SHORT).show();
                         UserDetails.setUserToken(LoginActivity.this, token);
