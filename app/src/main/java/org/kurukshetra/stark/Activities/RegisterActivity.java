@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
@@ -35,6 +36,7 @@ public class RegisterActivity extends AppCompatActivity {
     private LoginButton loginButton;
     private CallbackManager callbackManager;
     private static final int RC_SIGN_IN = 200;
+    private RelativeLayout rlButton,rlProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,8 @@ public class RegisterActivity extends AppCompatActivity {
         AppEventsLogger.activateApp(this);
         setContentView(R.layout.activity_register);
         googleSignInButton = findViewById(R.id.google_sign_in);
+        rlButton = findViewById(R.id.rlButton);
+        rlProfile = findViewById(R.id.rlProfile);
         fbSignInButoon = findViewById(R.id.fb_sign_in);
         loginButton = findViewById(R.id.fb_button);
         loginButton.setReadPermissions("email");
@@ -64,6 +68,7 @@ public class RegisterActivity extends AppCompatActivity {
                     public void onLogin(String token,int code,VolleyError error) {
                         if(code == 203) {
                             //do after signin
+                            showProfileView();
                         }else {
                              Toast.makeText(RegisterActivity.this, "Unauthorized", Toast.LENGTH_SHORT).show();
                            // goToActivity(RegisterActivity.class);
@@ -98,6 +103,11 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
+    private void showProfileView() {
+        rlButton.setVisibility(View.GONE);
+        rlProfile.setVisibility(View.VISIBLE);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -118,6 +128,7 @@ public class RegisterActivity extends AppCompatActivity {
                 public void onLogin(String token,int code,VolleyError error) {
                     if(code == 203) {
                         //do after sign in
+                        showProfileView();
                     }else {
                          Toast.makeText(RegisterActivity.this,"Something went wrong :(",Toast.LENGTH_SHORT).show();
                         //goToActivity(RegisterActivity.class);

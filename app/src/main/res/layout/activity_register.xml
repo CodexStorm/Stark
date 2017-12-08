@@ -6,44 +6,255 @@
     android:layout_height="match_parent"
     tools:context="org.kurukshetra.stark.Activities.RegisterActivity"
     android:background="@drawable/gradient_ocean">
-
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/llSocial"
-        android:layout_alignParentBottom="true"
-        android:padding="10dp"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/google_sign_in"
-            android:layout_width="0dp"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:text="Google"
-            android:textStyle="bold"
-            android:textColor="#ffffff"
-            android:background="@drawable/button"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"/>
+        android:layout_height="match_parent"
+        android:id="@+id/rlProfile"
+        android:visibility="visible">
+       <android.support.v4.widget.NestedScrollView
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+           <RelativeLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent">
+               <EditText android:layout_height="wrap_content"
+                   android:layout_width="match_parent"
+                   android:padding="15dp"
+                   android:layout_marginStart="15dp"
+                   android:layout_marginEnd="15dp"
+                   android:id="@+id/email"
+                   android:hint="Email"
+                   android:inputType="textEmailAddress"
+                   android:textAlignment="center"
+                   android:background="@drawable/edit_text"
+                   android:layout_marginTop="30dp"/>
+               <EditText android:layout_height="wrap_content"
+                   android:layout_width="match_parent"
+                   android:padding="15dp"
+                   android:layout_marginStart="15dp"
+                   android:layout_marginEnd="15dp"
+                   android:id="@+id/name"
+                   android:hint="Name"
+                   android:layout_below="@+id/email"
+                   android:inputType="text"
+                   android:textAlignment="center"
+                   android:background="@drawable/edit_text"
+                   android:layout_marginTop="30dp"/>
+               <EditText android:layout_height="wrap_content"
+                   android:layout_width="match_parent"
+                   android:padding="15dp"
+                   android:layout_marginStart="15dp"
+                   android:layout_marginEnd="15dp"
+                   android:id="@+id/regno"
+                   android:hint="Register No."
+                   android:layout_below="@+id/name"
+                   android:inputType="text"
+                   android:textAlignment="center"
+                   android:background="@drawable/edit_text"
+                   android:layout_marginTop="30dp"/>
+               <EditText android:layout_height="wrap_content"
+                   android:layout_width="match_parent"
+                   android:padding="15dp"
+                   android:layout_marginStart="15dp"
+                   android:layout_marginEnd="15dp"
+                   android:id="@+id/password"
+                   android:hint="Password"
+                   android:layout_below="@+id/regno"
+                   android:inputType="textPassword"
+                   android:textAlignment="center"
+                   android:background="@drawable/edit_text"
+                   android:layout_marginTop="30dp"/>
+               <EditText android:layout_height="wrap_content"
+                   android:layout_width="match_parent"
+                   android:padding="15dp"
+                   android:layout_marginStart="15dp"
+                   android:layout_marginEnd="15dp"
+                   android:id="@+id/cpassword"
+                   android:hint="Confirm your password"
+                   android:layout_below="@+id/password"
+                   android:inputType="textPassword"
+                   android:textAlignment="center"
+                   android:background="@drawable/edit_text"
+                   android:layout_marginTop="30dp"/>
+               <RadioGroup
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_below="@+id/cpassword"
+                   android:layout_marginStart="15dp"
+                   android:layout_marginEnd="15dp"
+                   android:id="@+id/sexgroup"
+                   android:layout_marginTop="20dp"
+                   android:padding="15dp"
+                   android:orientation="horizontal">
+                   <RadioButton
+                       android:layout_width="0dp"
+                       android:layout_height="wrap_content"
+                       android:text="Male"
+                       android:id="@+id/rbmale"
+                       android:layout_gravity="center"
+                       android:checked="true"
+                       android:textSize="20sp"
+                       android:layout_weight="1"/>
 
-        <com.facebook.login.widget.LoginButton
-            android:visibility="gone"
-            android:id="@+id/fb_button"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            />
-        <Button
-            android:id="@+id/fb_sign_in"
-            android:layout_width="0dp"
-            android:layout_gravity="center"
-            android:textStyle="bold"
-            android:layout_weight="1"
-            android:text="Facebook"
-            android:layout_margin="5dp"
-            android:textColor="#ffffff"
-            android:background="@drawable/button"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+                   <RadioButton
+                       android:layout_width="0dp"
+                       android:layout_height="wrap_content"
+                       android:text="Female"
+                       android:id="@+id/rbfemale"
+                       android:layout_gravity="center"
+                       android:checked="false"
+                       android:textSize="20sp"
+                       android:layout_weight="1" />
+                   <RadioButton
+                       android:layout_width="0dp"
+                       android:layout_height="wrap_content"
+                       android:text="Other"
+                       android:id="@+id/rbother"
+                       android:layout_gravity="center"
+                       android:checked="false"
+                       android:textSize="20sp"
+                       android:layout_weight="1" />
+               </RadioGroup>
+               <EditText android:layout_height="wrap_content"
+                   android:layout_width="match_parent"
+                   android:padding="15dp"
+                   android:layout_marginStart="15dp"
+                   android:layout_marginEnd="15dp"
+                   android:id="@+id/phone"
+                   android:hint="Phone no."
+                   android:layout_below="@+id/sexgroup"
+                   android:inputType="phone"
+                   android:textAlignment="center"
+                   android:background="@drawable/edit_text"
+                   android:layout_marginTop="20dp"/>
+               <Spinner
+                   android:id="@+id/department"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:entries="@array/college_arrays"
+                   android:prompt="@string/college_prompt"
+                   android:layout_below="@+id/phone"
+                   android:layout_marginTop="30dp"
+                   android:layout_marginStart="15dp"
+                   android:layout_marginEnd="15dp"
+                   android:padding="15dp"
+                   android:background="@drawable/edit_text"
+                   />
+               <Spinner
+                   android:id="@+id/college"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:entries="@array/college_arrays"
+                   android:prompt="@string/college_prompt"
+                   android:layout_below="@+id/department"
+                   android:layout_marginTop="30dp"
+                   android:layout_marginStart="15dp"
+                   android:layout_marginEnd="15dp"
+                   android:padding="15dp"
+                   android:background="@drawable/edit_text"
+                   />
+               <Spinner
+                   android:id="@+id/year"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:entries="@array/college_arrays"
+                   android:prompt="@string/college_prompt"
+                   android:layout_below="@+id/college"
+                   android:layout_marginTop="30dp"
+                   android:layout_marginStart="15dp"
+                   android:layout_marginEnd="15dp"
+                   android:padding="15dp"
+                   android:background="@drawable/edit_text"
+                   />
+               <RadioGroup
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_below="@+id/year"
+                   android:layout_marginStart="15dp"
+                   android:layout_marginEnd="15dp"
+                   android:id="@+id/studentgroup"
+                   android:layout_marginTop="20dp"
+                   android:padding="15dp"
+                   android:orientation="horizontal">
+                   <RadioButton
+                       android:layout_width="0dp"
+                       android:layout_height="wrap_content"
+                       android:text="Student"
+                       android:id="@+id/rbs"
+                       android:layout_gravity="center"
+                       android:checked="true"
+                       android:textSize="20sp"
+                       android:layout_weight="1"/>
+
+                   <RadioButton
+                       android:layout_width="0dp"
+                       android:layout_height="wrap_content"
+                       android:text="Not a student"
+                       android:id="@+id/rbns"
+                       android:layout_gravity="center"
+                       android:checked="false"
+                       android:textSize="20sp"
+                       android:layout_weight="1" />
+               </RadioGroup>
+               <EditText android:layout_height="wrap_content"
+                   android:layout_width="match_parent"
+                   android:padding="15dp"
+                   android:layout_marginStart="15dp"
+                   android:layout_marginEnd="15dp"
+                   android:id="@+id/refcode"
+                   android:hint="Ref code"
+                   android:layout_below="@+id/studentgroup"
+                   android:inputType="text"
+                   android:textAlignment="center"
+                   android:background="@drawable/edit_text"
+                   android:layout_marginTop="20dp"/>
+           </RelativeLayout>
+       </android.support.v4.widget.NestedScrollView>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rlButton"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/llSocial"
+            android:layout_alignParentBottom="true"
+            android:padding="10dp"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/google_sign_in"
+                android:layout_width="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="Google"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:background="@drawable/button"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"/>
+
+            <com.facebook.login.widget.LoginButton
+                android:visibility="gone"
+                android:id="@+id/fb_button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                />
+            <Button
+                android:id="@+id/fb_sign_in"
+                android:layout_width="0dp"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                android:text="Facebook"
+                android:layout_margin="5dp"
+                android:textColor="#ffffff"
+                android:background="@drawable/button"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </RelativeLayout>
 
 </RelativeLayout>

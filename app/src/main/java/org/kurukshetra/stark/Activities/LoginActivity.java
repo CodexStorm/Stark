@@ -80,6 +80,7 @@ public class LoginActivity extends AppCompatActivity {
                             goToActivity(MainActivity.class);
                         }else if(code == 203){
                            // Toast.makeText(LoginActivity.this, "Please Register", Toast.LENGTH_SHORT).show();
+                            UserDetails.setUserToken(LoginActivity.this, token);
                             goToActivity(RegisterActivity.class);
                         }
                     }
@@ -174,6 +175,7 @@ public class LoginActivity extends AppCompatActivity {
                         goToActivity(MainActivity.class);
                     }else if(code == 203){
                         // Toast.makeText(LoginActivity.this,"Please Register",Toast.LENGTH_SHORT).show();
+                        UserDetails.setUserToken(LoginActivity.this, token);
                         goToActivity(RegisterActivity.class);
                     }
                 }
