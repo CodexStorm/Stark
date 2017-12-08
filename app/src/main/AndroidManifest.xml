@@ -50,6 +50,9 @@
             android:name=".Activities.IntroActivity"
             android:theme="@style/IntroActivity" />
         <activity
+            android:name=".Activities.WorkshopsActivity"
+            android:theme="@style/EventsActivity" />
+        <activity
             android:name=".Activities.LoginActivity"
             android:theme="@style/LoginActivity" />
         <activity android:name=".Activities.BotActivity" />

@@ -1,7 +1,9 @@
-package org.kurukshetra.stark.Entities;
+package org.kurukshetra.stark.Entities.Events;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import org.kurukshetra.stark.Entities.TabEntity;
 
 import java.util.List;
 

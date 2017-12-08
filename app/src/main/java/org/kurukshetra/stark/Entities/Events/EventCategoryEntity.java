@@ -1,4 +1,4 @@
-package org.kurukshetra.stark.Entities;
+package org.kurukshetra.stark.Entities.Events;
 
 import java.util.List;
 
@@ -6,16 +6,16 @@ import java.util.List;
  * Created by Balaji on 11/28/2017.
  */
 
-public class CategoriesEntity {
+public class EventCategoryEntity {
 
     private int id;
     private String name;
     private List<EventsEntity> events;
-    public CategoriesEntity(CategoriesEntity categoriesEntity){
-        this.name = categoriesEntity.getName();
-        this.events =categoriesEntity.getEvents();
+    public EventCategoryEntity(EventCategoryEntity eventCategoryEntity){
+        this.name = eventCategoryEntity.getName();
+        this.events = eventCategoryEntity.getEvents();
     }
-    public CategoriesEntity(String eventCategory,List<EventsEntity> eventsList){
+    public EventCategoryEntity(String eventCategory, List<EventsEntity> eventsList){
         this.name =eventCategory;
         this.events =eventsList;
     }

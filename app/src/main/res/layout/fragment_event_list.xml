@@ -5,17 +5,20 @@
     tools:context="org.kurukshetra.stark.Fragments.Events.EventListFragment"
     android:id="@+id/frame"
     >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/bgimage"
         android:scaleType="centerCrop"/>
-
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:id="@+id/eventListRecyclerView"
-        android:layout_gravity="center"/>
+        android:layout_centerInParent="true"/>
+    </RelativeLayout>
 
 </FrameLayout>
 

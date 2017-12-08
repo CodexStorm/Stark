@@ -14,12 +14,13 @@ import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.kurukshetra.stark.Constants.Constants;
-import org.kurukshetra.stark.Entities.CategoriesResponseEntity;
+import org.kurukshetra.stark.Entities.Events.EventsCategoryResponseEntity;
 import org.kurukshetra.stark.Common.UserDetails;
 import org.kurukshetra.stark.Entities.LogoutEntity;
 import org.kurukshetra.stark.Entities.SocialLoginInterface;
 import org.kurukshetra.stark.Entities.LoginEntity;
 import org.kurukshetra.stark.Entities.ResponseEntity;
+import org.kurukshetra.stark.Entities.Workshops.WorkshopsCategoryResponseEntity;
 
 public class RESTClientImplementation {
     private static final String CMS_URL = Constants.CMS_URL;
@@ -58,16 +59,36 @@ public class RESTClientImplementation {
         queue.add(jsonBaseRequest);
     }
 
-    public static void listEvents(final CategoriesResponseEntity.eventCategoryListInterface eventCategoryListInterface, final Context context){
+    public static void getWorkshopsList(final WorkshopsCategoryResponseEntity.workshopCategoryListInterface workshopCategoryListInterface, final Context context){
+        queue = VolleySingleton.getInstance(context).getRequestQueue();
+        String url = getAbsoluteCMSUrl("workshops.json");
+        JsonBaseRequest jsonBaseRequest = new JsonBaseRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("Login Response", response.toString());
+                WorkshopsCategoryResponseEntity workshopsCategoryResponseEntity;
+                workshopsCategoryResponseEntity = new Gson().fromJson(response.toString(),WorkshopsCategoryResponseEntity.class);
+                workshopCategoryListInterface.onListLoaded(workshopsCategoryResponseEntity,null);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("error","error");
+            }
+        },30000,0);
+        queue.add(jsonBaseRequest);
+    }
+
+    public static void getEventsList(final EventsCategoryResponseEntity.eventCategoryListInterface eventCategoryListInterface, final Context context){
         queue = VolleySingleton.getInstance(context).getRequestQueue();
         String url = getAbsoluteCMSUrl("categories.json");
         JsonBaseRequest jsonBaseRequest = new JsonBaseRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.e("Login Response", response.toString());
-                CategoriesResponseEntity categoriesResponseEntity;
-                categoriesResponseEntity = new Gson().fromJson(response.toString(),CategoriesResponseEntity.class);
-                eventCategoryListInterface.onListLoaded(categoriesResponseEntity,null);
+                EventsCategoryResponseEntity eventsCategoryResponseEntity;
+                eventsCategoryResponseEntity = new Gson().fromJson(response.toString(),EventsCategoryResponseEntity.class);
+                eventCategoryListInterface.onListLoaded(eventsCategoryResponseEntity,null);
             }
         }, new Response.ErrorListener() {
             @Override

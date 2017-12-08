@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import org.kurukshetra.stark.Common.UserDetails;
 import org.kurukshetra.stark.R;
 
 /**
@@ -48,7 +49,7 @@ public class HomeScreenPagerAdapter extends PagerAdapter {
         ImageView imageView = itemView.findViewById(R.id.imageView);
         imageView.setImageResource(mResources[position][0]);
         TextView textView = itemView.findViewById(R.id.title);
-        textView.setTypeface(Typeface.createFromAsset(mContext.getAssets(),"fonts/righteous.ttf"));
+        textView.setTypeface(UserDetails.getRightiousFont(mContext));
         textView.setText(mResources[position][2]);
         imageView.setForeground(mContext.getDrawable(mResources[position][1]));
 

@@ -1,4 +1,4 @@
-package org.kurukshetra.stark.Fragments.Events;
+package org.kurukshetra.stark.Fragments.Workshops;
 
 
 import android.os.Build;
@@ -20,22 +20,24 @@ import com.android.volley.VolleyError;
 import com.google.gson.Gson;
 
 import org.kurukshetra.stark.Adapters.EventCategoryAdapter;
+import org.kurukshetra.stark.Adapters.WorkshopCategoryAdapter;
 import org.kurukshetra.stark.Common.UserDetails;
-import org.kurukshetra.stark.Entities.Events.EventsCategoryResponseEntity;
+import org.kurukshetra.stark.Entities.Workshops.WorkshopsCategoryResponseEntity;
+import org.kurukshetra.stark.Fragments.Events.EventListFragment;
 import org.kurukshetra.stark.R;
 import org.kurukshetra.stark.RESTclient.RESTClientImplementation;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class EventCategoryFragment extends Fragment {
+public class WorkshopCategoryFragment extends Fragment {
 
     RecyclerView eventsCategoryRecyclerView;
-    EventsCategoryResponseEntity backup;
-    EventCategoryAdapter eventCategoryAdapter = null;
+    WorkshopsCategoryResponseEntity backup;
+    WorkshopCategoryAdapter workshopCategoryAdapter = null;
     ImageView categoryFrame;
     GridLayoutManager linearLayoutManager;
-    public EventCategoryFragment() {
+    public WorkshopCategoryFragment() {
         // Required empty public constructor
     }
 
@@ -52,18 +54,18 @@ public class EventCategoryFragment extends Fragment {
                 AnimationUtils.loadLayoutAnimation(eventsCategoryRecyclerView.getContext(), R.anim.layout_fall_down);
         eventsCategoryRecyclerView.setLayoutAnimation(controller);
 
-        if(!UserDetails.getEventList(getActivity()).equals("")) {
-            backup = new Gson().fromJson(UserDetails.getEventList(getActivity()),EventsCategoryResponseEntity.class);
+        if(!UserDetails.getWorkshopList(getActivity()).equals("")) {
+            backup = new Gson().fromJson(UserDetails.getWorkshopList(getActivity()),WorkshopsCategoryResponseEntity.class);
             populateRecyclerView(backup);
         }else {
-            RESTClientImplementation.getEventsList(new EventsCategoryResponseEntity.eventCategoryListInterface() {
+            RESTClientImplementation.getWorkshopsList(new WorkshopsCategoryResponseEntity.workshopCategoryListInterface() {
                 @Override
-                public void onListLoaded(EventsCategoryResponseEntity eventsCategoryResponseEntity, VolleyError error) {
-                    UserDetails.setEventList(getActivity(),new Gson().toJson(eventsCategoryResponseEntity));
-                    backup = eventsCategoryResponseEntity;
-                    populateRecyclerView(eventsCategoryResponseEntity);
+                public void onListLoaded(WorkshopsCategoryResponseEntity workshopsCategoryResponseEntity, VolleyError error) {
+                    UserDetails.setWorkshopList(getActivity(),new Gson().toJson(workshopsCategoryResponseEntity));
+                    backup = workshopsCategoryResponseEntity;
+                    populateRecyclerView(workshopsCategoryResponseEntity);
                 }
-            }, getActivity());
+            },getActivity());
         }
 
        return view;
@@ -74,12 +76,12 @@ public class EventCategoryFragment extends Fragment {
         super.onSaveInstanceState(outState);
     }
 
-    void populateRecyclerView(EventsCategoryResponseEntity eventsCategoryResponseEntity){
-        eventCategoryAdapter = new EventCategoryAdapter(eventsCategoryResponseEntity,getContext());
-        eventsCategoryRecyclerView.setAdapter(eventCategoryAdapter);
-        eventCategoryAdapter.notifyDataSetChanged();
+    void populateRecyclerView(WorkshopsCategoryResponseEntity workshopsCategoryResponseEntity){
+        workshopCategoryAdapter = new WorkshopCategoryAdapter(workshopsCategoryResponseEntity,getContext());
+        eventsCategoryRecyclerView.setAdapter(workshopCategoryAdapter);
+        workshopCategoryAdapter.notifyDataSetChanged();
         eventsCategoryRecyclerView.scheduleLayoutAnimation();
-        eventCategoryAdapter.setOnItemClickListener(new EventCategoryAdapter.OnItemClickListener() {
+        workshopCategoryAdapter.setOnItemClickListener(new WorkshopCategoryAdapter.OnItemClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onItemClicked(int pos, final View view, final int color1,final int color2, int bgimage) {
@@ -90,17 +92,17 @@ public class EventCategoryFragment extends Fragment {
 
     public void onClick(View view, int pos, int color1,int color2,int bgimage) {
 
-        EventListFragment eventListFragment = new EventListFragment();
-        eventListFragment.setEnterTransition(new Fade());
+        WorkshopListFragment workshopListFragment = new WorkshopListFragment();
+        workshopListFragment.setEnterTransition(new Fade());
         setExitTransition(new Fade());
         Bundle bundle = new Bundle();
-        bundle.putString("event_list",new Gson().toJson(backup.getCategories().get(pos).getEvents()));
+        bundle.putString("workshop_list",new Gson().toJson(backup.getWorkshops().get(pos).getWorkshops()));
         bundle.putInt("color1",color1);
         bundle.putInt("color2",color2);
         bundle.putInt("bgimage",bgimage);
-        eventListFragment.setArguments(bundle);
+        workshopListFragment.setArguments(bundle);
         getActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container,eventListFragment)
+                .replace(R.id.fragment_container,workshopListFragment)
                 .addToBackStack(null)
                 .commit();
     }

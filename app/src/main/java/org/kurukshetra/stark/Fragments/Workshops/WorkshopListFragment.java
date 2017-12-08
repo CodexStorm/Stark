@@ -1,4 +1,4 @@
-package org.kurukshetra.stark.Fragments.Events;
+package org.kurukshetra.stark.Fragments.Workshops;
 
 
 import android.graphics.drawable.Drawable;
@@ -22,7 +22,9 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import org.kurukshetra.stark.Adapters.EventListAdapter;
-import org.kurukshetra.stark.Entities.Events.EventsEntity;
+import org.kurukshetra.stark.Adapters.WorkshopListAdapter;
+import org.kurukshetra.stark.Entities.Workshops.WorkshopsEntity;
+import org.kurukshetra.stark.Fragments.Events.EventDetailFragment;
 import org.kurukshetra.stark.R;
 
 import java.lang.reflect.Type;
@@ -32,12 +34,12 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class EventListFragment extends Fragment {
-    List<EventsEntity> eventsList;
-    EventListAdapter eventListAdapter;
+public class WorkshopListFragment extends Fragment {
+    List<WorkshopsEntity> workshopList;
+    WorkshopListAdapter workshopListAdapter;
     RecyclerView eventListRecyclerView;
     ImageView bgimage;
-    public EventListFragment() {
+    public WorkshopListFragment() {
         // Required empty public constructor
     }
 
@@ -55,30 +57,33 @@ public class EventListFragment extends Fragment {
         GradientDrawable gd = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, colors);
         gd.setCornerRadius(0f);
 
+        /*bgimage = view.findViewById(R.id.bgimage);
+        bgimage.setImageDrawable(getActivity().getDrawable(bundle.getInt("bgimage")));
+        bgimage.setForeground(gd);
+        bgimage.setAlpha(0.7f);*/
         Drawable drawable = getActivity().getDrawable(bundle.getInt("bgimage"));
+        Type workshopListType = new TypeToken<ArrayList<WorkshopsEntity>>(){}.getType();
 
-        Type eventListType = new TypeToken<ArrayList<EventsEntity>>(){}.getType();
-
-        eventsList = new Gson().fromJson(bundle.getString("event_list"),eventListType);
-        eventListAdapter = new EventListAdapter(eventsList,getActivity(),drawable,gd);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),2);
+        workshopList = new Gson().fromJson(bundle.getString("workshop_list"),workshopListType);
+        workshopListAdapter = new WorkshopListAdapter(workshopList,getActivity(),drawable,gd);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),1);
         eventListRecyclerView.setLayoutManager(gridLayoutManager);
         final LayoutAnimationController controller =
                 AnimationUtils.loadLayoutAnimation(eventListRecyclerView.getContext(), R.anim.layout_fall_down);
         eventListRecyclerView.setLayoutAnimation(controller);
-        eventListRecyclerView.setAdapter(eventListAdapter);
-        eventListAdapter.notifyDataSetChanged();
-        eventListAdapter.setOnItemClickListener(new EventListAdapter.OnItemClickListener() {
+        eventListRecyclerView.setAdapter(workshopListAdapter);
+        workshopListAdapter.notifyDataSetChanged();
+        workshopListAdapter.setOnItemClickListener(new WorkshopListAdapter.OnItemClickListener() {
             @Override
             public void onItemClicked(int pos, View view) {
-                EventDetailFragment eventDetailFragment = new EventDetailFragment();
-                eventDetailFragment.setEnterTransition(new Explode());
+                WorkshopDetailFragment workshopDetailFragment = new WorkshopDetailFragment();
+                workshopDetailFragment.setEnterTransition(new Explode());
                 setExitTransition(new Fade());
                 Bundle bundle = new Bundle();
-                bundle.putString("event",new Gson().toJson(eventsList.get(pos)));
-                eventDetailFragment.setArguments(bundle);
+                bundle.putString("workshop",new Gson().toJson(workshopList.get(pos)));
+                workshopDetailFragment.setArguments(bundle);
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container,eventDetailFragment)
+                        .replace(R.id.fragment_container,workshopDetailFragment)
                         .addToBackStack(null)
                         .commit();
             }

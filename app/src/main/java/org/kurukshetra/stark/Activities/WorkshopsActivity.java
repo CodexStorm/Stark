@@ -11,10 +11,11 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import org.kurukshetra.stark.Fragments.Events.EventCategoryFragment;
+import org.kurukshetra.stark.Fragments.Workshops.WorkshopCategoryFragment;
 import org.kurukshetra.stark.R;
 
 
-public class EventsActivity extends AppCompatActivity{
+public class WorkshopsActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +29,8 @@ public class EventsActivity extends AppCompatActivity{
         assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
         if (findViewById(R.id.fragment_container) != null) {
-            EventCategoryFragment eventCategoryFragment = new EventCategoryFragment();
-            getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,eventCategoryFragment).commit();
+            WorkshopCategoryFragment workshopCategoryFragment = new WorkshopCategoryFragment();
+            getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,workshopCategoryFragment).commit();
         }
 
     }
@@ -49,7 +50,7 @@ public class EventsActivity extends AppCompatActivity{
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.action_contact_us:
-                Intent intent = new Intent(EventsActivity.this,ContactsActivity.class);
+                Intent intent = new Intent(WorkshopsActivity.this,ContactsActivity.class);
                 startActivity(intent);
                 return true;
             default:

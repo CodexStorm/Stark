@@ -13,28 +13,29 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.kurukshetra.stark.Common.UserDetails;
-import org.kurukshetra.stark.Entities.Events.EventsEntity;
+import org.kurukshetra.stark.Entities.Workshops.WorkshopsEntity;
 import org.kurukshetra.stark.R;
 
 import java.util.List;
 
 
-public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.ViewHolder> {
+public class WorkshopListAdapter extends RecyclerView.Adapter<WorkshopListAdapter.ViewHolder> {
     Context context;
+    Drawable bd;
+    Drawable gd;
     private OnItemClickListener mOnItemClickListener;
-    private List<EventsEntity> eventsEntityList;
-    Drawable bd,gd;
-    public EventListAdapter(List<EventsEntity> eel, Context context, Drawable drawable,Drawable gd){
-        this.eventsEntityList = eel;
+    private List<WorkshopsEntity> workshopsEntityList;
+    public WorkshopListAdapter(List<WorkshopsEntity> workshopsEntityList, Context context, Drawable drawable,Drawable gd){
+        this.workshopsEntityList = workshopsEntityList;
         this.context = context;
         this.bd = drawable;
         this.gd = gd;
     }
 
     @Override
-    public EventListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public WorkshopListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.event_list_item,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.workshop_list_item,parent,false);
         return new ViewHolder(view);
     }
 
@@ -42,7 +43,7 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.View
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position){
 
-        holder.eventName.setText(eventsEntityList.get(position).getEventName());
+        holder.eventName.setText(workshopsEntityList.get(position).getName());
         holder.eventName.setTypeface(UserDetails.getRightiousFont(context));
         holder.imagecard.setImageDrawable(bd);
         holder.imagecard.setAlpha(0.7f);
@@ -59,18 +60,18 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.View
 
     @Override
     public int getItemCount() {
-        return eventsEntityList.size();
+        return workshopsEntityList.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
         TextView eventName;
-        CardView eventCard;
         ImageView imagecard;
+        CardView eventCard;
         ViewHolder(View itemView){
             super(itemView);
             eventName =(TextView)itemView.findViewById(R.id.events_category);
             eventCard = itemView.findViewById(R.id.eventCard);
-            imagecard = itemView.findViewById(R.id.eventImage);
+            imagecard = itemView.findViewById(R.id.imagecard);
         }
     }
 

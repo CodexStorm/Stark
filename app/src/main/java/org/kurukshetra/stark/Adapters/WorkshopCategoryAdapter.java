@@ -13,11 +13,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.kurukshetra.stark.Common.UserDetails;
-import org.kurukshetra.stark.Entities.Events.EventCategoryEntity;
-import org.kurukshetra.stark.Entities.Events.EventsCategoryResponseEntity;
+import org.kurukshetra.stark.Entities.Workshops.WorkshopCategoryEntity;
+import org.kurukshetra.stark.Entities.Workshops.WorkshopsCategoryResponseEntity;
 import org.kurukshetra.stark.R;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -25,25 +24,23 @@ import java.util.Locale;
  * Created by Balaji on 12/3/2017.
  */
 
-public class EventCategoryAdapter extends RecyclerView.Adapter<EventCategoryAdapter.ViewHolder> {
+public class WorkshopCategoryAdapter extends RecyclerView.Adapter<WorkshopCategoryAdapter.ViewHolder> {
     Context context;
     private OnItemClickListener mOnItemClickListener;
-    private List<EventCategoryEntity> categoriesListEntityEvent;
-    int[] myImageList = new int[]{R.drawable.engineering, R.drawable.robotics,R.drawable.management,R.drawable.extravaganza,R.drawable.coding,R.drawable.quiz,R.drawable.online};
-    public EventCategoryAdapter(EventsCategoryResponseEntity eventsCategoryResponseEntity, Context context){
-        this.categoriesListEntityEvent = eventsCategoryResponseEntity.getCategories();
+    private List<WorkshopCategoryEntity> workshopCategoryEntities;
+    int[] myImageList = new int[]{R.drawable.engineering, R.drawable.extravaganza,R.drawable.management,R.drawable.school};
+    public WorkshopCategoryAdapter(WorkshopsCategoryResponseEntity eventsCategoryResponseEntity, Context context){
+        this.workshopCategoryEntities = eventsCategoryResponseEntity.getWorkshops();
         this.context = context;
     }
-    public EventCategoryAdapter(){
-        categoriesListEntityEvent =new ArrayList<EventCategoryEntity>();
-    }
-    public void setCategoriesListEntityEvent(List<EventCategoryEntity> categoriesListEntityEvent) {
-        this.categoriesListEntityEvent = categoriesListEntityEvent;
+
+    public void setWorkshopCategoryEntities(List<WorkshopCategoryEntity> workshopCategoryEntities) {
+        this.workshopCategoryEntities = workshopCategoryEntities;
         notifyDataSetChanged();
     }
 
     @Override
-    public EventCategoryAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public WorkshopCategoryAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.event_category_item,parent,false);
         ViewHolder myViewHolder=new ViewHolder(view);
@@ -55,13 +52,14 @@ public class EventCategoryAdapter extends RecyclerView.Adapter<EventCategoryAdap
     public void onBindViewHolder(final ViewHolder holder, final int position){
 
         //text
-        holder.eventCategory.setText(categoriesListEntityEvent.get(position).getName());
-        holder.count.setText(String.format(Locale.US,"%d", categoriesListEntityEvent.get(position).getEvents().size()));
+        holder.eventCategory.setText(workshopCategoryEntities.get(position).getName());
+        holder.count.setText(String.format(Locale.US,"%d", workshopCategoryEntities.get(position).getWorkshops().size()));
 
         //colors
        final int[] colors = UserDetails.getRandomGradientColors();
         GradientDrawable gd = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, colors);
         gd.setCornerRadius(0f);
+      //  Glide.with(context).load(context.getResources().getDrawable(myImageList[position])).into(holder.event_image);
         holder.event_image.setImageDrawable(context.getResources().getDrawable(myImageList[position]));
         holder.event_image.setForeground(gd);
         holder.event_image.setAlpha(0.7f);
@@ -82,7 +80,7 @@ public class EventCategoryAdapter extends RecyclerView.Adapter<EventCategoryAdap
 
     @Override
     public int getItemCount() {
-        return categoriesListEntityEvent.size();
+        return workshopCategoryEntities.size();
     }
 
     public  class ViewHolder extends RecyclerView.ViewHolder{
@@ -108,6 +106,6 @@ public class EventCategoryAdapter extends RecyclerView.Adapter<EventCategoryAdap
     }
 
     public interface OnItemClickListener {
-        void onItemClicked(int pos, View view,int color1,int color2,int bgimage);
+        void onItemClicked(int pos, View view, int color1, int color2, int bgimage);
     }
 }

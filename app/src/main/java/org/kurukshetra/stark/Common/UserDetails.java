@@ -59,7 +59,7 @@ public class UserDetails {
         return Typeface.createFromAsset(context.getAssets(),"fonts/righteous.ttf");
     }
 
-    public static void setEventList(Context context,String eventList){
+    public static void setEventList(Context context, String eventList){
         SharedPreferences settings = context.getSharedPreferences(Constants.USER_PREFERENCE,0);
         SharedPreferences.Editor editor = settings.edit();
         editor.putString("event_list",eventList);
@@ -70,7 +70,26 @@ public class UserDetails {
         return  (settings.getString("event_list",""));
     }
 
-    public static int[] getRandomGradient(){
+    public static void setWorkshopList(Context context, String eventList){
+        SharedPreferences settings = context.getSharedPreferences(Constants.USER_PREFERENCE,0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putString("workshop_list",eventList);
+        editor.apply();
+    }
+    public static String getWorkshopList(Context context){
+        SharedPreferences settings = context.getSharedPreferences(Constants.USER_PREFERENCE,0);
+        return  (settings.getString("workshop_list",""));
+    }
+    public static Drawable getRandomGradient(){
+        Random rnd = new Random();
+        final int color1 = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
+        final int color2 = Color.argb(255, rnd.nextInt(128), rnd.nextInt(128), rnd.nextInt(128));
+        GradientDrawable gd = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[] {color1,color2});
+        gd.setCornerRadius(0f);
+        return gd;
+    }
+
+    public static int[] getRandomGradientColors(){
         Random rnd = new Random();
         final int color1 = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
         final int color2 = Color.argb(255, rnd.nextInt(128), rnd.nextInt(128), rnd.nextInt(128));
