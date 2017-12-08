@@ -96,12 +96,6 @@ public class HomeActivity extends AppCompatActivity implements ViewPager.OnPageC
 
     private void showDialog() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        /*builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-            }
-        });*/
         builder.setTitle("Logout");
         builder.setMessage("You sure ? :/");
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {

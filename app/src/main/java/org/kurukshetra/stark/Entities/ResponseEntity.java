@@ -8,6 +8,7 @@ public class ResponseEntity {
     StatusEntity status;
     String token;
 
+
     public ResponseEntity(StatusEntity status, String token) {
         this.status = status;
         this.token = token;

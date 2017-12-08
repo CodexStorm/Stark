@@ -8,17 +8,6 @@
     android:id="@+id/rlRoot"
     >
 
-    <!--<TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Kurukshetra\n2018"
-        android:textSize="30sp"
-        android:textAlignment="center"
-        android:textColor="#000"
-        android:textStyle="bold"
-        android:padding="5dp"
-        android:layout_marginTop="15dp"
-        android:id="@+id/title"/>-->
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="125dp"
@@ -38,7 +27,7 @@
             android:layout_height="wrap_content"
             app:elevation="8dp"
             app:fabSize="normal"
-            app:backgroundTint="#eee"
+            app:backgroundTint="@color/Tomato"
             app:rippleColor="@color/purple"
             app:pressedTranslationZ="12dp"
             app:useCompatPadding="true"
@@ -51,7 +40,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/logoutFAB"
             app:elevation="8dp"
-            app:backgroundTint="@color/Tomato"
+            app:backgroundTint="#eee"
             app:fabSize="normal"
             app:rippleColor="@color/purple"
             app:pressedTranslationZ="12dp"

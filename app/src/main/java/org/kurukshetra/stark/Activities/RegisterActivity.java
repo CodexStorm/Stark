@@ -7,13 +7,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -25,35 +26,25 @@ import com.google.android.gms.tasks.Task;
 
 import org.kurukshetra.stark.Common.UserDetails;
 import org.kurukshetra.stark.Entities.SocialLoginInterface;
-import org.kurukshetra.stark.Entities.LoginEntity;
 import org.kurukshetra.stark.R;
 import org.kurukshetra.stark.RESTclient.RESTClientImplementation;
-import com.facebook.FacebookSdk;
-import com.facebook.appevents.AppEventsLogger;
 
-public class LoginActivity extends AppCompatActivity {
-
-    private static final int RC_SIGN_IN = 200;
-    private EditText etEmail,etPassword;
-    private Button bLogin;
+public class RegisterActivity extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
     private Button googleSignInButton,fbSignInButoon;
     private LoginButton loginButton;
     private CallbackManager callbackManager;
+    private static final int RC_SIGN_IN = 200;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);
-        setContentView(R.layout.activity_login);
-
-        etEmail = findViewById(R.id.etEmail);
-        etPassword = findViewById(R.id.etPassword);
-        bLogin = findViewById(R.id.bLogin);
-        googleSignInButton = findViewById(R.id.google_sign_in_button);
-        fbSignInButoon = findViewById(R.id.fb_sign_in_button);
-        loginButton = findViewById(R.id.fb_default_button);
+        setContentView(R.layout.activity_register);
+        googleSignInButton = findViewById(R.id.google_sign_in);
+        fbSignInButoon = findViewById(R.id.fb_sign_in);
+        loginButton = findViewById(R.id.fb_button);
         loginButton.setReadPermissions("email");
         callbackManager = CallbackManager.Factory.create();
 
@@ -64,26 +55,21 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
-
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                Toast.makeText(LoginActivity.this,loginResult.getAccessToken().getToken(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegisterActivity.this,loginResult.getAccessToken().getToken(),Toast.LENGTH_SHORT).show();
                 RESTClientImplementation.facebookLogin(loginResult.getAccessToken().getToken(), new SocialLoginInterface.RestClientInterface() {
                     @Override
                     public void onLogin(String token,int code,VolleyError error) {
-                        if(code == 200) {
-                            // Toast.makeText(LoginActivity.this,"Token"+token,Toast.LENGTH_SHORT).show();
-                            UserDetails.setUserLoggedIn(LoginActivity.this, true);
-                            UserDetails.setUserToken(LoginActivity.this, token);
-                            goToActivity(MainActivity.class);
-                        }else if(code == 203){
-                           // Toast.makeText(LoginActivity.this, "Please Register", Toast.LENGTH_SHORT).show();
-                            goToActivity(RegisterActivity.class);
+                        if(code == 203) {
+                            //do after signin
+                        }else {
+                             Toast.makeText(RegisterActivity.this, "Unauthorized", Toast.LENGTH_SHORT).show();
+                           // goToActivity(RegisterActivity.class);
                         }
                     }
-                },LoginActivity.this);
+                },RegisterActivity.this);
             }
 
             @Override
@@ -110,41 +96,6 @@ public class LoginActivity extends AppCompatActivity {
                 startActivityForResult(signInIntent, RC_SIGN_IN);
             }
         });
-
-
-        bLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                LoginEntity loginEntity = new LoginEntity(etEmail.getText().toString(),etPassword.getText().toString());
-                RESTClientImplementation.normalLogin(loginEntity, new LoginEntity.RestClientInterface() {
-                    @Override
-                    public void onLogin(String token, VolleyError error) {
-                        Toast.makeText(LoginActivity.this,"Token"+token,Toast.LENGTH_SHORT).show();
-                        UserDetails.setUserLoggedIn(LoginActivity.this,true);
-                        UserDetails.setUserToken(LoginActivity.this,token);
-                        goToActivity(MainActivity.class);
-                    }
-
-                },LoginActivity.this);
-            }
-        });
-
-
-    }
-
-    private void goToActivity(Class activity) {
-        Intent intent;
-        intent = new Intent(LoginActivity.this, activity);
-        startActivity(intent);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if(UserDetails.isUserLoggedIn(LoginActivity.this)){
-           // Toast.makeText(LoginActivity.this,"Already Logged in",Toast.LENGTH_SHORT).show();
-            goToActivity(MainActivity.class);
-        }
     }
 
     @Override
@@ -162,30 +113,26 @@ public class LoginActivity extends AppCompatActivity {
         try {
             GoogleSignInAccount account = task.getResult(ApiException.class);
             String idToken = account.getIdToken();
-            // TODO(developer): send ID Token to server and validate
-         //   Toast.makeText(LoginActivity.this,idToken,Toast.LENGTH_SHORT).show();
             RESTClientImplementation.googleLogin(idToken, new SocialLoginInterface.RestClientInterface() {
                 @Override
                 public void onLogin(String token,int code,VolleyError error) {
-                    if(code == 200) {
-                        UserDetails.setUserLoggedIn(LoginActivity.this, true);
-                        UserDetails.setUserToken(LoginActivity.this, token);
-
-                        goToActivity(MainActivity.class);
-                    }else if(code == 203){
-                        // Toast.makeText(LoginActivity.this,"Please Register",Toast.LENGTH_SHORT).show();
-                        goToActivity(RegisterActivity.class);
+                    if(code == 203) {
+                        //do after sign in
+                    }else {
+                         Toast.makeText(RegisterActivity.this,"Something went wrong :(",Toast.LENGTH_SHORT).show();
+                        //goToActivity(RegisterActivity.class);
                     }
                 }
-            },LoginActivity.this);
+            },RegisterActivity.this);
 
         } catch (ApiException e) {
-            Log.w("Login Activity", "handleSignInResult:error", e);
+            Log.w("Register Activity", "handleSignInResult:error", e);
         }
     }
 
-    @Override
-    public void onBackPressed() {
-
+    private void goToActivity(Class activity) {
+        Intent intent;
+        intent = new Intent(RegisterActivity.this, activity);
+        startActivity(intent);
     }
 }

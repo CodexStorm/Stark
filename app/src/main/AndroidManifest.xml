@@ -13,9 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.EventsActivity"
-            android:theme="@style/EventsActivity"
-            android:parentActivityName=".Activities.HomeActivity"/>
+        <activity
+            android:name=".Activities.EventsActivity"
+            android:parentActivityName=".Activities.HomeActivity"
+            android:theme="@style/EventsActivity" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -58,13 +59,17 @@
         <activity android:name=".Activities.BotActivity" />
         <activity
             android:name=".Activities.ContactsActivity"
-            android:theme="@style/ContactsActivity.Transparent"></activity>
+            android:theme="@style/ContactsActivity.Transparent" />
         <activity
             android:name=".Activities.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/MainActivity" />
-        <activity android:name=".Activities.HomeActivity"
-            android:theme="@style/HomeActivity"></activity>
+        <activity
+            android:name=".Activities.HomeActivity"
+            android:theme="@style/HomeActivity" />
+        <activity
+            android:name=".Activities.RegisterActivity"
+            android:theme="@style/LoginActivity" />
     </application>
 
 </manifest>

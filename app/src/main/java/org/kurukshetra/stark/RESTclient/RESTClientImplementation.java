@@ -98,6 +98,28 @@ public class RESTClientImplementation {
         },30000,0);
         queue.add(jsonBaseRequest);
     }
+
+    public static boolean hospitality(final Context context){
+        queue = VolleySingleton.getInstance(context).getRequestQueue();
+        final boolean[] b = {false};
+        String url = getAbsoluteCMSUrl("hospitalities.json");
+        JsonBaseRequest jsonBaseRequest = new JsonBaseRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                UserDetails.setHospitality(context,response.toString());
+                b[0] = true;
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("error","error");
+                b[0] = false;
+            }
+        },30000,0);
+        queue.add(jsonBaseRequest);
+        return b[0];
+    }
+
     public static void logout(final LogoutEntity.RestClientInterface restClientInterface, final Context context){
         queue = VolleySingleton.getInstance(context).getRequestQueue();
         String url = getAbsoluteUrl("/api/v1/participant/signout");
@@ -143,7 +165,11 @@ public class RESTClientImplementation {
                 Log.e("Google Login Response",response.toString());
                 Gson gson = new Gson();
                 ResponseEntity responseEntity = gson.fromJson(response.toString(),ResponseEntity.class);
-                restClientInterface.onLogin(responseEntity.getToken(),null);
+                try {
+                    restClientInterface.onLogin(responseEntity.getToken(), response.getJSONObject("code").getInt("statusCode"), null);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         }, new Response.ErrorListener() {
             @Override
@@ -171,7 +197,12 @@ public class RESTClientImplementation {
                 Log.e("Facebook Login Response",response.toString());
                 Gson gson = new Gson();
                 ResponseEntity responseEntity = gson.fromJson(response.toString(),ResponseEntity.class);
-                restClientInterface.onLogin(responseEntity.getToken(),null);
+                try {
+                        restClientInterface.onLogin(responseEntity.getToken(), response.getJSONObject("code").getInt("statusCode"), null);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         }, new Response.ErrorListener() {
             @Override

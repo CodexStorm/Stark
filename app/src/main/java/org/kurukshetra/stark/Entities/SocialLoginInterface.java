@@ -8,6 +8,6 @@ import com.android.volley.VolleyError;
 
 public class SocialLoginInterface {
     public interface RestClientInterface{
-        void onLogin(String token, VolleyError error);
+        void onLogin(String token,int code, VolleyError error);
     }
 }

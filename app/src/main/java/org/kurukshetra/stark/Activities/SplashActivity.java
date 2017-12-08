@@ -12,6 +12,7 @@ import com.airbnb.lottie.LottieAnimationView;
 
 import org.kurukshetra.stark.Common.UserDetails;
 import org.kurukshetra.stark.R;
+import org.kurukshetra.stark.RESTclient.RESTClientImplementation;
 
 public class SplashActivity extends AppCompatActivity {
     LottieAnimationView animationView;
@@ -104,4 +105,5 @@ public class SplashActivity extends AppCompatActivity {
         });
 
     }
+
 }

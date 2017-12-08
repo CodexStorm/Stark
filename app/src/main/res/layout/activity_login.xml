@@ -12,91 +12,91 @@
         android:background="@drawable/gradient_purple">
 
 
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Welcome"
-    android:textColor="#ffffff"
-    android:textAlignment="center"
-    android:textSize="40sp"
-    android:textStyle="bold"
-    android:padding="10dp"
-    android:layout_above="@+id/etEmail"/>
-
-    <EditText android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:padding="15dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_centerVertical="true"
-        android:id="@+id/etEmail"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:textAlignment="center"
-        android:background="@drawable/edit_text"
-        android:layout_marginTop="50dp"/>
-    <EditText android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:padding="15dp"
-        android:hint="Password"
-        android:layout_below="@+id/etEmail"
-        android:id="@+id/etPassword"
-        android:textAlignment="center"
-        android:background="@drawable/edit_text"
-        android:layout_marginEnd="15dp"
-        android:inputType="textPassword"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/bLogin"
-        android:text="Login"
-        android:textStyle="bold"
-        android:textColor="#ffffff"
-        android:background="@drawable/button"
-        android:layout_below="@+id/etPassword"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/llSocial"
-        android:layout_alignParentBottom="true"
-        android:padding="10dp"
-        android:layout_below="@+id/bLogin"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/google_sign_in_button"
-            android:layout_width="0dp"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:text="Google"
-            android:textStyle="bold"
-            android:textColor="#ffffff"
-            android:background="@drawable/button"
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"/>
-
-        <com.facebook.login.widget.LoginButton
-            android:visibility="gone"
-            android:id="@+id/fb_default_button"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            />
-        <Button
-            android:id="@+id/fb_sign_in_button"
-            android:layout_width="0dp"
-            android:layout_gravity="center"
+            android:text="Welcome"
+            android:textColor="#ffffff"
+            android:textAlignment="center"
+            android:textSize="40sp"
             android:textStyle="bold"
-            android:layout_weight="1"
-            android:text="Facebook"
-            android:layout_margin="5dp"
+            android:padding="10dp"
+            android:layout_above="@+id/etEmail"/>
+
+        <EditText android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:padding="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_centerVertical="true"
+            android:id="@+id/etEmail"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:textAlignment="center"
+            android:background="@drawable/edit_text"
+            android:layout_marginTop="50dp"/>
+        <EditText android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:padding="15dp"
+            android:hint="Password"
+            android:layout_below="@+id/etEmail"
+            android:id="@+id/etPassword"
+            android:textAlignment="center"
+            android:background="@drawable/edit_text"
+            android:layout_marginEnd="15dp"
+            android:inputType="textPassword"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bLogin"
+            android:text="Login"
+            android:textStyle="bold"
             android:textColor="#ffffff"
             android:background="@drawable/button"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+            android:layout_below="@+id/etPassword"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/llSocial"
+            android:layout_alignParentBottom="true"
+            android:padding="10dp"
+            android:layout_below="@+id/bLogin"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/google_sign_in_button"
+                android:layout_width="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="Google"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:background="@drawable/button"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"/>
+
+            <com.facebook.login.widget.LoginButton
+                android:visibility="gone"
+                android:id="@+id/fb_default_button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                />
+            <Button
+                android:id="@+id/fb_sign_in_button"
+                android:layout_width="0dp"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                android:text="Facebook"
+                android:layout_margin="5dp"
+                android:textColor="#ffffff"
+                android:background="@drawable/button"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
     </RelativeLayout>
 
 </RelativeLayout>

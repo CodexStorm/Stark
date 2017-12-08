@@ -103,4 +103,15 @@ public class UserDetails {
         int[] androidColors = context.getResources().getIntArray(R.array.androidcolors);
         return androidColors[new Random().nextInt(androidColors.length)];
     }
+
+    public static void setHospitality(Context context, String eventList){
+        SharedPreferences settings = context.getSharedPreferences(Constants.USER_PREFERENCE,0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putString("hospi",eventList);
+        editor.apply();
+    }
+    public static String getHospitality(Context context){
+        SharedPreferences settings = context.getSharedPreferences(Constants.USER_PREFERENCE,0);
+        return  (settings.getString("hospi",""));
+    }
 }
