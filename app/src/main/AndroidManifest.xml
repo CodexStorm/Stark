@@ -69,7 +69,7 @@
             android:theme="@style/HomeActivity" />
         <activity
             android:name=".Activities.RegisterActivity"
-            android:theme="@style/LoginActivity" />
+            android:theme="@style/RegisterActivity" />
     </application>
 
 </manifest>

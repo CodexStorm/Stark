@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
@@ -40,6 +41,8 @@ public class LoginActivity extends AppCompatActivity {
     private Button googleSignInButton,fbSignInButoon;
     private LoginButton loginButton;
     private CallbackManager callbackManager;
+    private TextView register;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,7 @@ public class LoginActivity extends AppCompatActivity {
         googleSignInButton = findViewById(R.id.google_sign_in_button);
         fbSignInButoon = findViewById(R.id.fb_sign_in_button);
         loginButton = findViewById(R.id.fb_default_button);
+        register = findViewById(R.id.register);
         loginButton.setReadPermissions("email");
         callbackManager = CallbackManager.Factory.create();
 
@@ -61,6 +65,13 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 loginButton.performClick();
+            }
+        });
+
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToActivity(RegisterActivity.class);
             }
         });
 

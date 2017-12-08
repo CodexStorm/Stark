@@ -145,4 +145,8 @@ public class HomeActivity extends AppCompatActivity implements ViewPager.OnPageC
 
     }
 
+    @Override
+    public void onBackPressed() {
+
+    }
 }

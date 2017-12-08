@@ -10,6 +10,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -17,6 +18,7 @@ import org.kurukshetra.stark.Constants.Constants;
 import org.kurukshetra.stark.Entities.Events.EventsCategoryResponseEntity;
 import org.kurukshetra.stark.Common.UserDetails;
 import org.kurukshetra.stark.Entities.LogoutEntity;
+import org.kurukshetra.stark.Entities.SignupPostEntity;
 import org.kurukshetra.stark.Entities.SocialLoginInterface;
 import org.kurukshetra.stark.Entities.LoginEntity;
 import org.kurukshetra.stark.Entities.ResponseEntity;
@@ -175,6 +177,39 @@ public class RESTClientImplementation {
             @Override
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
+            }
+        },30000,0);
+        queue.add(jsonBaseRequest);
+    }
+
+    public static void profile(final SignupPostEntity signupPostEntity, final String token, final SignupPostEntity.ProfileUpdateInterface profileUpdateInterface, final Context context){
+        queue = VolleySingleton.getInstance(context).getRequestQueue();
+        String url = getAbsoluteUrl("/api/v1/participant/profile");
+        JSONObject postParams = new JSONObject();
+        JSONObject jb = new JSONObject();
+        JSONObject data = signupPostEntity.getParams();
+        try {
+            jb.put("token",token);
+            jb.put("data",data);
+            postParams.put("data",jb);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        JsonBaseRequest jsonBaseRequest = new JsonBaseRequest(Request.Method.POST, url, postParams, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("Google Login Response",response.toString());
+                try {
+                    profileUpdateInterface.onUpdate( response.getJSONObject("code").getInt("statusCode"),null);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+                profileUpdateInterface.onUpdate(0,null);
             }
         },30000,0);
         queue.add(jsonBaseRequest);
