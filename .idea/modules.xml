@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Stark.iml" filepath="$PROJECT_DIR$/Stark.iml" />
+      <module fileurl="file://C:\Users\admin\Documents\Stark\Stark.iml" filepath="C:\Users\admin\Documents\Stark\Stark.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\admin\Documents\Stark\app\app.iml" filepath="C:\Users\admin\Documents\Stark\app\app.iml" />
     </modules>
   </component>
 </project>

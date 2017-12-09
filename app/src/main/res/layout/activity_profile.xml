@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:frisson="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="org.kurukshetra.stark.ProfileActivity">
+
+
+    <com.intrusoft.library.FrissonView
+        android:id="@+id/wave_head"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        frisson:alphaValue="50"
+        frisson:tintColor="#000000"
+        frisson:gradientType="radial"
+        frisson:gradient_endColor="#cc000000"
+        frisson:gradient_startColor="#00000000"
+        frisson:tideCount="3"
+        frisson:tideHeight="40dp"
+         />
+
+<android.support.v7.widget.LinearLayoutCompat
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:text="hello"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        />
+
+    <TextView
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:text="hello"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1"
+        />
+    <TextView
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:text="hello"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        />
+    <TextView
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:text="hello"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        />
+    <TextView
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:text="hello"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView4"
+        />
+
+</android.support.v7.widget.LinearLayoutCompat>
+</android.support.constraint.ConstraintLayout>
