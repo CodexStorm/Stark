@@ -32,7 +32,7 @@
 
     <style name="LoginActivity" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">#000</item>
-        <item name="colorPrimaryDark">#764ba2</item>
+        <item name="colorPrimaryDark">#66CB356B</item>
         <item name="colorAccent">#000</item>
         <item name="android:fitsSystemWindows">true</item>
     </style>

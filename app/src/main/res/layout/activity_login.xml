@@ -6,10 +6,15 @@
     android:layout_height="match_parent"
     tools:context="org.kurukshetra.stark.Activities.LoginActivity"
     android:background="#fff">
-    <RelativeLayout
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/gradient_purple">
+        android:scaleType="centerCrop"
+        android:src="@drawable/skyscraper"
+        android:foreground="@drawable/gradient_alive"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
