@@ -80,11 +80,9 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onLogin(String token,int code,VolleyError error) {
                         if(code == 200){
-
                             goToActivity(LoginActivity.class);
                         }
                         else if(code == 203) {
-                            UserDetails.setUserToken(RegisterActivity.this,token);
                             //do after signin
                             social = true;
                             showProfileView();

@@ -50,12 +50,21 @@ public class RESTClientImplementation {
                 Log.e("Login Response",response.toString());
                 Gson gson = new Gson();
                 ResponseEntity responseEntity = gson.fromJson(response.toString(),ResponseEntity.class);
-                restClientInterface.onLogin(responseEntity.getToken(),null);
+                try {
+                    int statusCode = response.getJSONObject("code").getInt("statusCode");
+                    if(statusCode == 200){
+                        restClientInterface.onLogin(responseEntity.getToken(),200,null);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                Log.e("normal login","error");
+                restClientInterface.onLogin("",error.networkResponse.statusCode,new VolleyError());
             }
         },30000,0);
         queue.add(jsonBaseRequest);

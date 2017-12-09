@@ -93,6 +93,8 @@ public class LoginActivity extends AppCompatActivity {
                            // Toast.makeText(LoginActivity.this, "Please Register", Toast.LENGTH_SHORT).show();
                             UserDetails.setUserToken(LoginActivity.this, token);
                             goToActivity(RegisterActivity.class);
+                        }else {
+                            Toast.makeText(LoginActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
                         }
                     }
                 },LoginActivity.this);
@@ -130,11 +132,15 @@ public class LoginActivity extends AppCompatActivity {
                 LoginEntity loginEntity = new LoginEntity(etEmail.getText().toString(),etPassword.getText().toString());
                 RESTClientImplementation.normalLogin(loginEntity, new LoginEntity.RestClientInterface() {
                     @Override
-                    public void onLogin(String token, VolleyError error) {
-                        Toast.makeText(LoginActivity.this,"Token"+token,Toast.LENGTH_SHORT).show();
-                        UserDetails.setUserLoggedIn(LoginActivity.this,true);
-                        UserDetails.setUserToken(LoginActivity.this,token);
-                        goToActivity(HomeActivity.class);
+                    public void onLogin(String token, int code,VolleyError error) {
+                        if(code == 200 && error == null) {
+                           // Toast.makeText(LoginActivity.this, "Token" + token, Toast.LENGTH_SHORT).show();
+                            UserDetails.setUserLoggedIn(LoginActivity.this, true);
+                            UserDetails.setUserToken(LoginActivity.this, token);
+                            goToActivity(HomeActivity.class);
+                        }else {
+                            Toast.makeText(LoginActivity.this, "Something went wrong" + token, Toast.LENGTH_SHORT).show();
+                        }
                     }
 
                 },LoginActivity.this);

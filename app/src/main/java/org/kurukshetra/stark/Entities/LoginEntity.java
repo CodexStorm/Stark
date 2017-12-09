@@ -37,7 +37,7 @@ public class LoginEntity {
     }
 
     public interface RestClientInterface{
-        void onLogin(String token, VolleyError error);
+        void onLogin(String token, int code,VolleyError error);
     }
 
     public JSONObject getParams(){
