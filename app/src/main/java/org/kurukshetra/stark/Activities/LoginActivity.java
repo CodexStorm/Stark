@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,6 +43,7 @@ public class LoginActivity extends AppCompatActivity {
     private LoginButton loginButton;
     private CallbackManager callbackManager;
     private TextView register;
+    private RelativeLayout rlprogress;
 
 
     @Override
@@ -57,6 +59,7 @@ public class LoginActivity extends AppCompatActivity {
         googleSignInButton = findViewById(R.id.google_sign_in_button);
         fbSignInButoon = findViewById(R.id.fb_sign_in_button);
         loginButton = findViewById(R.id.fb_default_button);
+        rlprogress = findViewById(R.id.rlprogress);
         register = findViewById(R.id.register);
         loginButton.setReadPermissions("email");
         callbackManager = CallbackManager.Factory.create();
@@ -64,6 +67,7 @@ public class LoginActivity extends AppCompatActivity {
         fbSignInButoon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                showProgress();
                 loginButton.performClick();
             }
         });
@@ -85,15 +89,18 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onLogin(String token,int code,VolleyError error) {
                         if(code == 200) {
+                            hideProgress();
                             // Toast.makeText(LoginActivity.this,"Token"+token,Toast.LENGTH_SHORT).show();
                             UserDetails.setUserLoggedIn(LoginActivity.this, true);
                             UserDetails.setUserToken(LoginActivity.this, token);
                             goToActivity(HomeActivity.class);
                         }else if(code == 203){
+                            hideProgress();
                            // Toast.makeText(LoginActivity.this, "Please Register", Toast.LENGTH_SHORT).show();
                             UserDetails.setUserToken(LoginActivity.this, token);
                             goToActivity(RegisterActivity.class);
                         }else {
+                            hideProgress();
                             Toast.makeText(LoginActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -102,12 +109,14 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onCancel() {
-
+                    hideProgress();
+                Toast.makeText(LoginActivity.this, "Something went wrong ! Please try other means of logging in", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onError(FacebookException error) {
-
+                hideProgress();
+                Toast.makeText(LoginActivity.this, "Something went wrong ! Please try other means of logging in", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -120,6 +129,7 @@ public class LoginActivity extends AppCompatActivity {
         googleSignInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                showProgress();
                 Intent signInIntent = mGoogleSignInClient.getSignInIntent();
                 startActivityForResult(signInIntent, RC_SIGN_IN);
             }
@@ -129,10 +139,12 @@ public class LoginActivity extends AppCompatActivity {
         bLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                showProgress();
                 LoginEntity loginEntity = new LoginEntity(etEmail.getText().toString(),etPassword.getText().toString());
                 RESTClientImplementation.normalLogin(loginEntity, new LoginEntity.RestClientInterface() {
                     @Override
                     public void onLogin(String token, int code,VolleyError error) {
+                        hideProgress();
                         if(code == 200 && error == null) {
                            // Toast.makeText(LoginActivity.this, "Token" + token, Toast.LENGTH_SHORT).show();
                             UserDetails.setUserLoggedIn(LoginActivity.this, true);
@@ -148,6 +160,14 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    void showProgress(){
+        rlprogress.setVisibility(View.VISIBLE);
+    }
+
+    void hideProgress(){
+        rlprogress.setVisibility(View.GONE);
     }
 
     private void goToActivity(Class activity) {
@@ -186,19 +206,26 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onLogin(String token,int code,VolleyError error) {
                     if(code == 200) {
+                        hideProgress();
                         UserDetails.setUserLoggedIn(LoginActivity.this, true);
                         UserDetails.setUserToken(LoginActivity.this, token);
                         goToActivity(HomeActivity.class);
                     }else if(code == 203){
+                        hideProgress();
                         // Toast.makeText(LoginActivity.this,"Please Register",Toast.LENGTH_SHORT).show();
                         UserDetails.setUserToken(LoginActivity.this, token);
                         goToActivity(RegisterActivity.class);
+                    }else {
+                        hideProgress();
+                        Toast.makeText(LoginActivity.this,"Something went wrong",Toast.LENGTH_SHORT).show();
                     }
                 }
             },LoginActivity.this);
 
         } catch (ApiException e) {
+            hideProgress();
             Log.w("Login Activity", "handleSignInResult:error", e);
+            Toast.makeText(LoginActivity.this,"Something went wrong",Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         app:lottie_imageAssetsFolder="image"
         app:lottie_fileName="gears.json"
-        app:lottie_loop="false"
+        app:lottie_loop="true"
         app:lottie_scale="1"
         app:lottie_autoPlay="true" />
 

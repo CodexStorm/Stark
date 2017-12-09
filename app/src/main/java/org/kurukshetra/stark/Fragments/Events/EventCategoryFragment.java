@@ -52,14 +52,19 @@ public class EventCategoryFragment extends Fragment {
                 AnimationUtils.loadLayoutAnimation(eventsCategoryRecyclerView.getContext(), R.anim.layout_fall_down);
         eventsCategoryRecyclerView.setLayoutAnimation(controller);
 
+        if(!UserDetails.getEventList(getActivity()).equals("")) {
+            backup = new Gson().fromJson(UserDetails.getEventList(getActivity()),EventsCategoryResponseEntity.class);
+            populateRecyclerView(backup);
+        }else {
             RESTClientImplementation.getEventsList(new EventsCategoryResponseEntity.eventCategoryListInterface() {
                 @Override
                 public void onListLoaded(EventsCategoryResponseEntity eventsCategoryResponseEntity, VolleyError error) {
-//                    UserDetails.setEventList(getActivity(),new Gson().toJson(eventsCategoryResponseEntity));
+                    UserDetails.setEventList(getActivity(),new Gson().toJson(eventsCategoryResponseEntity));
                     backup = eventsCategoryResponseEntity;
                     populateRecyclerView(eventsCategoryResponseEntity);
                 }
             }, getActivity());
+        }
 
        return view;
     }

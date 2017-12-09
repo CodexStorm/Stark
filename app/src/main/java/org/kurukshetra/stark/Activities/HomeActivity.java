@@ -32,9 +32,9 @@ import org.kurukshetra.stark.RESTclient.RESTClientImplementation;
 
 public class HomeActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener{
     TextView title;
-    FloatingActionButton contactFAB,logoutFAB;
+    FloatingActionButton contactFAB,logoutFAB,aboutFAB;
     ViewPager viewPager;
-    RelativeLayout rlRoot;
+    RelativeLayout rlRoot,rlprogresshome;
     int[][] mResources = {
             {R.drawable.events,R.drawable.gradient_blue_red,R.string.events},
             {R.drawable.workshop,R.drawable.gradient_ocean,R.string.workshops},
@@ -52,11 +52,19 @@ public class HomeActivity extends AppCompatActivity implements ViewPager.OnPageC
         contactFAB = findViewById(R.id.contactFAB);
         logoutFAB = findViewById(R.id.logoutFAB);
         rlRoot = findViewById(R.id.rlRoot);
+        rlprogresshome = findViewById(R.id.rlprogresshome);
 
         logoutFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showDialog();
+
+            }
+        });
+
+        aboutFAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
             }
         });
@@ -94,6 +102,14 @@ public class HomeActivity extends AppCompatActivity implements ViewPager.OnPageC
         });
     }
 
+    void showProgress(){
+        rlprogresshome.setVisibility(View.VISIBLE);
+    }
+
+    void hideProgress(){
+        rlprogresshome.setVisibility(View.GONE);
+    }
+
     private void showDialog() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Logout");
@@ -101,16 +117,19 @@ public class HomeActivity extends AppCompatActivity implements ViewPager.OnPageC
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+                showProgress();
                 RESTClientImplementation.logout(new LogoutEntity.RestClientInterface() {
                     @Override
                     public void onLogin(Boolean success, int code,VolleyError error) {
                         if(error == null && code == 200 && success){
+                            hideProgress();
                             UserDetails.setUserLoggedIn(HomeActivity.this,false);
                             UserDetails.setUserToken(HomeActivity.this,"");
                             Intent intent = new Intent(HomeActivity.this,LoginActivity.class);
                             startActivity(intent);
                             finish();
                         }else if(code == 402 || error != null){
+                            hideProgress();
                             UserDetails.setUserLoggedIn(HomeActivity.this,false);
                             UserDetails.setUserToken(HomeActivity.this,"");
                             Intent intent = new Intent(HomeActivity.this,LoginActivity.class);
