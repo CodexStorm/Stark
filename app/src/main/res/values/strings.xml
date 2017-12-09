@@ -15,6 +15,10 @@
     <string name="contact_us">Contact Us</string>
 
     <string name="college_prompt">Choose your college</string>
+    <string name="AboutCyclotron">Strength doesn’t come from physical capacity. It comes from an indomitable will. True to Gandhiji’s words, the K! logo bears the cyclotron, which symbolizes the spirit of engineering and innovation. Lawrence was awarded Nobel prize in 1939, for his discovery of a particle accelerator, cyclotron, in which charged particles were generated at a central source and accelerated spirally outward. Every particle of the human body is a symbol of universal existence, and it is our abilities that need to be accelerated, to reveal our wisdom.</string>
+    <string name="cyclotron">Cyclotron</string>
+    <string name="AboutKurukshetra">Kurukshetra, the signature event of CEG Tech Forum, is an International Techno-Management fest conducted annually in CEG. Initiated in 2007, it consists of a mélange of competitive events, workshops on latest technologies, guest lectures by eminent personalities and entertainment oriented events; thereby catering to a multitude of students from various domains. It is the first-ever fest in India to receive the UNESCO patronage.</string>
+    <string name="kurukshetra">Kurukshetra</string>
 
     <string-array name="college_arrays">
         <item>Malaysia</item>

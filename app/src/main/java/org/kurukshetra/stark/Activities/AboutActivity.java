@@ -20,12 +20,10 @@ public class AboutActivity extends AppCompatActivity {
         Window w = getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         setContentView(R.layout.activity_about);
-        setContentView(R.layout.activity_event);
         Toolbar toolbar = (Toolbar) findViewById(R.id.about_toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
-        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     @Override

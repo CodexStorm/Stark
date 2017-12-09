@@ -12,5 +12,75 @@
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         android:id="@+id/about_toolbar"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/about_us_back"
+        android:scaleType="centerCrop"
+        android:contentDescription="Aboutus"
+        android:foreground="@drawable/gradient_shroom_haze_alpha"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="35dp"
+                android:textColor="@color/WhiteSmoke"
+                android:textSize="50dp"
+                android:text="About Us" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="35dp"
+                android:text="@string/kurukshetra"
+                android:textColor="@color/WhiteSmoke"
+                android:textSize="30dp" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView2"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/AboutKurukshetra"
+                android:textColor="@color/WhiteSmoke"/>
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView3"
+                android:layout_marginStart="20dp"
+                android:text="@string/cyclotron"
+                android:layout_marginTop="25dp"
+                android:textColor="@color/WhiteSmoke"
+                android:textSize="30dp" />
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_below="@+id/textView4"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:text="@string/AboutCyclotron"
+                android:textColor="@color/WhiteSmoke"/>
+
+        </RelativeLayout>
 
 </RelativeLayout>

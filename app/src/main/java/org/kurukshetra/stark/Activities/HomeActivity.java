@@ -51,6 +51,7 @@ public class HomeActivity extends AppCompatActivity implements ViewPager.OnPageC
 
         contactFAB = findViewById(R.id.contactFAB);
         logoutFAB = findViewById(R.id.logoutFAB);
+        aboutFAB = findViewById(R.id.about);
         rlRoot = findViewById(R.id.rlRoot);
         rlprogresshome = findViewById(R.id.rlprogresshome);
 
@@ -65,7 +66,7 @@ public class HomeActivity extends AppCompatActivity implements ViewPager.OnPageC
         aboutFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                goToActivity(AboutActivity.class);
             }
         });
 
