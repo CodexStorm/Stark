@@ -8,6 +8,6 @@ import com.android.volley.VolleyError;
 
 public class LogoutEntity {
     public interface RestClientInterface{
-        void onLogin(Boolean success, VolleyError error);
+        void onLogin(Boolean success,int code ,VolleyError error);
     }
 }

@@ -139,12 +139,13 @@ public class RESTClientImplementation {
                 Log.e("Login Response",response.toString());
                 Gson gson = new Gson();
                 ResponseEntity responseEntity = gson.fromJson(response.toString(),ResponseEntity.class);
-                restClientInterface.onLogin(responseEntity.getStatus().getCode(),null);
+                restClientInterface.onLogin(responseEntity.getStatus().getCode(),200,null);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e("s","s");
+                restClientInterface.onLogin(false,error.networkResponse.statusCode,new VolleyError());
             }
         },30000,0);
         queue.add(jsonBaseRequest);

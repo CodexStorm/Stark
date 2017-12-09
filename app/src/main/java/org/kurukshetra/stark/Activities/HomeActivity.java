@@ -103,8 +103,14 @@ public class HomeActivity extends AppCompatActivity implements ViewPager.OnPageC
             public void onClick(DialogInterface dialogInterface, int i) {
                 RESTClientImplementation.logout(new LogoutEntity.RestClientInterface() {
                     @Override
-                    public void onLogin(Boolean success, VolleyError error) {
-                        if(success){
+                    public void onLogin(Boolean success, int code,VolleyError error) {
+                        if(error == null && code == 200 && success){
+                            UserDetails.setUserLoggedIn(HomeActivity.this,false);
+                            UserDetails.setUserToken(HomeActivity.this,"");
+                            Intent intent = new Intent(HomeActivity.this,LoginActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }else if(code == 402 || error != null){
                             UserDetails.setUserLoggedIn(HomeActivity.this,false);
                             UserDetails.setUserToken(HomeActivity.this,"");
                             Intent intent = new Intent(HomeActivity.this,LoginActivity.class);
