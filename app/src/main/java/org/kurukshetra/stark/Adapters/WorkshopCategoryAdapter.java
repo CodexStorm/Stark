@@ -28,7 +28,7 @@ public class WorkshopCategoryAdapter extends RecyclerView.Adapter<WorkshopCatego
     Context context;
     private OnItemClickListener mOnItemClickListener;
     private List<WorkshopCategoryEntity> workshopCategoryEntities;
-    int[] myImageList = new int[]{R.drawable.engineering, R.drawable.extravaganza,R.drawable.management,R.drawable.school};
+    int[] myImageList = new int[]{R.drawable.engineering, R.drawable.extravaganza,R.drawable.management,R.drawable.school,R.drawable.school,R.drawable.extravaganza,R.drawable.extravaganza};
     public WorkshopCategoryAdapter(WorkshopsCategoryResponseEntity eventsCategoryResponseEntity, Context context){
         this.workshopCategoryEntities = eventsCategoryResponseEntity.getWorkshops();
         this.context = context;

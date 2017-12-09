@@ -54,19 +54,19 @@ public class WorkshopCategoryFragment extends Fragment {
                 AnimationUtils.loadLayoutAnimation(eventsCategoryRecyclerView.getContext(), R.anim.layout_fall_down);
         eventsCategoryRecyclerView.setLayoutAnimation(controller);
 
-        if(!UserDetails.getWorkshopList(getActivity()).equals("")) {
+        /*if(!UserDetails.getWorkshopList(getActivity()).equals("")) {
             backup = new Gson().fromJson(UserDetails.getWorkshopList(getActivity()),WorkshopsCategoryResponseEntity.class);
             populateRecyclerView(backup);
-        }else {
+        }*/
             RESTClientImplementation.getWorkshopsList(new WorkshopsCategoryResponseEntity.workshopCategoryListInterface() {
                 @Override
                 public void onListLoaded(WorkshopsCategoryResponseEntity workshopsCategoryResponseEntity, VolleyError error) {
-                    UserDetails.setWorkshopList(getActivity(),new Gson().toJson(workshopsCategoryResponseEntity));
-                    backup = workshopsCategoryResponseEntity;
-                    populateRecyclerView(workshopsCategoryResponseEntity);
+
+                        backup = workshopsCategoryResponseEntity;
+                        populateRecyclerView(workshopsCategoryResponseEntity);
+
                 }
             },getActivity());
-        }
 
        return view;
     }
