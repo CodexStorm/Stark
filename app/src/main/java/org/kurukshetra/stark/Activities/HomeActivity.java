@@ -32,7 +32,7 @@ import org.kurukshetra.stark.RESTclient.RESTClientImplementation;
 
 public class HomeActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener{
     TextView title;
-    FloatingActionButton contactFAB,logoutFAB,aboutFAB;
+    FloatingActionButton contactFAB,logoutFAB,aboutFAB,profileFAB;
     ViewPager viewPager;
     RelativeLayout rlRoot,rlprogresshome;
     int[][] mResources = {
@@ -52,6 +52,7 @@ public class HomeActivity extends AppCompatActivity implements ViewPager.OnPageC
         contactFAB = findViewById(R.id.contactFAB);
         logoutFAB = findViewById(R.id.logoutFAB);
         aboutFAB = findViewById(R.id.about);
+        profileFAB = findViewById(R.id.profileFAB);
         rlRoot = findViewById(R.id.rlRoot);
         rlprogresshome = findViewById(R.id.rlprogresshome);
 
@@ -67,6 +68,13 @@ public class HomeActivity extends AppCompatActivity implements ViewPager.OnPageC
             @Override
             public void onClick(View view) {
                 goToActivity(AboutActivity.class);
+            }
+        });
+
+        profileFAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToActivity(ProfileActivity.class);
             }
         });
 

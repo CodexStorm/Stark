@@ -67,6 +67,8 @@
             android:theme="@style/RegisterActivity" />
         <activity android:name=".Activities.AboutActivity"
             android:theme="@style/AboutActivity"></activity>
+        <activity android:name=".Activities.ProfileActivity"
+            android:theme="@style/ProfileActivity"/>
     </application>
 
 </manifest>

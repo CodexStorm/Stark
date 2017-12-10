@@ -15,19 +15,722 @@
     <string name="contact_us">Contact Us</string>
 
     <string name="college_prompt">Choose your college</string>
+    <string name="department_prompt">Choose your department</string>
+    <string name="year_prompt">Choose your year</string>
     <string name="AboutCyclotron">Strength doesn’t come from physical capacity. It comes from an indomitable will. True to Gandhiji’s words, the K! logo bears the cyclotron, which symbolizes the spirit of engineering and innovation. Lawrence was awarded Nobel prize in 1939, for his discovery of a particle accelerator, cyclotron, in which charged particles were generated at a central source and accelerated spirally outward. Every particle of the human body is a symbol of universal existence, and it is our abilities that need to be accelerated, to reveal our wisdom.</string>
     <string name="cyclotron">Cyclotron</string>
     <string name="AboutKurukshetra">Kurukshetra, the signature event of CEG Tech Forum, is an International Techno-Management fest conducted annually in CEG. Initiated in 2007, it consists of a mélange of competitive events, workshops on latest technologies, guest lectures by eminent personalities and entertainment oriented events; thereby catering to a multitude of students from various domains. It is the first-ever fest in India to receive the UNESCO patronage.</string>
     <string name="kurukshetra">Kurukshetra</string>
 
     <string-array name="college_arrays">
-        <item>Malaysia</item>
-        <item>United States</item>
-        <item>Indonesia</item>
-        <item>France</item>
-        <item>Italy</item>
-        <item>Singapore</item>
-        <item>New Zealand</item>
-        <item>India</item>
+        <item>A V S ENGINEERING COLLEGE</item>
+        <item>A.C.COLLEGE OF ENGINEERING AND TECHNOLOGY (AUTONOMOUS)</item>
+        <item>A.C.T. COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>A.K.T. MEMORIAL COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>A.R. COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>A.R. ENGINEERING COLLEGE</item>
+        <item>A.R.J COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>A.S.L. PAULS COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>A.V.C COLLEGE OF ENGINEERING</item>
+        <item>AAA COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>AALIM MUHAMMED SALEGH COLLEGE OF ENGINEERING</item>
+        <item>ADHI COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>ADHIPARASAKTHI COLLEGE OF ENGINEERING</item>
+        <item>ADHIPARASAKTHI ENGINEERING COLLEGE</item>
+        <item>ADHIYAMAAN COLLEGE OF ENGINEERING (AUTONOMOUS)</item>
+        <item>ADITHYA INSTITUTE OF TECHNOLOGY</item>
+        <item>AGNI COLLEGE OF TECHNOLOGY</item>
+        <item>AISHWARYA COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>AKSHAYA COLLEGE OF ENGINEERING &amp; TECHNOLOGY</item>
+        <item>AKSHEYAA COLLEGE OF ENGINEERING</item>
+        <item>AL-AMEEN ENGINEERING COLLEGE</item>
+        <item>ALPHA COLLEGE OF ENGINEERING</item>
+        <item>Amrita school of Engineering</item>
+        <item>ANAND INSTITUTE OF HIGHER TECHNOLOGY</item>
+        <item>ANGEL COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>ANJALAI AMMAL MAHALINGAM ENGINEERING COLLEGE</item>
+        <item>ANNA UNIVERSITY, CHENNAI - ACT CAMPUS</item>
+        <item>ANNA UNIVERSITY, CHENNAI - CEG CAMPUS</item>
+        <item>ANNA UNIVERSITY, CHENNAI - MIT CAMPUS</item>
+        <item>ANNAI COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>ANNAI MATHAMMAL SHEELA ENGINEERING COLLEGE</item>
+        <item>ANNAI MIRA COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>ANNAI TERESA COLLEGE OF ENGINEERING</item>
+        <item>ANNAI VAILANKANNI COLLEGE OF ENGINEERING</item>
+        <item>ANNAI VEILANKANNI'S COLLEGE OF ENGINEERING</item>
+        <item>ANNAMALAIAR COLLEGE OF ENGINEERING</item>
+        <item>ANNAPOORANA ENGINEERING COLLEGE</item>
+        <item>APOLLO ENGINEERING COLLEGE</item>
+        <item>APOLLO PRIYADARSHANAM INSTITUTE OF TECHNOLOGY</item>
+        <item>ARASU ENGINEERING COLLEGE</item>
+        <item>ARCHANA INSTITUTE OF TECHNOLOGY</item>
+        <item>ARIGNAR ANNA INSTITUTE OF SCIENCE AND TECHNOLOGY</item>
+        <item>ARINGER ANNA COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>ARIYALUR ENGINEERING COLLEGE</item>
+        <item>ARJUN COLLEGE OF TECHNOLOGY</item>
+        <item>ARM COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>ARS COLLEGE OF ENGINEERING</item>
+        <item>ARULMIGU MEENAKSHI AMMAN COLLEGE OF ENGINEERING</item>
+        <item>ARULMURUGAN COLLEGE OF ENGINEERING</item>
+        <item>ARUNACHALA COLLEGE OF ENGINEERING FOR WOMEN</item>
+        <item>ARUNAI COLLEGE OF ENGINEERING</item>
+        <item>ARUNAI ENGINEERING COLLEGE</item>
+        <item>ASAN MEMORIAL COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>ASIAN COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>AS-SALAM COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>AVS COLLEGE OF TECHNOLOGY</item>
+        <item>BALAJI INSTITUTE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>BANNARI AMMAN INSTITUTE OF TECHNOLOGY (AUTONOMOUS)</item>
+        <item>BETHLAHEM INSTITUTE OF ENGINEERING</item>
+        <item>BHAJARANG ENGINEERING COLLEGE</item>
+        <item>BHARATH NIKETAN ENGINEERING COLLEGE</item>
+        <item>BHARATHIDASAN ENGINEERING COLLEGE</item>
+        <item>BHARATHIYAR INSTITUTE OF ENGINEERING FOR WOMEN</item>
+        <item>C M S COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>C.A.R.E. GROUP OF INSTITUTIONS</item>
+        <item>C.ABDUL HAKEEM COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>C.K. COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>C.R. ENGINEERING COLLEGE</item>
+        <item>C.S.I. INSTITUTE OF TECHNOLOGY</item>
+        <item>CAPE INSTITUTE OF TECHNOLOGY</item>
+        <item>CAUVERY COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>CENTRAL ELECTROCHEMICAL RESEARCH INSTITUTE (CSIR) KARAIKUDI</item>
+        <item>CENTRAL INSTITUTE OF PLASTICS ENGINEERING AND TECHNOLOGY</item>
+        <item>CHANDY COLLEGE OF ENGINEERING</item>
+        <item>CHENDHURAN COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>CHENDU COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>CHENNAI INSTITUTE OF TECHNOLOGY</item>
+        <item>CHERAN COLLEGE OF ENGINEERING</item>
+        <item>CHETTINAD COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>CHRIST THE KING ENGINEERING COLLEGE</item>
+        <item>CHRISTIAN COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>CMS COLLEGE OF ENGINEERING</item>
+        <item>COIMBATORE INSTITUTE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>COIMBATORE INSTITUTE OF TECHNOLOGY (AUTONOMOUS)</item>
+        <item>CSI COLLEGE OF ENGINEERING</item>
+        <item>D M I COLLEGE OF ENGINEERING</item>
+        <item>DHAANISH AHMED COLLEGE OF ENGINEERING</item>
+        <item>DHAANISH AHMED INSTITUTE OF TECHNOLOGY</item>
+        <item>DHANALAKSHMI COLLEGE OF ENGINEERING</item>
+        <item>DHANALAKSHMI SRINIVASAN COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>DHANALAKSHMI SRINIVASAN COLLEGE OF ENGINEERING</item>
+        <item>DHANALAKSHMI SRINIVASAN COLLEGE OF ENGINEERING</item>
+        <item>DHANALAKSHMI SRINIVASAN ENGINEERING COLLEGE</item>
+        <item>DHANALAKSHMI SRINIVASAN INSTITUTE OF RESEARCH AND TECHNOLOGY</item>
+        <item>DHANALAKSHMI SRINIVASAN INSTITUTE OF TECHNOLOGY</item>
+        <item>DHAYA COLLEGE OF ENGINEERING</item>
+        <item>DHIRAJLAL GANDHI COLLEGE OF TECHNOLOGY</item>
+        <item>DMI ENGINEERING COLLEGE</item>
+        <item>Dr. B. R. Ambedkar National Institute of Technology, Jalandhar</item>
+        <item>DR. MAHALINGAM COLLEGE OF ENGINEERING &amp; TECHNOLOGY (AUTONOMOUS)</item>
+        <item>DR. PAULS ENGINEERING COLLEGE</item>
+        <item>DR.G.U.POPE COLLEGE OF ENGINEERING</item>
+        <item>DR.N G P INSTITUTE OF TECHNOLOGY</item>
+        <item>DR.NALLINI INSTITUTE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>DR.NAVALAR NEDUNCHEZHIYAN COLLEGE OF ENGINEERING</item>
+        <item>DR.SIVANTHI ADITANAR COLLEGE OF ENGINEERING</item>
+        <item>E.G.S.PILLAY ENGINEERING COLLEGE</item>
+        <item>E.S ENGINEERING COLLEGE</item>
+        <item>EASA COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>EASWARI ENGINEERING COLLEGE</item>
+        <item>EINSTEIN COLLEGE OF ENGINEERING</item>
+        <item>ELIZABETH COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>ER.PERUMAL MANIMEKALAI COLLEGE OF ENGINEERING</item>
+        <item>ERODE BUILDER EDUCATIONAL TRUST'S GROUP OF INSTITUTIONS</item>
+        <item>ERODE SENGUNTHAR ENGINEERING COLLEGE</item>
+        <item>EXCEL COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>EXCEL COLLEGE OF TECHNOLOGY</item>
+        <item>EXCEL ENGINEERING COLLEGE</item>
+        <item>FATIMA MICHAEL COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>FRANCIS XAVIER ENGINEERING COLLEGE</item>
+        <item>G.G.R. COLLEGE OF ENGINEERING</item>
+        <item>G.K.M. COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>GANADIPATHY TULSI'S JAIN ENGINEERING COLLEGE</item>
+        <item>GANAPATHY CHETTIAR COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>GANESH COLLEGE OF ENGINEERING</item>
+        <item>GLOBAL INSTITUTE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>GNANAMANI COLLEGE OF TECHNOLOGY</item>
+        <item>GOJAN SCHOOL OF BUSINESS AND TECHNOLOGY</item>
+        <item>GOPAL RAMALINGAM MEMORIAL ENGINEERING COLLEGE</item>
+        <item>GOVERNMENT COLLEGE OF ENGINEERING - BARGUR</item>
+        <item>GOVERNMENT COLLEGE OF ENGINEERING - DHARMAPURI</item>
+        <item>GOVERNMENT COLLEGE OF ENGINEERING - SALEM (AUTONOMOUS)</item>
+        <item>GOVERNMENT COLLEGE OF ENGINEERING - SRIRANGAM</item>
+        <item>GOVERNMENT COLLEGE OF ENGINEERING - THANJAVUR</item>
+        <item>GOVERNMENT COLLEGE OF ENGINEERING - TIRUNELVELI</item>
+        <item>GOVERNMENT COLLEGE OF ENGINEERING, BODIYANAYAKKANUR</item>
+        <item>GOVERNMENT COLLEGE OF TECHNOLOGY, COIMBATORE (AUTONOMOUS)</item>
+        <item>GREENTECH COLLEGE OF ENGINEERING FOR WOMEN</item>
+        <item>GRT INSTITUTE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>HAJI SHEIK ISMAIL ENGINEERING COLLEGE</item>
+        <item>HINDUSTHAN COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>HINDUSTHAN INSTITUTE OF TECHNOLOGY</item>
+        <item>HOLY CROSS ENGINEERING COLLEGE</item>
+        <item>HOSUR INSTITUTE OF TECHNOLOGY AND SCIENCE</item>
+        <item>IDHAYA ENGINEERING COLLEGE FOR WOMEN</item>
+        <item>IFET COLLEGE OF ENGINEERING</item>
+        <item>IIM Ahmedabad</item>
+        <item>IIM Amritsar</item>
+        <item>IIM Bangalore</item>
+        <item>IIM Bodh Gaya</item>
+        <item>IIM Calcutta</item>
+        <item>IIM Indore</item>
+        <item>IIM Jammu</item>
+        <item>IIM Kashipur</item>
+        <item>IIM Kozhikode</item>
+        <item>IIM Lucknow</item>
+        <item>IIM Nagpur</item>
+        <item>IIM Raipur</item>
+        <item>IIM Ranchi</item>
+        <item>IIM Rohtak</item>
+        <item>IIM Sambalpur</item>
+        <item>IIM Shillong</item>
+        <item>IIM Sirmaur</item>
+        <item>IIM Tiruchirappalli</item>
+        <item>IIM Udaipur</item>
+        <item>IIM Visakhapatnam</item>
+        <item>IIT (BHU) Varanasi</item>
+        <item>IIT Bhilai</item>
+        <item>IIT Bhubaneswar</item>
+        <item>IIT Bombay</item>
+        <item>IIT Delhi</item>
+        <item>IIT Dhanbad</item>
+        <item>IIT Dharwad</item>
+        <item>IIT Gandhinagar</item>
+        <item>IIT Goa</item>
+        <item>IIT Guwahati</item>
+        <item>IIT Hyderabad</item>
+        <item>IIT Indore</item>
+        <item>IIT Jammu</item>
+        <item>IIT Jodhpur</item>
+        <item>IIT Kanpur</item>
+        <item>IIT Kharagpur</item>
+        <item>IIT Madras</item>
+        <item>IIT Mandi</item>
+        <item>IIT Palakkad</item>
+        <item>IIT Patna</item>
+        <item>IIT Roorkee</item>
+        <item>IIT Ropar</item>
+        <item>IIT Tirupati</item>
+        <item>IMAYAM COLLEGE OF ENGINEERING</item>
+        <item>IMMANUEL ARASAR J J COLLEGE OF ENGINEERING</item>
+        <item>INDIRA GANDHI COLLEGE OF ENGINEERING AND TECHNOLOGY FOR WOMEN</item>
+        <item>INDIRA INSTITUTE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>INDRA GANESAN COLLEGE OF ENGINEERING</item>
+        <item>INDUS COLLEGE OF ENGINEERING</item>
+        <item>INFANT JESUS COLLEGE OF ENGINEERING</item>
+        <item>INFO INSTITUTE OF ENGINEERING</item>
+        <item>INSTITUTE OF ROAD AND TRANSPORT TECHNOLOGY</item>
+        <item>J C T COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>J E I MATHAAJEE COLLEGE OF ENGINEERING</item>
+        <item>J K K MUNIRAJAH COLLEGE OF TECHNOLOGY</item>
+        <item>J P COLLEGE OF ENGINEERING</item>
+        <item>J.J.COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>J.K.K. NATTRAJA COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>JAINEE COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>JAIRUPAA COLLEGE OF ENGINEERING</item>
+        <item>JAMES COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>JANSONS INSTITUTE OF TECHNOLOGY</item>
+        <item>JAWAHAR ENGINEERING COLLEGE</item>
+        <item>JAY SHRIRAM GROUP OF INSTITUTIONS</item>
+        <item>JAYA ENGINEERING COLLEGE</item>
+        <item>JAYA INSTITUTE OF TECHNOLOGY</item>
+        <item>JAYA SURIYA ENGINEERING COLLEGE</item>
+        <item>JAYALAKSHMI INSTITUTE OF TECHNOLOGY</item>
+        <item>JAYAM COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>JAYAMATHA ENGINEERING COLLEGE</item>
+        <item>JAYARAJ ANNAPACKIAM CSI COLLEGE OF ENGINEERING</item>
+        <item>JAYARAM COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>JEPPIAAR ENGINEERING COLLEGE</item>
+        <item>JERUSALEM COLLEGE OF ENGINEERING</item>
+        <item>JNN INSTITUTE OF ENGINEERING</item>
+        <item>JOE SURESH ENGINEERING COLLEGE</item>
+        <item>JOHN BOSCO ENGINEERING COLLEGE</item>
+        <item>K N S K COLLEGE OF ENGINEERING</item>
+        <item>K P R INSTITUTE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>K S R INSTITUTE FOR ENGINEERING AND TECHNOLOGY</item>
+        <item>K. RAMAKRISHNAN COLLEGE OF ENGINEERING</item>
+        <item>K.C.G. COLLEGE OF TECHNOLOGY</item>
+        <item>K.L.N.COLLEGE OF ENGINEERING</item>
+        <item>K.L.N.COLLEGE OF INFORMATION TECHNOLOGY</item>
+        <item>K.RAMAKRISHNAN COLLEGE OF TECHNOLOGY</item>
+        <item>K.S.K COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>K.S.R. COLLEGE OF ENGINEERING (AUTONOMOUS)</item>
+        <item>K.S.RANGASAMY COLLEGE OF TECHNOLOGY (AUTONOMOUS)</item>
+        <item>KALAIGNAR KARUNANIDHI INSTITUTE OF TECHNOLOGY</item>
+        <item>KALAIVANI COLLEGE OF TECHNOLOGY</item>
+        <item>KALASALINGAM INSTITUTE OF TECHNOLOGY</item>
+        <item>KALSAR COLLEGE OF ENGINEERING</item>
+        <item>KAMARAJ COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>KANCHI PALLAVAN ENGINEERING COLLEGE</item>
+        <item>KARPAGA VINAYAGA COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>KARPAGAM COLLEGE OF ENGINEERING (AUTONOMOUS)</item>
+        <item>KARPAGAM INSTITUTE OF TECHNOLOGY</item>
+        <item>KARUR COLLEGE OF ENGINEERING</item>
+        <item>KATHIR COLLEGE OF ENGINEERING</item>
+        <item>KGISL INSTITUTE OF TECHNOLOGY</item>
+        <item>KING COLLEGE OF TECHNOLOGY</item>
+        <item>KINGS COLLEGE OF ENGINEERING</item>
+        <item>KINGS ENGINEERING COLLEGE</item>
+        <item>KINGSTON ENGINEERING COLLEGE</item>
+        <item>KIT &amp; KIM TECHNICAL CAMPUS</item>
+        <item>KNOWLEDGE INSTITUTE OF TECHNOLOGY</item>
+        <item>KONGU ENGINEERING COLLEGE (AUTONOMOUS)</item>
+        <item>KONGUNADU COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>KRISHNASAMY COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>KRS COLLEGE OF ENGINEERING</item>
+        <item>KTVR KNOWLEDGE PARK FOR ENGINEERING AND TECHNOLOGY</item>
+        <item>KUMARAGURU COLLEGE OF TECHNOLOGY (AUTONOMOUS)</item>
+        <item>KURINJI COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>LATHA MATHAVAN ENGINEERING COLLEGE</item>
+        <item>LORD AYYAPPA INSTITUTE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>LORD JEGANNATH COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>LORD VENKATESHWARAA ENGINEERING COLLEGE</item>
+        <item>LOURDES MOUNT COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>LOYOLA - ICAM COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>LOYOLA INSTITUTE OF TECHNOLOGY AND SCIENCE</item>
+        <item>LOYOLA INSTITUTE OF TECHNOLOGY</item>
+        <item>M R K INSTITUTE OF TECHNOLOGY</item>
+        <item>M.A.M COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>M.A.M COLLEGE OF ENGINEERING</item>
+        <item>M.A.M. SCHOOL OF ENGINEERING</item>
+        <item>M.A.R. COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>M.E.T ENGINEERING COLLEGE</item>
+        <item>M.I.E.T ENGINEERING COLLEGE</item>
+        <item>M.KUMARASAMY COLLEGE OF ENGINEERING (AUTONOMOUS)</item>
+        <item>M.P. NACHIMUTHU M. JAGANATHAN ENGINEERING COLLEGE</item>
+        <item>MAAMALLAN INSTITUTE OF TECHNOLOGY</item>
+        <item>MADHA ENGINEERING COLLEGE</item>
+        <item>MADHA INSTITUTE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>MADURAI INSTITUTE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>MAGNA COLLEGE OF ENGINEERING</item>
+        <item>MAHA BARATHI ENGINEERING COLLEGE</item>
+        <item>MAHAKAVI BHARATHIYAR COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>MAHALAKSHMI ENGINEERING COLLEGE</item>
+        <item>MAHARAJA ENGINEERING COLLEGE FOR WOMEN</item>
+        <item>MAHARAJA ENGINEERING COLLEGE</item>
+        <item>MAHARAJA INSTITUTE OF TECHNOLOGY</item>
+        <item>MAHARAJA PRITHVI ENGINEERING COLLEGE</item>
+        <item>MAHATH AMMA INSTITUTE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>MAHENDRA COLLEGE OF ENGINEERING</item>
+        <item>MAHENDRA ENGINEERING COLLEGE (AUTONOMOUS)</item>
+        <item>MAHENDRA ENGINEERING COLLEGE FOR WOMEN</item>
+        <item>MAHENDRA INSTITUTE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>MAHENDRA INSTITUTE OF TECHNOLOGY</item>
+        <item>MAILAM ENGINEERING COLLEGE</item>
+        <item>Malaviya National Institute of Technology, Jaipur</item>
+        <item>MANGAYARKARASI COLLEGE OF ENGINEERING</item>
+        <item>MAR EPHRAEM COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>MARIA COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>MARTHANDAM COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>Maulana Azad National Institute of Technology, Bhopal</item>
+        <item>MEENAKSHI COLLEGE OF ENGINEERING</item>
+        <item>MEENAKSHI RAMASWAMY ENGINEERING COLLEGE</item>
+        <item>MEENAKSHI SUNDARARAJAN ENGINEERING COLLEGE</item>
+        <item>MEPCO SCHLENK ENGINEERING COLLEGE (AUTONOMOUS)</item>
+        <item>MISRIMAL NAVAJEE MUNOTH JAIN ENGINEERING COLLEGE</item>
+        <item>MNSK COLLEGE OF ENGINEERING</item>
+        <item>MOHAMED SATHAK ENGINEERING COLLEGE</item>
+        <item>MOHAMMED SATHAK A.J.COLLEGE OF ENGINEERING</item>
+        <item>MOOKAMBIGAI COLLEGE OF ENGINEERING</item>
+        <item>MOTHER TERASA COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>Motilal Nehru National Institute of Technology, Allahabad</item>
+        <item>MOUNT ZION COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>MUTHAYAMMAL COLLEGE OF ENGINEERING</item>
+        <item>MUTHAYAMMAL ENGINEERING COLLEGE</item>
+        <item>N P R COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>N.S.N. COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>NADAR SARASWATHI COLLEGE OF ENGINEERING &amp; TECHNOLOGY</item>
+        <item>NANDHA COLLEGE OF TECHNOLOGY</item>
+        <item>NANDHA ENGINEERING COLLEGE (AUTONOMOUS)</item>
+        <item>NARASU'S SARATHY INSTITUTE OF TECHNOLOGY</item>
+        <item>NARAYANAGURU SIDDHARTHA COLLEGE OF ENGINEERING</item>
+        <item>NATIONAL COLLEGE OF ENGINEERING</item>
+        <item>NATIONAL ENGINEERING COLLEGE (AUTONOMOUS)</item>
+        <item>National Institute of Technology Uttarakhand</item>
+        <item>National Institute of Technology, Agartala</item>
+        <item>National Institute of Technology, Arunachal Pradesh (Yupia)</item>
+        <item>National Institute of Technology, Calicut</item>
+        <item>National Institute of Technology, Delhi</item>
+        <item>National Institute of Technology, Durgapur</item>
+        <item>National Institute of Technology, Goa</item>
+        <item>National Institute of Technology, Hamirpur</item>
+        <item>National Institute of Technology, Jamshedpur</item>
+        <item>National Institute of Technology, Kurukshetra</item>
+        <item>National Institute of Technology, Manipur</item>
+        <item>National Institute of Technology, Meghalaya</item>
+        <item>National Institute of Technology, Mizoram</item>
+        <item>National Institute of Technology, Nagaland</item>
+        <item>National Institute of Technology, Patna</item>
+        <item>National Institute of Technology, Pondicherry</item>
+        <item>National Institute of Technology, Raipur</item>
+        <item>National Institute of Technology, Rourkela</item>
+        <item>National Institute of Technology, Sikkim</item>
+        <item>National Institute of Technology, Silchar</item>
+        <item>National Institute of Technology, Srinagar</item>
+        <item>National Institute of Technology, Surathkal</item>
+        <item>National Institute of Technology, Tadepalligudem</item>
+        <item>National Institute of Technology, Trichy</item>
+        <item>National Institute of Technology, Warangal</item>
+        <item>NEHRU INSTITUTE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>NEHRU INSTITUTE OF TECHNOLOGY</item>
+        <item>NELLIANDAVAR INSTITUTE OF TECHNOLOGY</item>
+        <item>NEW PRINCE SHRI BHAVANI COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>NIGHTINGALE INSTITUTE OF TECHNOLOGY</item>
+        <item>OAS INSTITUTE OF TECHNOLOGY AND MANAGEMENT, GROUP OF INSTITUTIONS</item>
+        <item>ODAIYAPPA COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>OXFORD COLLEGE OF ENGINEERING</item>
+        <item>OXFORD ENGINEERING COLLEGE</item>
+        <item>P A COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>P G P COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>P.B. COLLEGE OF ENGINEERING</item>
+        <item>P.R.ENGINEERING COLLEGE</item>
+        <item>P.S.G. COLLEGE OF TECHNOLOGY (AUTONOMOUS)</item>
+        <item>P.S.R ENGINEERING COLLEGE (AUTONOMOUS)</item>
+        <item>P.S.R.RENGASAMY COLLEGE OF ENGINEERING FOR WOMEN</item>
+        <item>P.S.V.COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>P.T. LEE CHENGALVARAYA NAICKER COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>P.T.R.COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>PAAVAAI GROUP OF INSTITUTIONS</item>
+        <item>PAAVAI COLLEGE OF ENGINEERING</item>
+        <item>PAAVAI ENGINEERING COLLEGE</item>
+        <item>PALLAVA RAJA COLLEGE OF ENGINEERING</item>
+        <item>PALLAVAN COLLEGE OF ENGINEERING</item>
+        <item>PANDIAN SARASWATHI YADAV ENGINEERING COLLEGE</item>
+        <item>PANIMALAR ENGINEERING COLLEGE</item>
+        <item>PANIMALAR INSTITUTE OF TECHNOLOGY</item>
+        <item>PANNAI COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>PARISUTHAM INSTITUTE OF TECHNOLOGY AND SCIENCE</item>
+        <item>PARK COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>PARK COLLEGE OF TECHNOLOGY</item>
+        <item>PAVAI COLLEGE OF TECHNOLOGY</item>
+        <item>PAVENDAR BHARATHIDASAN COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>PAVENDAR BHARATHIDASAN INSTITUTE OF INFORMATION TECHNOLOGY</item>
+        <item>PERI INSTITUTE OF TECHNOLOGY</item>
+        <item>PET ENGINEERING COLLEGE</item>
+        <item>PMR ENGINEERING COLLEGE</item>
+        <item>PODHIGAI COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>POLLACHI INSTITUTE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>PONJESLY COLLEGE OF ENGINEERING</item>
+        <item>PONNAIYAH RAMAJAYAM COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>PPG INSTITUTE OF TECHNOLOGY</item>
+        <item>PRATHYUSHA INSTITUTE OF TECHNOLOGY AND MANAGEMENT</item>
+        <item>PRINCE DR.K.VASUDEVAN COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>PRINCE SHRI VENKATESHWARA PADMAVATHY ENGINEERING COLLEGE</item>
+        <item>PRIYADARSHINI ENGINEERING COLLEGE</item>
+        <item>PROFESSIONAL GROUP OF INSTITUTIONS</item>
+        <item>PSG College of Technology</item>
+        <item>PSG INSTITUTE OF TECHNOLOGY AND APPLIED RESEARCH</item>
+        <item>PSN COLLEGE OF ENGINEERING AND TECHNOLOGY (AUTONOMOUS)</item>
+        <item>PSN ENGINEERING COLLEGE</item>
+        <item>PSN INSTITUTE OF TECHNOLOGY AND SCIENCE</item>
+        <item>PSNA COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>R V S COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>R.M.D. ENGINEERING COLLEGE</item>
+        <item>R.M.K. COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>R.M.K. ENGINEERING COLLEGE</item>
+        <item>R.V.S. PADHMAVATHY COLLEGE OF ENGINEERING &amp; TECHNOLOGY</item>
+        <item>R.V.S. SCHOOL OF ENGINEERING AND TECHNOLOGY</item>
+        <item>RAJA COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>RAJALAKSHMI ENGINEERING COLLEGE</item>
+        <item>RAJALAKSHMI INSTITUTE OF TECHNOLOGY</item>
+        <item>RAJAS INTERNATIONAL INSTITUTE OF TECHNOLOGY FOR WOMEN</item>
+        <item>RAJIV GANDHI COLLEGE OF ENGINEERING</item>
+        <item>RAMCO INSTITUTE OF TECHNOLOGY</item>
+        <item>RANGANATHAN ENGINEERING COLLEGE</item>
+        <item>RANIPPETTAI ENGINEERING COLLEGE</item>
+        <item>RATHINAM TECHNICAL CAMPUS</item>
+        <item>RATNAVEL SUBRAMANIAM COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>RENGANAYAGI VARATHARAJ COLLEGE OF ENGINEERING</item>
+        <item>RMK College of Engineering and Technology</item>
+        <item>ROEVER COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>ROEVER ENGINEERING COLLEGE</item>
+        <item>ROHINI COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>RRASE COLLEGE OF ENGINEERING</item>
+        <item>RVS TECHNICAL CAMPUS - COIMBATORE</item>
+        <item>S N S COLLEGE OF ENGINEERING</item>
+        <item>S R S COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>S V National Institute of Technology, Surat</item>
+        <item>S V S COLLEGE OF ENGINEERING</item>
+        <item>S.A. ENGINEERING COLLEGE</item>
+        <item>S.K.P. ENGINEERING COLLEGE</item>
+        <item>S.K.P. INSTITUTE OF TECHNOLOGY</item>
+        <item>S.K.R. ENGINEERING COLLEGE</item>
+        <item>S.R.I COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>S.R.R. ENGINEERING COLLEGE</item>
+        <item>S.S.M. COLLEGE OF ENGINEERING</item>
+        <item>S.VEERASAMY CHETTIAR COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>SACS M.A.V.M.M ENGINEERING COLLEGE</item>
+        <item>SAKTHI ENGINEERING COLLEGE</item>
+        <item>SAKTHI MARIAMMAN ENGINEERING COLLEGE</item>
+        <item>SALEM COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>SAMS COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>SAPTHAGIRI COLLEGE OF ENGINEERING</item>
+        <item>SARANATHAN COLLEGE OF ENGINEERING</item>
+        <item>SARASWATHI VELU COLLEGE OF ENGINEERING</item>
+        <item>SARASWATHY COLLEGE OF ENGINEERING &amp; TECHNOLOGY</item>
+        <item>SARDAR RAJA COLLEGE OF ENGINEERING</item>
+        <item>Sastra University, Thanjavur</item>
+        <item>SASURIE ACADEMY OF ENGINEERING</item>
+        <item>SASURIE COLLEGE OF ENGINEERING</item>
+        <item>Sathyabama University</item>
+        <item>SATYAM COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>SAVEETHA ENGINEERING COLLEGE</item>
+        <item>SBM COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>SCAD COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>SCAD ENGINEERING COLLEGE</item>
+        <item>SCAD INSTITUTE OF TECHNOLOGY</item>
+        <item>SELVAM COLLEGE OF TECHNOLOGY</item>
+        <item>SEMBODAI RUKMANI VARATHARAJAN ENGINEERING COLLEGE</item>
+        <item>SENGUNTHAR COLLEGE OF ENGINEERING</item>
+        <item>SENGUNTHAR ENGINEERING COLLEGE</item>
+        <item>SETHU INSTITUTE OF TECHNOLOGY (AUTONOMOUS)</item>
+        <item>SHANMUGANATHAN ENGINEERING COLLEGE</item>
+        <item>SHIVANI COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>SHIVANI ENGINEERING COLLEGE</item>
+        <item>SHREE MOTILAL KANHAIYALAL FOMRA INSTITUTE OF TECHNOLOGY</item>
+        <item>SHREE SATHYAM COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>SHREE VENKATESHWARA HI-TECH ENGINEERING COLLEGE</item>
+        <item>SHREENIVASA ENGINEERING COLLEGE</item>
+        <item>SHRI ANDAL ALAGAR COLLEGE OF ENGINEERING</item>
+        <item>SHRI ANGALAMMAN COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>SHRI SAPTHAGIRI INSTITUTE OF TECHNOLOGY</item>
+        <item>SIR ISSAC NEWTON COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>SIVAJI COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>SMR EAST COAST COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>SNS COLLEGE OF TECHNOLOGY (AUTONOMOUS)</item>
+        <item>SONA COLLEGE OF TECHNOLOGY (AUTONOMOUS)</item>
+        <item>SREE KRISHNA COLLEGE OF ENGINEERING</item>
+        <item>SREE SAKTHI ENGINEERING COLLEGE</item>
+        <item>SREE SASTHA COLLEGE OF ENGINEERING</item>
+        <item>SREE SASTHA INSTITUTE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>SREE SOWDAMBIKA COLLEGE OF ENGINEERING</item>
+        <item>SRG ENGINEERING COLLEGE</item>
+        <item>SRI ARAVINDAR ENGINEERING COLLEGE</item>
+        <item>SRI BALAJI CHOCKALINGAM ENGINEERING COLLEGE</item>
+        <item>SRI BHARATHI ENGINEERING COLLEGE FOR WOMEN</item>
+        <item>SRI ESHWAR COLLEGE OF ENGINEERING</item>
+        <item>SRI JAYARAM INSTITUTE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>SRI KRISHNA COLLEGE OF ENGINEERING &amp; TECHNOLOGY (AUTONOMOUS)</item>
+        <item>SRI KRISHNA COLLEGE OF ENGINEERING</item>
+        <item>SRI KRISHNA COLLEGE OF TECHNOLOGY (AUTONOMOUS)</item>
+        <item>SRI KRISHNA ENGINEERING COLLEGE</item>
+        <item>SRI KRISHNA INSTITUTE OF TECHNOLOGY</item>
+        <item>SRI LAKSHMI AMMAL ENGINEERING COLLEGE</item>
+        <item>SRI MUTHUKUMARAN INSTITUTE OF TECHNOLOGY</item>
+        <item>SRI NANDHANAM COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>SRI RAAJA RAAJAN COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>SRI RAMAKRISHNA COLLEGE OF ENGINEERING</item>
+        <item>SRI RAMAKRISHNA ENGINEERING COLLEGE (AUTONOMOUS)</item>
+        <item>SRI RAMAKRISHNA INSTITUTE OF TECHNOLOGY</item>
+        <item>SRI RAMANA MAHARISHI COLLEGE OF ENGINEERING</item>
+        <item>SRI RAMANATHAN ENGINEERING COLLEGE</item>
+        <item>SRI RAMANUJAR ENGINEERING COLLEGE</item>
+        <item>SRI RANGANATHAR INSTITUTE OF ENGINEERING &amp; TECHNOLOGY</item>
+        <item>SRI RANGAPOOPATHI COLLEGE OF ENGINEERING</item>
+        <item>SRI SAI RAM INSTITUTE OF TECHNOLOGY</item>
+        <item>SRI SAIRAM ENGINEERING COLLEGE</item>
+        <item>SRI SHAKTHI INSTITUTE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>SRI SHANMUGHA COLLEGE OF ENGG. AND TECH.</item>
+        <item>SRI SIVASUBRAMANIYA NADAR COLLEGE OF ENGINEERING</item>
+        <item>SRI SUBRAMANYA COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>SRI VENKATESHWARA INSTITUTE OF ENGINEERING</item>
+        <item>SRI VENKATESWARA COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>SRI VENKATESWARA COLLEGE OF ENGINEERING</item>
+        <item>SRI VENKATESWARA INSTITUTE OF SCIENCE AND TECHNOLOGY</item>
+        <item>SRI VENKATESWARAA COLLEGE OF TECHNOLOGY</item>
+        <item>SRI VIDYA COLLEGE OF ENGINEERING &amp; TECHNOLOGY</item>
+        <item>SRIGURU INSTITUTE OF TECHNOLOGY</item>
+        <item>SRINIVASA INSTITUTE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>SRINIVASAN ENGINEERING COLLEGE</item>
+        <item>SRIRAM ENGINEERING COLLEGE</item>
+        <item>SRM University, Kattangulathur</item>
+        <item>SSM INSTITUTE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>ST. JOSEPH COLLEGE OF ENGINEERING</item>
+        <item>ST.ANNE'S COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>ST.JOSEPH'S COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>ST.JOSEPH'S COLLEGE OF ENGINEERING</item>
+        <item>ST.JOSEPH'S INSTITUTE OF TECHNOLOGY</item>
+        <item>ST.MICHAEL COLLEGE OF ENGINEERING &amp; TECHNOLOGY</item>
+        <item>ST.MOTHER THERESA ENGINEERING COLLEGE</item>
+        <item>ST.PETER'S COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>ST.XAVIER'S CATHOLIC COLLEGE OF ENGINEERING</item>
+        <item>STAR LION COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>STELLA MARY'S COLLEGE OF ENGINEERING</item>
+        <item>SUDHARSAN ENGINEERING COLLEGE</item>
+        <item>SUGUNA COLLEGE OF ENGINEERING</item>
+        <item>SUN COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>SUREYA COLLEGE OF ENGINEERING</item>
+        <item>SURYA ENGINEERING COLLEGE</item>
+        <item>SURYA GROUP OF INSTITUTIONS</item>
+        <item>SYED AMMAL ENGINEERING COLLEGE</item>
+        <item>T.J. INSTITUTE OF TECHNOLOGY</item>
+        <item>T.J.S. ENGINEERING COLLEGE</item>
+        <item>T.S.M. JAIN COLLEGE OF TECHNOLOGY</item>
+        <item>TAGORE ENGINEERING COLLEGE</item>
+        <item>TAGORE INSTITUTE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>TAMILNADU COLLEGE OF ENGINEERING</item>
+        <item>TAMIZHAN COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>TEJAA SHAKTHI INSTITUTE OF TECHNOLOGY FOR WOMEN</item>
+        <item>THAMIRABHARANI ENGINEERING COLLEGE</item>
+        <item>THANGAVELU ENGINEERING COLLEGE</item>
+        <item>THANTHAI PERIYAR GOVT INSTITUTE OF TECHNOLOGY</item>
+        <item>THE KAVERY COLLEGE OF ENGINEERING</item>
+        <item>THE KAVERY ENGINEERING COLLEGE</item>
+        <item>THE RAJAAS ENGINEERING COLLEGE</item>
+        <item>THENI KAMMAVAR SANGAM COLLEGE OF TECHNOLOGY</item>
+        <item>THIAGARAJAR COLLEGE OF ENGINEERING (AUTONOMOUS)</item>
+        <item>THIRUMALAI ENGINEERING COLLEGE</item>
+        <item>THIRUVALLUVAR COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>TRICHY ENGINEERING COLLEGE</item>
+        <item>TRP ENGINEERING COLLEGE</item>
+        <item>UDAYA SCHOOL OF ENGINEERING</item>
+        <item>ULTRA COLLEGE OF ENGINEERING AND TECHNOLOGY FOR WOMEN</item>
+        <item>UNITED INSTITUTE OF TECHNOLOGY</item>
+        <item>UNIVERSAL COLLEGE OF ENGINEERING &amp; TECHNOLOGY</item>
+        <item>UNIVERSITY COLLEGE OF ENGINEERING, ARIYALUR</item>
+        <item>UNIVERSITY COLLEGE OF ENGINEERING, ARNI</item>
+        <item>UNIVERSITY COLLEGE OF ENGINEERING, DINDIGUL</item>
+        <item>UNIVERSITY COLLEGE OF ENGINEERING, KANCHIPURAM</item>
+        <item>UNIVERSITY COLLEGE OF ENGINEERING, NAGERCOIL</item>
+        <item>UNIVERSITY COLLEGE OF ENGINEERING, PANRUTI</item>
+        <item>UNIVERSITY COLLEGE OF ENGINEERING, PATTUKKOTTAI</item>
+        <item>UNIVERSITY COLLEGE OF ENGINEERING, RAMANATHAPURAM</item>
+        <item>UNIVERSITY COLLEGE OF ENGINEERING, THIRUKKUVALAI</item>
+        <item>UNIVERSITY COLLEGE OF ENGINEERING, TINDIVANAM</item>
+        <item>UNIVERSITY COLLEGE OF ENGINEERING, TIRUCHIRAPPALLI</item>
+        <item>UNIVERSITY COLLEGE OF ENGINEERING, VILLUPURAM</item>
+        <item>UNIVERSITY DEPARTMENTS OF ANNA UNIVERSITY, CHENNAI - ACT CAMPUS</item>
+        <item>UNIVERSITY DEPARTMENTS OF ANNA UNIVERSITY, CHENNAI - CEG CAMPUS</item>
+        <item>UNIVERSITY DEPARTMENTS OF ANNA UNIVERSITY, CHENNAI - MIT CAMPUS</item>
+        <item>UNIVERSITY VOC COLLEGE OF ENGINEERING, THOOTHUKUDI</item>
+        <item>UNNAMALAI INSTITUTE OF TECHNOLOGY</item>
+        <item>V K S COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>V S A EDUCATIONAL AND CHARITABLE TRUST'S GROUP OF INSTITUTIONS</item>
+        <item>V V COLLEGE OF ENGINEERING</item>
+        <item>V.P.MUTHAIAH PILLAI MEENAKSHI AMMAL ENGINEERING COLLEGE FOR WOMEN</item>
+        <item>V.R.S. COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>V.S.B. COLLEGE OF ENGINEERING TECHNICAL CAMPUS</item>
+        <item>V.S.B. ENGINEERING COLLEGE</item>
+        <item>VAIGAI COLLEGE OF ENGINEERING</item>
+        <item>VALLIAMMAI ENGINEERING COLLEGE</item>
+        <item>VANDAYAR ENGINEERING COLLEGE</item>
+        <item>VARUVAN VADIVELAN INSTITUTE OF TECHNOLOGY</item>
+        <item>VEDHANTHA INSTITUTE OF TECHNOLOGY</item>
+        <item>VEERAMMAL ENGINEERING COLLEGE</item>
+        <item>VEL TECH HIGH TECH DR.RANGARAJAN DR.SAKUNTHALA ENGINEERING COLLEGE</item>
+        <item>VEL TECH MULTI TECH DR.RANGARAJAN DR.SAKUNTHALA ENGINEERING COLLEGE</item>
+        <item>VEL TECH</item>
+        <item>VELALAR COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>VELAMMAL COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>VELAMMAL ENGINEERING COLLEGE</item>
+        <item>VELAMMAL INSTITUTE OF TECHNOLOGY</item>
+        <item>Vels University</item>
+        <item>VETRI VINAYAHA COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>VI INSTITUTE OF TECHNOLOGY</item>
+        <item>VICKRAM COLLEGE OF ENGINEERING</item>
+        <item>VIDHYA MANDHIR INSTITUTE OF TECHNOLOGY</item>
+        <item>VIDYAA VIKAS COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>VINS CHRISTIAN COLLEGE OF ENGINEERING</item>
+        <item>VINS CHRISTIAN WOMEN'S COLLEGE OF ENGINEERING</item>
+        <item>VISHNU LAKSHMI COLLEGE OF ENGINEERING AND TECHNOLOGY</item>
+        <item>Visvesvaraya National Institute of Technology, Nagpur</item>
+        <item>VIT University, Chennai</item>
+        <item>VIT University, Vellore </item>
+        <item>VIVEKANANDHA COLLEGE OF ENGINEERING FOR WOMEN (AUTONOMOUS)</item>
+        <item>VIVEKANANDHA COLLEGE OF TECHNOLOGY FOR WOMEN</item>
+        <item>VIVEKANANDHA INSTITUTE OF ENGINEERING &amp; TECHNOLOGY FOR WOMEN</item>
+        <item>VPV COLLEGE OF ENGINEERING</item>
+        <item>OTHER</item>
     </string-array>
+
+    <string-array name="year_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+    <string-array name="department_array">
+        <item>Aeronautical Engineering</item>
+        <item>Aerospace Engineering</item>
+        <item>Agricultural &amp; Irrigation Engineering</item>
+        <item>Aircraft Maintenance Engineering</item>
+        <item>Animation</item>
+        <item>Apparel technology</item>
+        <item>Applied electronics</item>
+        <item>Applied Mathematics</item>
+        <item>Architecture</item>
+        <item>Automobile Engineering</item>
+        <item>Avionics</item>
+        <item>Bio Informatics</item>
+        <item>Bio Medical Engineering</item>
+        <item>Biotechnology</item>
+        <item>Ceramic Technology</item>
+        <item>Charted Accountancy</item>
+        <item>Chemical Engineering</item>
+        <item>Chemistry</item>
+        <item>Civil Engineering</item>
+        <item>Communication Systems</item>
+        <item>Computer Science &amp; Engineering</item>
+        <item>Cryogenic Engineering</item>
+        <item>Elecrical Engineering</item>
+        <item>Electrical &amp; Electronics Engineering</item>
+        <item>Electronic media</item>
+        <item>Electronics &amp; Communication Engineering</item>
+        <item>Electronics &amp; Instrumentation</item>
+        <item>Embedded Systems</item>
+        <item>Energy Engineering</item>
+        <item>Engineering Design</item>
+        <item>Engineering Physics</item>
+        <item>English Literature</item>
+        <item>Finance</item>
+        <item>Fluid Mechanics</item>
+        <item>Food Technology</item>
+        <item>Geo Informatics</item>
+        <item>Harbour Engineering </item>
+        <item>High Voltage Engineering</item>
+        <item>Hospitality Administration</item>
+        <item>HR</item>
+        <item>Humanities &amp; Social Sciences</item>
+        <item>Industrial Engineering</item>
+        <item>Information &amp; Communications Technology</item>
+        <item>Information Technology</item>
+        <item>Internal Combustion Engineering</item>
+        <item>Logistics</item>
+        <item>M.Sc. CS-IT</item>
+        <item>M.Sc. E-Media</item>
+        <item>Manufacturing Engineering</item>
+        <item>Marine Engineering</item>
+        <item>Marketing</item>
+        <item>Material Science </item>
+        <item>Mathematics</item>
+        <item>Mechanical Engineering</item>
+        <item>Mechatronics</item>
+        <item>Media Sciences</item>
+        <item>Metallurgy</item>
+        <item>Mining Engineering</item>
+        <item>Nano Science and Technology</item>
+        <item>Other</item>
+        <item>Photonics </item>
+        <item>Physics</item>
+        <item>Printing Technology</item>
+        <item>Production Engineering</item>
+        <item>Remote Sensing</item>
+        <item>Software Engineering</item>
+        <item>Systems Engineering &amp; Operations Research</item>
+        <item>Technology Managment</item>
+        <item>Telecommunication Engineering</item>
+        <item>Textile Technology</item>
+        <item>Theoretical Computer Science</item>
+        <item>Thermal</item>
+        <item>Transportation Engineering</item>
+        <item>VLSI Design</item>
+        <item>Other</item>
+    </string-array>
+
+
+
+
 </resources>

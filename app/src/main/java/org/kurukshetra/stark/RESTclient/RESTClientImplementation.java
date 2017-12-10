@@ -18,6 +18,7 @@ import org.kurukshetra.stark.Constants.Constants;
 import org.kurukshetra.stark.Entities.Events.EventsCategoryResponseEntity;
 import org.kurukshetra.stark.Common.UserDetails;
 import org.kurukshetra.stark.Entities.LogoutEntity;
+import org.kurukshetra.stark.Entities.ProfileResponseEntity;
 import org.kurukshetra.stark.Entities.SignupPostEntity;
 import org.kurukshetra.stark.Entities.SocialLoginInterface;
 import org.kurukshetra.stark.Entities.LoginEntity;
@@ -220,6 +221,40 @@ public class RESTClientImplementation {
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
                 profileUpdateInterface.onUpdate(0,null);
+            }
+        },30000,0);
+        queue.add(jsonBaseRequest);
+    }
+    public static void getProfile(final String token, final ProfileResponseEntity.profileGetInterface profileGetInterface, final Context context){
+        queue = VolleySingleton.getInstance(context).getRequestQueue();
+        String url = getAbsoluteUrl("/api/v1/participant/profile");
+        JSONObject postParams = new JSONObject();
+        JSONObject jb = new JSONObject();
+        try {
+            jb.put("token",token);
+            postParams.put("data",jb);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        JsonBaseRequest jsonBaseRequest = new JsonBaseRequest(Request.Method.POST, url, postParams, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("Google Login Response",response.toString());
+                try {
+                    ProfileResponseEntity profileResponseEntity = new Gson().fromJson(response.toString(),ProfileResponseEntity.class);
+                //    profileUpdateInterface.onUpdate( response.getJSONObject("code").getInt("statusCode"),null);
+                    int code =  response.getJSONObject("code").getInt("statusCode");
+                    profileGetInterface.onProfileLoaded(code,profileResponseEntity.getData(),profileResponseEntity.getWe(),null);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+               // profileUpdateInterface.onUpdate(0,null);
+                profileGetInterface.onProfileLoaded(error.networkResponse.statusCode,null,null,new VolleyError());
             }
         },30000,0);
         queue.add(jsonBaseRequest);
