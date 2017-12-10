@@ -37,6 +37,8 @@ public class EventListFragment extends Fragment {
     EventListAdapter eventListAdapter;
     RecyclerView eventListRecyclerView;
     ImageView bgimage;
+    int[] colors;
+    Bundle bundle;
     public EventListFragment() {
         // Required empty public constructor
     }
@@ -50,8 +52,8 @@ public class EventListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_event_list, container, false);
         eventListRecyclerView = view.findViewById(R.id.eventListRecyclerView);
 
-        Bundle bundle=getArguments();
-        int[] colors = new int[]{bundle.getInt("color1"),bundle.getInt("color2")};
+        bundle=getArguments();
+        colors = new int[]{bundle.getInt("color1"),bundle.getInt("color2")};
         GradientDrawable gd = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, colors);
         gd.setCornerRadius(0f);
 
@@ -74,9 +76,12 @@ public class EventListFragment extends Fragment {
                 EventDetailFragment eventDetailFragment = new EventDetailFragment();
                 eventDetailFragment.setEnterTransition(new Explode());
                 setExitTransition(new Fade());
-                Bundle bundle = new Bundle();
-                bundle.putString("event",new Gson().toJson(eventsList.get(pos)));
-                eventDetailFragment.setArguments(bundle);
+                Bundle b = new Bundle();
+                b.putString("event",new Gson().toJson(eventsList.get(pos)));
+                b.putInt("bgimage",bundle.getInt("bgimage"));
+                b.putInt("color1",bundle.getInt("color1"));
+                b.putInt("color2",bundle.getInt("color2"));
+                eventDetailFragment.setArguments(b);
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container,eventDetailFragment)
                         .addToBackStack(null)

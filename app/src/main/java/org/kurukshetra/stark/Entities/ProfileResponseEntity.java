@@ -10,7 +10,6 @@ import java.util.List;
 
 public class ProfileResponseEntity {
     StatusEntity status;
-    String sa;
     ProfileEntity data;
     List<WeEntity> we;
 
@@ -30,13 +29,6 @@ public class ProfileResponseEntity {
         this.status = status;
     }
 
-    public String getSa() {
-        return sa;
-    }
-
-    public void setSa(String sa) {
-        this.sa = sa;
-    }
 
     public List<WeEntity> getWe() {
         return we;

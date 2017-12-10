@@ -1,12 +1,16 @@
 package org.kurukshetra.stark.Fragments.Workshops;
 
 
+import android.graphics.drawable.GradientDrawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -27,12 +31,15 @@ public class WorkshopDetailFragment extends Fragment {
     WorkshopsEntity workshopsEntity;
     TextView event_name,tab1;
     List<TabEntity> tabs;
+    ImageView eventDetailImage;
+    int[] colors;
 
     public WorkshopDetailFragment() {
         // Required empty public constructor
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -40,6 +47,14 @@ public class WorkshopDetailFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_event_detail, container, false);
         Bundle bundle = getArguments();
         workshopsEntity = new Gson().fromJson(bundle.getString("workshop"),WorkshopsEntity.class);
+
+        colors = new int[]{bundle.getInt("color1"),bundle.getInt("color2")};
+        GradientDrawable gd = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, colors);
+        gd.setCornerRadius(0f);
+
+        eventDetailImage = view.findViewById(R.id.eventDetailImage);
+        eventDetailImage.setImageDrawable(getActivity().getDrawable(bundle.getInt("bgimage")));
+        eventDetailImage.setForeground(gd);
 
         event_name = view.findViewById(R.id.event_name);
         event_name.setText(workshopsEntity.getName());

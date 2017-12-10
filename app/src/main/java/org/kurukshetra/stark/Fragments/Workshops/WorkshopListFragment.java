@@ -39,6 +39,8 @@ public class WorkshopListFragment extends Fragment {
     WorkshopListAdapter workshopListAdapter;
     RecyclerView eventListRecyclerView;
     ImageView bgimage;
+    Bundle bundle;
+
     public WorkshopListFragment() {
         // Required empty public constructor
     }
@@ -52,7 +54,7 @@ public class WorkshopListFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_event_list, container, false);
         eventListRecyclerView = view.findViewById(R.id.eventListRecyclerView);
 
-        Bundle bundle=getArguments();
+        bundle=getArguments();
         int[] colors = new int[]{bundle.getInt("color1"),bundle.getInt("color2")};
         GradientDrawable gd = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, colors);
         gd.setCornerRadius(0f);
@@ -79,9 +81,12 @@ public class WorkshopListFragment extends Fragment {
                 WorkshopDetailFragment workshopDetailFragment = new WorkshopDetailFragment();
                 workshopDetailFragment.setEnterTransition(new Explode());
                 setExitTransition(new Fade());
-                Bundle bundle = new Bundle();
-                bundle.putString("workshop",new Gson().toJson(workshopList.get(pos)));
-                workshopDetailFragment.setArguments(bundle);
+                Bundle b = new Bundle();
+                b.putString("workshop",new Gson().toJson(workshopList.get(pos)));
+                b.putInt("bgimage",bundle.getInt("bgimage"));
+                b.putInt("color1",bundle.getInt("color1"));
+                b.putInt("color2",bundle.getInt("color2"));
+                workshopDetailFragment.setArguments(b);
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container,workshopDetailFragment)
                         .addToBackStack(null)

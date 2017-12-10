@@ -7,16 +7,23 @@
     android:layout_height="match_parent"
     tools:context="org.kurukshetra.stark.Activities.SplashActivity"
     android:background="#fff">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/ceg_unesco_logo"
+        android:foreground="@drawable/gradient_alive"/>
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animation_view"
         android:layout_width="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_alignParentBottom="true"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         app:lottie_imageAssetsFolder="image"
-        app:lottie_fileName="gears.json"
+        app:lottie_fileName="loading.json"
+        app:lottie_colorFilter="#BD3F32"
         app:lottie_loop="true"
-        app:lottie_scale="1"
+        app:lottie_scale="0.5"
         app:lottie_autoPlay="true" />
 
 </RelativeLayout>
