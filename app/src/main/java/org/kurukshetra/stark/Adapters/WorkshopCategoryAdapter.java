@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.kurukshetra.stark.Common.UserDetails;
@@ -47,7 +48,6 @@ public class WorkshopCategoryAdapter extends RecyclerView.Adapter<WorkshopCatego
         return myViewHolder;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position){
 
@@ -61,8 +61,8 @@ public class WorkshopCategoryAdapter extends RecyclerView.Adapter<WorkshopCatego
         gd.setCornerRadius(0f);
       //  Glide.with(context).load(context.getResources().getDrawable(myImageList[position])).into(holder.event_image);
         holder.event_image.setImageDrawable(context.getResources().getDrawable(myImageList[position]));
-        holder.event_image.setForeground(gd);
-        holder.event_image.setAlpha(0.7f);
+        holder.rlworkshopcategory.setBackground(gd);
+        holder.rlworkshopcategory.setAlpha(0.7f);
 
         //typeface
         holder.eventCategory.setTypeface(UserDetails.getRightiousFont(context));
@@ -87,6 +87,7 @@ public class WorkshopCategoryAdapter extends RecyclerView.Adapter<WorkshopCatego
         TextView eventCategory,count;
         CardView eventCard;
         ImageView event_image;
+        RelativeLayout rlworkshopcategory;
 
         public  ViewHolder(View itemView){
             super(itemView);
@@ -94,6 +95,7 @@ public class WorkshopCategoryAdapter extends RecyclerView.Adapter<WorkshopCatego
             eventCard = itemView.findViewById(R.id.eventCard);
             count = itemView.findViewById(R.id.count);
             event_image = itemView.findViewById(R.id.event_image);
+            rlworkshopcategory = itemView.findViewById(R.id.rleventcategory);
         }
     }
 

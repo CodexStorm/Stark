@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -32,13 +33,13 @@ public class EventDetailFragment extends Fragment {
     List<TabEntity> tabs;
     ImageView eventDetailImage;
     int[] colors;
+    RelativeLayout rldetail;
 
     public EventDetailFragment() {
         // Required empty public constructor
     }
 
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -47,13 +48,16 @@ public class EventDetailFragment extends Fragment {
         Bundle bundle = getArguments();
         eventsEntity = new Gson().fromJson(bundle.getString("event"),EventsEntity.class);
 
+        rldetail = view.findViewById(R.id.rldetail);
+
         colors = new int[]{bundle.getInt("color1"),bundle.getInt("color2")};
         GradientDrawable gd = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, colors);
         gd.setCornerRadius(0f);
 
         eventDetailImage = view.findViewById(R.id.eventDetailImage);
         eventDetailImage.setImageDrawable(getActivity().getDrawable(bundle.getInt("bgimage")));
-        eventDetailImage.setForeground(gd);
+        rldetail.setBackground(gd);
+        rldetail.setAlpha(0.5f);
 
         event_name = view.findViewById(R.id.event_name);
         event_name.setText(eventsEntity.getEventName());

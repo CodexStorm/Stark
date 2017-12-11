@@ -51,7 +51,7 @@ public class HomeScreenPagerAdapter extends PagerAdapter {
         TextView textView = itemView.findViewById(R.id.title);
         textView.setTypeface(UserDetails.getRightiousFont(mContext));
         textView.setText(mResources[position][2]);
-        imageView.setForeground(mContext.getDrawable(mResources[position][1]));
+        textView.setBackground(mContext.getDrawable(mResources[position][1]));
 
         LinearLayout llvp = itemView.findViewById(R.id.llvp);
         llvp.setOnClickListener(new View.OnClickListener() {

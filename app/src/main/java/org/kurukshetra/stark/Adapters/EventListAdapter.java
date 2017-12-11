@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.kurukshetra.stark.Common.UserDetails;
@@ -38,15 +39,14 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.View
         return new ViewHolder(view);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position){
 
         holder.eventName.setText(eventsEntityList.get(position).getEventName());
         holder.eventName.setTypeface(UserDetails.getRightiousFont(context));
         holder.imagecard.setImageDrawable(bd);
-        holder.imagecard.setAlpha(0.7f);
-        holder.imagecard.setForeground(UserDetails.getRandomGradient());
+        holder.rleventlist.setAlpha(0.7f);
+        holder.rleventlist.setBackground(UserDetails.getRandomGradient());
         holder.eventCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,11 +66,13 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.View
         TextView eventName;
         CardView eventCard;
         ImageView imagecard;
+        RelativeLayout rleventlist;
         ViewHolder(View itemView){
             super(itemView);
             eventName =(TextView)itemView.findViewById(R.id.events_category);
             eventCard = itemView.findViewById(R.id.eventCard);
             imagecard = itemView.findViewById(R.id.eventImage);
+            rleventlist = itemView.findViewById(R.id.rleventlist);
         }
     }
 

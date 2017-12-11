@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -33,13 +34,12 @@ public class WorkshopDetailFragment extends Fragment {
     List<TabEntity> tabs;
     ImageView eventDetailImage;
     int[] colors;
+    RelativeLayout rldetail;
 
     public WorkshopDetailFragment() {
         // Required empty public constructor
     }
 
-
-    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -52,9 +52,12 @@ public class WorkshopDetailFragment extends Fragment {
         GradientDrawable gd = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, colors);
         gd.setCornerRadius(0f);
 
+        rldetail = view.findViewById(R.id.rldetail);
+
         eventDetailImage = view.findViewById(R.id.eventDetailImage);
         eventDetailImage.setImageDrawable(getActivity().getDrawable(bundle.getInt("bgimage")));
-        eventDetailImage.setForeground(gd);
+        rldetail.setBackground(gd);
+        rldetail.setAlpha(0.5f);
 
         event_name = view.findViewById(R.id.event_name);
         event_name.setText(workshopsEntity.getName());

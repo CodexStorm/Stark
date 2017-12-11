@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.kurukshetra.stark.Common.UserDetails;
@@ -50,7 +51,6 @@ public class EventCategoryAdapter extends RecyclerView.Adapter<EventCategoryAdap
         return myViewHolder;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position){
 
@@ -63,8 +63,8 @@ public class EventCategoryAdapter extends RecyclerView.Adapter<EventCategoryAdap
         GradientDrawable gd = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, colors);
         gd.setCornerRadius(0f);
         holder.event_image.setImageDrawable(context.getResources().getDrawable(myImageList[position]));
-        holder.event_image.setForeground(gd);
-        holder.event_image.setAlpha(0.7f);
+        holder.rleventcategory.setBackground(gd);
+        holder.rleventcategory.setAlpha(0.7f);
 
         //typeface
         holder.eventCategory.setTypeface(UserDetails.getRightiousFont(context));
@@ -89,6 +89,7 @@ public class EventCategoryAdapter extends RecyclerView.Adapter<EventCategoryAdap
         TextView eventCategory,count;
         CardView eventCard;
         ImageView event_image;
+        RelativeLayout rleventcategory;
 
         public  ViewHolder(View itemView){
             super(itemView);
@@ -96,6 +97,7 @@ public class EventCategoryAdapter extends RecyclerView.Adapter<EventCategoryAdap
             eventCard = itemView.findViewById(R.id.eventCard);
             count = itemView.findViewById(R.id.count);
             event_image = itemView.findViewById(R.id.event_image);
+            rleventcategory = itemView.findViewById(R.id.rleventcategory);
         }
     }
 

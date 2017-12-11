@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.kurukshetra.stark.Common.UserDetails;
@@ -39,15 +40,14 @@ public class WorkshopListAdapter extends RecyclerView.Adapter<WorkshopListAdapte
         return new ViewHolder(view);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position){
 
         holder.eventName.setText(workshopsEntityList.get(position).getName());
         holder.eventName.setTypeface(UserDetails.getRightiousFont(context));
         holder.imagecard.setImageDrawable(bd);
-        holder.imagecard.setAlpha(0.7f);
-        holder.imagecard.setForeground(UserDetails.getRandomGradient());
+        holder.rlworkshoplist.setAlpha(0.7f);
+        holder.rlworkshoplist.setBackground(UserDetails.getRandomGradient());
         holder.eventCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,11 +67,13 @@ public class WorkshopListAdapter extends RecyclerView.Adapter<WorkshopListAdapte
         TextView eventName;
         ImageView imagecard;
         CardView eventCard;
+        RelativeLayout rlworkshoplist;
         ViewHolder(View itemView){
             super(itemView);
             eventName =(TextView)itemView.findViewById(R.id.events_category);
             eventCard = itemView.findViewById(R.id.eventCard);
             imagecard = itemView.findViewById(R.id.imagecard);
+            rlworkshoplist = itemView.findViewById(R.id.rlworkshoplist);
         }
     }
 
