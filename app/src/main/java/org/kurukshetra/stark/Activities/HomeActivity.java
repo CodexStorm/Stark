@@ -38,7 +38,8 @@ public class HomeActivity extends AppCompatActivity implements ViewPager.OnPageC
     int[][] mResources = {
             {R.drawable.events,R.drawable.gradient_blue_red,R.string.events},
             {R.drawable.workshop,R.drawable.gradient_ocean,R.string.workshops},
-            {R.drawable.karnival,R.drawable.gradient_red_purple,R.string.karnival}
+            {R.drawable.karnival,R.drawable.gradient_red_purple,R.string.karnival},
+            {R.drawable.gl,R.drawable.gradient_shroom_haze_alpha,R.string.gl}
     };
     HomeScreenPagerAdapter homeScreenPagerAdapter;
 

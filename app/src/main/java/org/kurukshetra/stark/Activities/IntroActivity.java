@@ -28,7 +28,7 @@ public class IntroActivity extends AppIntro {
         addSlide(SampleSlide.newInstance(R.layout.intro_custom_layout1));
         addSlide(SampleSlide.newInstance(R.layout.intro_custom_layout2));
         addSlide(SampleSlide.newInstance(R.layout.intro_custom_layout3));
-       // addSlide(SampleSlide.newInstance(R.layout.intro_custom_layout4));
+        addSlide(SampleSlide.newInstance(R.layout.intro_custom_layout4));
 
     }
 
@@ -51,4 +51,8 @@ public class IntroActivity extends AppIntro {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+
+    }
 }

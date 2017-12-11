@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="org.kurukshetra.stark.Activities.SplashActivity"
-    android:background="#3a8afe">
+    android:background="@drawable/gradient_alive"
+    >
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
@@ -14,8 +15,22 @@
         app:cardUseCompatPadding="true"
         app:cardElevation="15dp"
         android:layout_gravity="top">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/gl"
+            android:scaleType="centerCrop"
+            android:foreground="@drawable/gradient_alive"/>
 
-       
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="4+\nk! Talks"
+            android:textColor="#fff"
+            android:textAlignment="center"
+            android:textSize="50sp"
+            android:textStyle="bold"/>
     </android.support.v7.widget.CardView>
 
 </FrameLayout>

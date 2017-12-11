@@ -6,12 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="org.kurukshetra.stark.Activities.SplashActivity"
-    android:background="#fff">
+    android:background="@drawable/gradient_alive">
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/ceg_unesco_logo"
-        android:foreground="@drawable/gradient_alive"/>
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/cyclotron"
+        android:layout_centerInParent="true"
+        android:id="@+id/cyclotron"
+       />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animation_view"
@@ -21,7 +23,7 @@
         android:layout_centerHorizontal="true"
         app:lottie_imageAssetsFolder="image"
         app:lottie_fileName="loading.json"
-        app:lottie_colorFilter="#BD3F32"
+        app:lottie_colorFilter="#fff"
         app:lottie_loop="true"
         app:lottie_scale="0.5"
         app:lottie_autoPlay="true" />

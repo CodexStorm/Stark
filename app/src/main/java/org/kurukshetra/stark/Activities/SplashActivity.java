@@ -9,8 +9,14 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
@@ -26,6 +32,7 @@ import org.kurukshetra.stark.RESTclient.RESTClientImplementation;
 public class SplashActivity extends AppCompatActivity {
     LottieAnimationView animationView;
     EventsCategoryResponseEntity eventBackup;
+    ImageView cyclotron;
     private WorkshopsCategoryResponseEntity workshopBackup;
 
     @Override
@@ -35,6 +42,18 @@ public class SplashActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
+        cyclotron = findViewById(R.id.cyclotron);
+        int mWidth= this.getResources().getDisplayMetrics().widthPixels;
+        int mHeight= this.getResources().getDisplayMetrics().heightPixels;
+
+        RotateAnimation anim = new RotateAnimation(0.0f, 360.0f,
+                Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
+                0.5f);
+        anim.setInterpolator(new LinearInterpolator());
+        anim.setRepeatCount(Animation.INFINITE);
+        anim.setDuration(7000);
+        cyclotron.startAnimation(anim);
+
         requestPermission();
         animationView = (LottieAnimationView) findViewById(R.id.animation_view);
     }
