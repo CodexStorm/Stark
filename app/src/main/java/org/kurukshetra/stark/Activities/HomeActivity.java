@@ -105,9 +105,12 @@ public class HomeActivity extends AppCompatActivity implements ViewPager.OnPageC
             public void onItemClick(int pos) {
                 if(pos == 0){
                     goToActivity(EventsActivity.class);
-                }else if(pos == 1){
+                }else if(pos == 1) {
                     goToActivity(WorkshopsActivity.class);
+                }else if(pos == 2) {
+                    goToActivity(KarnivalActivity.class);
                 }
+
             }
         });
     }

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/karnival"
+    android:foreground="@drawable/gradient_red_purple"
+    android:layout_height="match_parent"
+    tools:context="org.kurukshetra.stark.Activities.KarnivalActivity">
+
+   <TextView
+       android:id="@+id/comingSoon"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentBottom="true"
+       android:layout_centerHorizontal="true"
+       android:layout_marginBottom="212dp"
+       android:gravity="center"
+       android:text="kghf"
+       android:textColor="@color/White"
+       android:textSize="40dp"
+       android:textStyle="bold" />
+
+   <TextView
+       android:id="@+id/Karnival"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_above="@+id/comingSoon"
+       android:layout_centerHorizontal="true"
+       android:layout_marginBottom="18dp"
+       android:text="K!arnival"
+       android:textColor="@color/White"
+       android:textSize="50dp" />
+
+
+</RelativeLayout>

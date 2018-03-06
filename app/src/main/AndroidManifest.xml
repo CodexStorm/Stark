@@ -65,10 +65,14 @@
         <activity
             android:name=".Activities.RegisterActivity"
             android:theme="@style/RegisterActivity" />
-        <activity android:name=".Activities.AboutActivity"
-            android:theme="@style/AboutActivity"></activity>
-        <activity android:name=".Activities.ProfileActivity"
-            android:theme="@style/ProfileActivity"/>
+        <activity
+            android:name=".Activities.AboutActivity"
+            android:theme="@style/AboutActivity" />
+        <activity
+            android:name=".Activities.ProfileActivity"
+            android:theme="@style/ProfileActivity" />
+        <activity android:name=".Activities.KarnivalActivity"
+            android:theme="@style/KarnivalActivity"></activity>
     </application>
 
 </manifest>
